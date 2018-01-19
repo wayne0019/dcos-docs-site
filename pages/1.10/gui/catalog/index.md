@@ -6,6 +6,6 @@ menuWeight: 4
 excerpt:
 ---
 
-The Catalog tab shows all of the available DC/OS services. You can install packages from the DC/OS Catalog with a single click. The packages can be installed with defaults or customized directly in the web interface.
+目录页面列出了DC/OS所有可用的服务。可以通过点击来安装指定的包，在页面上还可以选择自定义安装还是默认安装。
 
 ![Catalog](/1.10/img/catalog-ee.png)
