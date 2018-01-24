@@ -1,7 +1,7 @@
 ---
 layout: layout.pug
-navigationTitle: Backup and Restore
-title: Backup and Restore
+navigationTitle: 备份和还原
+title: 备份和还原
 menuWeight: 7
 excerpt: ""
 enterprise: true
@@ -10,7 +10,7 @@ As of DC/OS 1.10, you can back up the state of the native Marathon instance of y
 
 You may wish to back up your cluster before performing an upgrade or downgrade. You may need to restore your cluster to a known good state if something goes wrong during an upgrade or if you install a Universe package that does not perform as expected.
 
-# Limitations
+# 筛选
 
 - As of DC/OS 1.10, backups include only the state of Marathon running on master nodes.
 - You can perform backup and restore operations only from the DC/OS Enterprise [backup and restore CLI](/1.10/administering-clusters/backup-and-restore/backup-restore-cli) and the [backup and restore API](/1.10/administering-clusters/backup-and-restore/backup-restore-api).
