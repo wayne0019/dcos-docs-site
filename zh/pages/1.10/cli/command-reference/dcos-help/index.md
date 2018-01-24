@@ -8,26 +8,26 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Display DC/OS CLI help information.
+显示帮助信息。
 
-# Usage
+# 统计
 
 ```bash
 dcos help <subcommand>
 ```
 
-# Options
+# 选项
 
-| Name, shorthand      | Default | Description                                   |
-| -------------------- | ------- | --------------------------------------------- |
-| `--help, h`          |         | Print usage.                                  |
-| `--info`             |         | Print a short description of this subcommand. |
-| `--version, v`       |         | Print version information.                    |
-| `<subcommand>` |         | The subcommand name.                          |
+| 姓名、速记                | 默认 | 描述                                            |
+| -------------------- | -- | --------------------------------------------- |
+| `--help, h`          |    | 打印使用。                                         |
+| `--info`             |    | Print a short description of this subcommand. |
+| `--version, v`       |    | 显示版本信息                                        |
+| `<subcommand>` |    | The subcommand name.                          |
 
-# Examples
+# 例子
 
 ## Display help for dcos config command
 
