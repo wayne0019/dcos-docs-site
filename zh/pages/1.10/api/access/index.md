@@ -1,7 +1,7 @@
 ---
 layout: layout.pug
-navigationTitle: Cluster Access
-title: Cluster Access
+navigationTitle: 族类排料
+title: 族类排料
 menuWeight: 1
 excerpt: ""
 enterprise: false
