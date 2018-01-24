@@ -6,31 +6,31 @@ menuWeight: 5
 excerpt: ""
 enterprise: false
 ---
-The component management API controls installation and management of DC/OS component services. It is used by the DC/OS installer during install, upgrade, and uninstall. It is not designed for interaction by DC/OS users.
+The component management API controls installation and management of DC/OS component services. 它由 DC/OS 安装程序在安装、升级和卸载过程中使用。 它不是为 DC/OS 用户的交互设计的。
 
-## Component Package Manager
+## 组件包管理器
 
-The DC/OS Component Package Manager (Pkgpanda) implements the component management API and runs on all DC/OS nodes.
+DCOS 组件包管理器 (Pkgpanda) 实现组件管理 API 并在所有 DC/OS 节点上运行。
 
-[Pkgpanda](https://github.com/dcos/dcos/tree/master/pkgpanda) consists of two parts: a package builder and a package manager.
+[ pkgpanda ](https://github.com/dcos/dcos/tree/master/pkgpanda) 由两部分组成: 一个包生成器和一个包管理程序。
 
-- The **package builder** builds and bundles component packages from source code and pre-compiled artifacts as part of the DC/OS release building process.
-- The **package manager** is included as part of DC/OS and runs on each node, managing the installed and activated component packages on that node.
+- ** 包生成器 "** 从源代码和预编译的工件生成并捆绑组件包, 作为 DC/OS 发布构建过程的一部分。
+- ** 包管理器 ** 包括在 DC/OS 的一部分中, 并在每个节点上运行, 管理该节点上已安装和已激活的组件包。
 
-Component packages built by the package builder are distributed as part of the DC/OS installer for each release. The installer ships the component packages to each node and orchestrates the component management API to install them. The component packages contain one or more systemd service definitions, binaries, and configuration files.
+由包生成器生成的组件包作为每个版本的 DC/OS 安装程序的一部分进行分发。 安装程序将组件包运送到每个节点, 并协调组件管理 API 来安装它们。 组件包包含一个或多个 systemd 服务定义、二进制文件和配置档。
 
-## Component health
+## 组件运行状况
 
-Component health is monitored by the DC/OS Diagnostics component. For more information about component monitoring, see [Monitoring](/1.10/monitoring/).
+组件运行状况由 DC/OS 诊断组件监视。有关组件监视的详细信息, 请参阅 [ 监视 ](/1.10/monitoring/)。
 
-## Component logs
+## 组件
 
-Component logs are sent to journald and exposed by the DC/OS Log component. For more information about component logs, see [Logging](/1.10/monitoring/logging/).
+组件日志被发送到 journald, 并由 DC/OS 日志组件公开。有关组件日志的详细信息, 请参阅 [ 日志记录 ](/1.10/monitoring/logging/)。
 
-## Routes
+## 途径
 
-The component management API is exposed through Admin Router and Admin Router Agent under the `/pkgpanda/` path on all nodes.
+组件管理 API 通过管理路由器和管理路由器代理在所有节点的 `/pkgpanda/` 路径下公开。
 
-## Resources
+## 资源
 
 [swagger api='/1.10/api/pkgpanda.yaml']
