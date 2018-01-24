@@ -1,12 +1,12 @@
 ---
 layout: layout.pug
-navigationTitle: Backup and Restore CLI
-title: Backup and Restore CLI
+navigationTitle: 备份和还原
+title: 备份和还原
 menuWeight: 0
 excerpt: ""
 enterprise: true
 ---
-# Prerequisites
+# 基础要求
 
 - A DC/OS Enterprise cluster.
 - The [DC/OS CLI](/1.10/cli/install/) installed.
@@ -43,7 +43,7 @@ The backup will initially transition into the `STATUS_BACKING_UP` state, and sho
 
 3. Use the ID produced by `dcos backup list` to refer to your backup in subsequent commands. A backup ID will resemble `<backup-label>-ea6b49f5-79a8-4767-ae78-3f874c90e3da`.
 
-# Delete a backup
+# 删除备份
 
 1. Delete an unneeded backup.
     
