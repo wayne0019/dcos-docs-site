@@ -1,53 +1,53 @@
 ---
 layout: layout.pug
-navigationTitle: Template Reference
-title: Template Reference
+navigationTitle: 模板参考
+title: 模板参考
 menuWeight: 200
 excerpt: ""
 enterprise: true
 ---
-These advanced template parameters are specified in the individual JSON files. During DC/OS installation these template files are used to generate a customized DC/OS build.
+这些高级模板参数在各个 JSON 文件中指定。在 dc/os 安装期间, 这些模板文件用于生成自定义的 dc/os 版本。
 
-### Zen templates
+### 禅宗模板
 
 The [Zen](#zen) templates orchestrate the individual component templates to create a DC/OS cluster.
 
-### Agent templates
+### 禅宗模板
 
 The [agent](#private-agent) templates create [public](/1.10/overview/concepts/#public-agent-node) or [private](/1.10/overview/concepts/#private-agent-node) agent nodes that are then attached to a DC/OS cluster as a part of an AutoScalingGroup.
 
-### Master templates
+### 主模板
 
 The [master](#master) templates create master nodes, on top of the infrastructure stack already created.
 
-### Infrastructure template
+### 基础结构模板
 
 The [infrastructure](#infrastructure) template defines and creates a DC/OS specific infrastructure that works well with an existing VPC.
 
 ## <a name="zen"></a>Zen
 
-The Zen templates (e.g. `ee.elzen-1.json`) orchestrate the individual component templates.
+禅宗模板 (如 ` ee.elzen-1.json `) 协调各个组件模板。
 
 <table class="table">
   <tr>
-    <th>Parameter Name</th>
-    <th>Key Value</th>
+    <th>参数名称：</th>
+    <th>数据值</th>
   </tr>
   <tr>
     <td>AdminLocation</td>
-    <td>Optional: Specify the IP range to whitelist for access to the admin zone. Must be a valid CIDR. To allow access from any IP address, use <code>0.0.0.0/0</code>.</td>
+    <td>可选: 指定用于访问管理区域的白名单的 IP 范围。必须是有效的 CIDR。要允许从任何 IP 地址访问, 请使用 <code> 0.0.0.0/0 </code>。</td>
   </tr>
   <tr>
     <td>CustomAMI</td>
-    <td>Optional: Specify an AMI ID. Must reside in the same region and have all DC/OS prerequisites installed.</td>
+    <td>可选: 指定 AMI ID。必须驻留在同一区域中, 并且安装了所有的 DC/OS 系统必备组件。</td>
   </tr>
   <tr>
     <td>InternetGateway</td>
-    <td>Internet Gateway ID, must be attached to the <code>Vpc</code>. Used by all nodes for outgoing Internet access.</td>
+    <td>Internet 网关 ID, 必须附加到 <code> Vpc </code>。由所有节点用于传出的 Internet 访问。</td>
   </tr>
   <tr>
     <td>KeyName</td>
-    <td>AWS EC2 Key Pair to SSH into instances</td>
+    <td>AWS EC2 密钥对到 SSH 到实例</td>
   </tr>
   <tr>
     <td>MasterInstanceType</td>
@@ -83,14 +83,14 @@ The Zen templates (e.g. `ee.elzen-1.json`) orchestrate the individual component 
   </tr>
 </table>
 
-## <a name="private-agent"></a>Private agents
+## <a name="private-agent"></a>公共代理节点
 
 The private agent template (`advanced-priv-agent.json`) creates agents which are then attached to a DC/OS cluster as a part of an AutoScalingGroup. To configure the template, specify the VPC, subnet, and master DNS address for the DC/OS cluster to join.
 
 <table class="table">
   <tr>
-    <th>Parameter Name</th>
-    <th>Description</th>
+    <th>参数名称：</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td>InternalMasterLoadBalancerDnsName</td>
@@ -98,7 +98,7 @@ The private agent template (`advanced-priv-agent.json`) creates agents which are
   </tr>
   <tr>
     <td>KeyName</td>
-    <td>AWS EC2 Key Pair to SSH into instances</td>
+    <td>AWS EC2 密钥对到 SSH 到实例</td>
   </tr>
   <tr>
     <td>PrivateAgentInstanceCount</td>
@@ -118,7 +118,7 @@ The private agent template (`advanced-priv-agent.json`) creates agents which are
   </tr>
 </table>
 
-## <a name="public-agent"></a>Public agents
+## <a name="public-agent"></a>公共代理节点
 
 The public agent template (`advanced-pub-agent.json`) creates agents which are then attached to a DC/OS cluster as a part of an AutoScalingGroup. To configure the template, specify the VPC, subnet, and master DNS address for the DC/OS cluster to join.
 
@@ -133,7 +133,7 @@ The public agent template (`advanced-pub-agent.json`) creates agents which are t
   </tr>
   <tr>
     <td>KeyName</td>
-    <td>AWS EC2 Key Pair to SSH into instances</td>
+    <td>AWS EC2 密钥对到 SSH 到实例</td>
   </tr>
   <tr>
     <td>PublicAgentInstanceCount</td>
@@ -159,8 +159,8 @@ The master templates (`advanced-master-1.json`, `advanced-master-3.json`, `advan
 
 <table class="table">
   <tr>
-    <th>Parameter Name</th>
-    <th>Description</th>
+    <th>参数名称：</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td>AdminSecurityGroup</td>
@@ -204,14 +204,14 @@ The master templates (`advanced-master-1.json`, `advanced-master-3.json`, `advan
   </tr>
 </table>
 
-## <a name="infrastructure"></a>Infrastructure
+## <a name="infrastructure"></a>基础结构
 
 The infrastructure template (`infra.json`) defines, and creates, a DC/OS specific infrastructure that works well with a VPC already created. This is the lowest building block of a DC/OS cluster and the components created in this stack are consumed by the dependent templates (master and agents).
 
 <table class="table">
   <tr>
-    <th>Parameter Name</th>
-    <th>Description</th>
+    <th>参数名称：</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td>AdminLocation</td>
@@ -223,7 +223,7 @@ The infrastructure template (`infra.json`) defines, and creates, a DC/OS specifi
   </tr>
   <tr>
     <td>KeyName</td>
-    <td>AWS EC2 Key Pair to SSH into instances</td>
+    <td>AWS EC2 密钥对到 SSH 到实例</td>
   </tr>
   <tr>
     <td>PrivateSubnet</td>
