@@ -33,13 +33,13 @@ The **private** zone is a non-routable network that is only accessible from the 
 
 ### Public zone
 
-The optional **public** zone is where publicly accessible applications are run. Generally, only a small number of agent nodes are run in this zone. The edge router forwards traffic to applications running in the private zone.
+The optional **public** zone is where publicly accessible applications are run. 通常, 此区域中只运行少量的代理节点。 边缘路由器将通信转发到在专用区域中运行的应用程序。
 
-The agent nodes in the public zone are labeled with a special role so that only specific tasks can be scheduled here. These agent nodes have both public and private IP addresses and only specific ports should be open in their iptables firewall.
+公共区域中的代理节点被标记为具有特殊的角色, 因此只能在此安排特定任务。 这些代理节点具有公共和专用 IP 地址, 并且只有特定端口在其 iptables 防火墙中打开。
 
-By default, when using the cloud-based installers such as the AWS CloudFormation templates, a large number of ports are exposed to the Internet for the public zone. In production systems, it is unlikely that you would expose all of these ports. It's recommended that you close all ports except 80 and 443 (for HTTP/HTTPS traffic) and use [Marathon-LB](/services/marathon-lb/) with HTTPS for managing ingress traffic.
+By default, when using the cloud-based installers such as the AWS CloudFormation templates, a large number of ports are exposed to the Internet for the public zone. 在生产系统中, 您不太可能公开所有这些端口。 建议您关闭除80和443之外的所有端口 (用于 HTTP/https 通信), 并使用 [ 马拉松 lb ](/services/marathon-lb/) 和 HTTPS 来管理入口通信。
 
-### Typical AWS deployment
+### 典型 AWS 部署
 
 A typical AWS deployment including AWS Load Balancers is shown below:
 
