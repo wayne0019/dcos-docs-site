@@ -1,74 +1,77 @@
 ---
 layout: layout.pug
-navigationTitle: Backup and Restore CLI
-title: Backup and Restore CLI
-menuWeight: 0
+navigationTitle: 添加代理节点
+title: 添加代理节点
+menuWeight: 800
 excerpt: ""
-enterprise: true
+enterprise: false
 ---
-# Prerequisites
+<!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-- A DC/OS Enterprise cluster.
-- The [DC/OS CLI](/1.10/cli/install/) installed.
-- The [DC/OS Enterprise CLI](/1.10/cli/enterprise-cli/) installed.
+您可以将代理节点添加到现有的 DC/OS 群集。
 
-**Important:** See the [Limitations](/1.10/administering-clusters/backup-and-restore/#limitations) of backup and restore.
+Agent nodes are designated as [public](/1.10/overview/concepts/#public-agent-node) or [private](/1.10/overview/concepts/#private-agent-node) during installation. 默认情况下, 它们在 [ gui ](/1.10/installing/oss/custom/gui/) 或 [ cli ](/1.10/installing/oss/custom/cli/) 安装期间被指定为专用。
 
-# Back up a cluster
+### 基础要求
 
-Backups are stored on the local file system of the master node. Backup state is maintained by a service running in the cluster and backup/restore operations are initiated by hitting this service directly.
+* 使用 [ 自定义 ](/1.10/installing/oss/custom/) 安装方法安装 DC/OS。
+* The archived DC/OS installer file (`dcos-install.tar`) from your [installation](/1.10/installing/oss/custom/gui/#backup).
+* 满足 [ 系统要求 ](/1.10/installing/oss/custom/system-requirements/) 的可用代理节点。
+* CLI JSON 处理器 [ jq ](https://github.com/stedolan/jq/wiki/Installation)。
+* 已安装和配置 SSH。这是访问 DC/OS 群集中的节点所必需的。
 
-1. Create a backup and assign it a meaningful label. The label has the following restrictions:
-    
-    - It must be between 3 and 25 characters in length.
-    - It cannot start with `..`.
-    - It must be composed of the following characters: [A-Za-z0-9_.-].
-    ```bash
-dcos backup create --label=<backup-label>
-```
+### 安装 DC/OS 代理节点
 
-2. Verify your backup has been created.
+将已存档的 DC/OS 安装程序文件 (` dcos-install.tar `) 复制到代理节点。 This archive is created during the GUI or CLI [installation](/1.10/installing/oss/custom/gui/#backup) method.
+
+1. 将文件复制到代理节点。例如, 可以使用安全副本 (scp) 将 `dcos-install.tar` 复制到您的主目录中:
     
     ```bash
-dcos backup list
+scp ~/dcos-install.tar $username@$node-ip:~/dcos-install.tar
 ```
 
-Or use the following command to refine your search results to the label you used when you created the backup.
+2. SSH 到机器:
+    
+    ```bash
+ssh $USER@$AGENT
+```
+
+3. 为安装程序文件创建一个目录:
+    
+    ```bash
+sudo mkdir -p /opt/dcos_install_tmp
+```
+
+4. 解 `dcos-install.tar` 文件:
+    
+    ```bash
+sudo tar xf dcos-install.tar -C /opt/dcos_install_tmp
+```
+
+5. 运行此命令可在代理节点上安装 DC/OS。您必须将代理节点指定为公共或专用。
+    
+    Private agent nodes:
+    
+    ```bash
+sudo bash /opt/dcos_install_tmp/dcos_install.sh slave
+```
+
+公共代理节点:
 
 ```bash
-dcos backup list [label]
+sudo bash /opt/dcos_install_tmp/dcos_install.sh slave_public
 ```
 
-The backup will initially transition into the `STATUS_BACKING_UP` state, and should eventually arrive at `STATUS_READY`. If something goes wrong, it will show a state of `STATUS_ERROR`. Use `dcos backup show <backup-id>` to inspect why Marathon errored out during the course of the backup.
+** 提示: **可以通过从 DC/OS CLI 运行此命令来验证节点类型。
 
-3. Use the ID produced by `dcos backup list` to refer to your backup in subsequent commands. A backup ID will resemble `<backup-label>-ea6b49f5-79a8-4767-ae78-3f874c90e3da`.
-
-# Delete a backup
-
-1. Delete an unneeded backup.
+* 运行此命令可对私有代理进行计数。
     
     ```bash
-dcos backup delete <backup-id>
+dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public == null) | .id' | wc -l
 ```
 
-# Restore a cluster
-
-1. List the available backups, choose the backup you want to restore to, and make a note of the backup ID.
+* 运行此命令可对私有代理进行计数。
     
     ```bash
-dcos backup list
+dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public != null) | .id' | wc -l
 ```
-
-2. Restore from the selected backup.
-    
-    ```bash
-dcos backup restore <backup-id>
-```
-
-3. Monitor the status of the restore operation.
-    
-    ```bash
-dcos backup show <backup-id>
-```
-
-The `restores.component_status.marathon` parameter of the JSON output will show `STATUS_RESTORING`, and then `STATUS_READY`.
