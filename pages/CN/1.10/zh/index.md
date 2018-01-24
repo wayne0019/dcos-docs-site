@@ -1,56 +1,74 @@
 ---
 layout: layout.pug
-navigationTitle: Backup and Restore API
-title: Backup and Restore API
-menuWeight: 10
+navigationTitle: Backup and Restore CLI
+title: Backup and Restore CLI
+menuWeight: 0
 excerpt: ""
 enterprise: true
 ---
-You can use the Backup and Restore API to create and restore backups of your cluster.
+# Prerequisites
+
+- A DC/OS Enterprise cluster.
+- The [DC/OS CLI](/1.10/cli/install/) installed.
+- The [DC/OS Enterprise CLI](/1.10/cli/enterprise-cli/) installed.
 
 **Important:** See the [Limitations](/1.10/administering-clusters/backup-and-restore/#limitations) of backup and restore.
 
-# Routes
+# Back up a cluster
 
-Access to the Backup and Restore API is proxied through the Admin Router on each master node using the following route:
+Backups are stored on the local file system of the master node. Backup state is maintained by a service running in the cluster and backup/restore operations are initiated by hitting this service directly.
 
-    /system/v1/backup/v1
+1. Create a backup and assign it a meaningful label. The label has the following restrictions:
     
+    - It must be between 3 and 25 characters in length.
+    - It cannot start with `..`.
+    - It must be composed of the following characters: [A-Za-z0-9_.-].
+    ```bash
+dcos backup create --label=<backup-label>
+```
 
-To determine the URL of your cluster, see [Cluster Access](/1.10/api/access/).
-
-# Format
-
-The Backup and Restore API request and response bodies are formatted in JSON.
-
-Requests must include the accept header:
-
-    Accept: application/json
+2. Verify your backup has been created.
     
+    ```bash
+dcos backup list
+```
 
-Responses include the content type header:
+Or use the following command to refine your search results to the label you used when you created the backup.
 
-    Content-Type: application/json
+```bash
+dcos backup list [label]
+```
+
+The backup will initially transition into the `STATUS_BACKING_UP` state, and should eventually arrive at `STATUS_READY`. If something goes wrong, it will show a state of `STATUS_ERROR`. Use `dcos backup show <backup-id>` to inspect why Marathon errored out during the course of the backup.
+
+3. Use the ID produced by `dcos backup list` to refer to your backup in subsequent commands. A backup ID will resemble `<backup-label>-ea6b49f5-79a8-4767-ae78-3f874c90e3da`.
+
+# Delete a backup
+
+1. Delete an unneeded backup.
     
+    ```bash
+dcos backup delete <backup-id>
+```
 
-# Authentication
+# Restore a cluster
 
-All Backup and Restore API routes require authentication to use.
+1. List the available backups, choose the backup you want to restore to, and make a note of the backup ID.
+    
+    ```bash
+dcos backup list
+```
 
-To authenticate API requests, see [Obtaining an authentication token](/1.10/security/ent/iam-api/#obtaining-an-authentication-token) and [Passing an authentication token](/1.10/security/ent/iam-api/#passing-an-authentication-token).
+2. Restore from the selected backup.
+    
+    ```bash
+dcos backup restore <backup-id>
+```
 
-The Backup and Restore API also requires authorization via the following permissions:
+3. Monitor the status of the restore operation.
+    
+    ```bash
+dcos backup show <backup-id>
+```
 
-| Resource ID                          | Action |
-| ------------------------------------ | ------ |
-| `dcos:adminrouter:ops:system-backup` | `full` |
-
-All routes can also be reached by users with the `dcos:superuser` permission.
-
-To assign permissions to your account, see the [permissions reference](/1.10/security/ent/perms-reference/).
-
-# API Reference
-
-The Backup and Restore API allows you to manage backup and restore operations on your DC/OS cluster.
-
-[swagger api='/1.10/api/backup-restore.yaml']
+The `restores.component_status.marathon` parameter of the JSON output will show `STATUS_RESTORING`, and then `STATUS_READY`.
