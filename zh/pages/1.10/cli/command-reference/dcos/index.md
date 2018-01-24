@@ -8,31 +8,31 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Command line utility for the Mesosphere Datacenter Operating System (DC/OS).
+中间层数据中心操作系统 (DC/OS) 的命令行实用程序。
 
-# Usage
+# 统计
 
 ```bash
 dcos [options] [<command>] [<args>...]
 ```
 
-Running the command without options, commands, or arguments prints the available commands.
+在没有选项、命令或参数的情况下运行命令会打印可用的命令。
 
-# Options
+# 选项
 
-| Name, shorthand                 | Default | Description                                                                    |
-| ------------------------------- | ------- | ------------------------------------------------------------------------------ |
-| `--debug`                       |         | Enable debug mode.                                                             |
-| `--help, h`                     |         | Print usage.                                                                   |
-| `--log-level=<log-level>` |         | Set the logging level. This setting does not affect the output sent to stdout. |
-| `--version, v`                  |         | Print version information.                                                     |
+| 姓名、速记                           | 默认 | 描述                         |
+| ------------------------------- | -- | -------------------------- |
+| `--debug`                       |    | 启用调试模式                     |
+| `--help, h`                     |    | 打印使用。                      |
+| `--log-level=<log-level>` |    | 设置日志记录级别。此设置不影响发送到标准输出的结果。 |
+| `--version, v`                  |    | 显示版本信息                     |
 
-`<log-level>` The severity levels are:
+` < 日志级别 > `严重性级别为:
 
-* debug Prints all messages.
-* info Prints informational, warning, error, and critical messages.
+* 调试打印所有邮件。
+* 信息打印信息、警告、错误和重要消息。
 * warning Prints warning, error, and critical messages.
 * error Prints error and critical messages.
 * critical Prints only critical messages to stderr.
