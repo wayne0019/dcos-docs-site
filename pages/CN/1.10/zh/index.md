@@ -1,42 +1,56 @@
 ---
 layout: layout.pug
-navigationTitle: DNS Quick Reference
-title: DNS Quick Reference
-menuWeight: 20
+navigationTitle: Backup and Restore API
+title: Backup and Restore API
+menuWeight: 10
 excerpt: ""
-enterprise: false
+enterprise: true
 ---
-<!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
+You can use the Backup and Restore API to create and restore backups of your cluster.
 
-This quick reference provides a summary of the available options.
+**Important:** See the [Limitations](/1.10/administering-clusters/backup-and-restore/#limitations) of backup and restore.
 
-To help explain, we'll use this imaginary application:
+# Routes
 
-* The Service is in the following hierarchy: 
- * Group: `outergroup` > Group: `subgroup` > Service Name: `myapp`
-* Port: `555` 
- * Port Name: `myport`
- * Load Balanced
-* Running on a [Virtual Network](/1.10/networking/load-balancing-vips/virtual-networks/)
-* Running on the Marathon framework (if unsure, it's probably this one) 
- * If you are running another framework, then replace any instance of `marathon` with the name of your framework.
+Access to the Backup and Restore API is proxied through the Admin Router on each master node using the following route:
 
-# Service Discovery Options
+    /system/v1/backup/v1
+    
 
-Use one of these options to find the DNS name for your task. You should choose the first option that satisfies your requirements:
+To determine the URL of your cluster, see [Cluster Access](/1.10/api/access/).
 
-1. `outergroupsubgroupmyapp.marathon.l4lb.thisdcos.directory:555` 
- * This is only available when the service is load balanced. `:555` is not a part of the DNS address, but is there to show that this address and port is load balanced as a pair rather than individually.
-2. `myapp-subgroup-outergroup.marathon.containerip.dcos.thisdcos.directory` 
- * This is only available when the service is running on a [virtual network](/1.10/networking/load-balancing-vips/virtual-networks/).
-3. `myapp-subgroup-outergroup.marathon.agentip.dcos.thisdcos.directory` 
- * This is always available and should be used when the service is not running on a [virtual network](/1.10/networking/load-balancing-vips/virtual-networks/).
-4. `myapp-subgroup-outergroup.marathon.autoip.dcos.thisdcos.directory` 
- * This is always available and should be used to address an application that is transitioning on or off a [virtual network](/1.10/networking/load-balancing-vips/virtual-networks/).
-5. `myapp-subgroup-outergroup.marathon.mesos` 
- * This is always available, and is equivalent for the most part to the `agentip`. However it is less specific and less performant than the `agentip` and thus use is discouraged.
+# Format
 
-Other discovery option(s):
+The Backup and Restore API request and response bodies are formatted in JSON.
 
-* `_myport._myapp.subgroup.outergroup._tcp.marathon.mesos` 
- * This is not a DNS A record but rather a DNS SRV record. This is only available when the port has a name. SRV records are a mapping from a name to an "Address + Port" pair.
+Requests must include the accept header:
+
+    Accept: application/json
+    
+
+Responses include the content type header:
+
+    Content-Type: application/json
+    
+
+# Authentication
+
+All Backup and Restore API routes require authentication to use.
+
+To authenticate API requests, see [Obtaining an authentication token](/1.10/security/ent/iam-api/#obtaining-an-authentication-token) and [Passing an authentication token](/1.10/security/ent/iam-api/#passing-an-authentication-token).
+
+The Backup and Restore API also requires authorization via the following permissions:
+
+| Resource ID                          | Action |
+| ------------------------------------ | ------ |
+| `dcos:adminrouter:ops:system-backup` | `full` |
+
+All routes can also be reached by users with the `dcos:superuser` permission.
+
+To assign permissions to your account, see the [permissions reference](/1.10/security/ent/perms-reference/).
+
+# API Reference
+
+The Backup and Restore API allows you to manage backup and restore operations on your DC/OS cluster.
+
+[swagger api='/1.10/api/backup-restore.yaml']
