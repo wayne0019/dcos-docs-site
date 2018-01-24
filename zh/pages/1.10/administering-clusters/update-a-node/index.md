@@ -1,29 +1,29 @@
 ---
 layout: layout.pug
-navigationTitle: Updating Nodes
-title: Updating Nodes
+navigationTitle: 更新节点
+title: 更新节点
 menuWeight: 801
 excerpt: ""
 enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-You can update agent nodes in an active DC/OS cluster by using maintenance windows or by manually killing agents. Maintenance windows are the preferred method since this is generally more stable and less error prone.
+You can update agent nodes in an active DC/OS cluster by using maintenance windows or by manually killing agents. 维护窗口是首选的方法, 因为它通常更稳定, 容易出错。
 
-These steps are useful if you are downsizing a cluster, reconfiguring agent nodes, or moving a node to a new IP. When you change Mesos attributes (`⁠⁠⁠⁠/var/lib/dcos/mesos-slave-common`⁠⁠⁠⁠) or resources (⁠⁠⁠⁠`/var/lib/dcos/mesos-resources`⁠⁠⁠⁠), you must remove the agent node and re-register it with the master node under a new UUID. The master will then recognize the new attributes and resources specification.
+如果您正在缩小群集、重新配置代理节点或将节点移动到新的 IP, 则这些步骤非常有用。 当您更改 Mesos 属性 (`/var/lib/dcos/mesos-slave-common `) 或资源 (`/var/lib/dcos/Mesos-resources `) 时, 必须删除代理节点, 然后在新 UUID 下使用主节点重新注册它。 然后, master 将识别新的属性和资源规范。
 
-**Warning:** ⁠⁠⁠All tasks that are running on the agent will be killed because you are changing agent attributes or resources. Mesos treats a re-registered agent as a new agent.
+** 警告: ** 在代理上运行的所有任务都将被杀死, 因为您正在更改代理属性或资源。Mesos 将重新注册的代理视为新代理。
 
-### Prerequisites:
+### 基础要求
 
-* [SSH installed and configured](/1.10/administering-clusters/sshcluster/). This is required when removing nodes by manually killing agents.
+* [ SSH 已安装并已配置 ](/1.10/administering-clusters/sshcluster/)。当通过手动杀死代理删除节点时, 这是必需的。
 * Access to the [Admin Router permissions](/1.10/overview/architecture/components/#admin-router).
 
 # Updating nodes by using maintenance windows
 
 With maintenance windows you can drain multiple nodes at the same time from outside the cluster. SSH access is not required.
 
-You can define a maintenance schedule to evacuate your tasks prior to changing agent attributes or resources.
+您可以定义一个维护计划, 以便在更改代理属性或资源之前疏散您的任务。
 
 1. Define a maintenance schedule. For example, here is a basic maintenance schedule JSON file with the example machines (`machine_ids`) and maintenance window (`unavailability`) specified:
     
@@ -65,7 +65,7 @@ For a more complex example, see the [maintain-agents.sh](https://github.com/vish
 
 Draining nodes by using terminate signal, SIGUSR1, is easy to integrate with automation tools that can execute tasks on nodes in parallel, for example Ansible, Chef, and Puppet.
 
-1. [SSH to the agent nodes](/1.10/administering-clusters/sshcluster/).
+1. [ SSH ](/1.10/administering-clusters/sshcluster/) 配置.
 2. Stop the agents.
     
     * **Private agent**
