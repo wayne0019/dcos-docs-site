@@ -1,76 +1,76 @@
 ---
 layout: layout.pug
-navigationTitle: Adding Agent Nodes
-title: Adding Agent Nodes
+navigationTitle: 添加代理节点
+title: 添加代理节点
 menuWeight: 800
 excerpt: ""
 enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-You can add agent nodes to an existing DC/OS cluster.
+您可以将代理节点添加到现有的 DC/OS 群集。
 
-Agent nodes are designated as [public](/1.10/overview/concepts/#public-agent-node) or [private](/1.10/overview/concepts/#private-agent-node) during installation. By default, they are designated as private during [GUI](/1.10/installing/oss/custom/gui/) or [CLI](/1.10/installing/oss/custom/cli/) installation.
+Agent nodes are designated as [public](/1.10/overview/concepts/#public-agent-node) or [private](/1.10/overview/concepts/#private-agent-node) during installation. 默认情况下, 它们在 [ gui ](/1.10/installing/oss/custom/gui/) 或 [ cli ](/1.10/installing/oss/custom/cli/) 安装期间被指定为专用。
 
-### Prerequisites:
+### 基础要求
 
-* DC/OS is installed using the [custom](/1.10/installing/oss/custom/) installation method.
+* 使用 [ 自定义 ](/1.10/installing/oss/custom/) 安装方法安装 DC/OS。
 * The archived DC/OS installer file (`dcos-install.tar`) from your [installation](/1.10/installing/oss/custom/gui/#backup).
-* Available agent nodes that satisfy the [system requirements](/1.10/installing/oss/custom/system-requirements/).
-* The CLI JSON processor [jq](https://github.com/stedolan/jq/wiki/Installation).
-* SSH installed and configured. This is required for accessing nodes in the DC/OS cluster.
+* 满足 [ 系统要求 ](/1.10/installing/oss/custom/system-requirements/) 的可用代理节点。
+* CLI JSON 处理器 [ jq ](https://github.com/stedolan/jq/wiki/Installation)。
+* 已安装和配置 SSH。这是访问 DC/OS 群集中的节点所必需的。
 
-### Install DC/OS agent nodes
+### 安装 DC/OS 代理节点
 
-Copy the archived DC/OS installer file (`dcos-install.tar`) to the agent node. This archive is created during the GUI or CLI [installation](/1.10/installing/oss/custom/gui/#backup) method.
+将已存档的 DC/OS 安装程序文件 (` dcos-install.tar `) 复制到代理节点。 This archive is created during the GUI or CLI [installation](/1.10/installing/oss/custom/gui/#backup) method.
 
-1. Copy the files to your agent node. For example, you can use Secure Copy (scp) to copy `dcos-install.tar` to your home directory:
+1. 将文件复制到代理节点。例如, 可以使用安全副本 (scp) 将 `dcos-install.tar` 复制到您的主目录中:
     
     ```bash
 scp ~/dcos-install.tar $username@$node-ip:~/dcos-install.tar
 ```
 
-2. SSH to the machine:
+2. SSH 到机器:
     
     ```bash
 ssh $USER@$AGENT
 ```
 
-3. Create a directory for the installer files:
+3. 为安装程序文件创建一个目录:
     
     ```bash
 sudo mkdir -p /opt/dcos_install_tmp
 ```
 
-4. Unpackage the `dcos-install.tar` file:
+4. 解 `dcos-install.tar` 文件:
     
     ```bash
 sudo tar xf dcos-install.tar -C /opt/dcos_install_tmp
 ```
 
-5. Run this command to install DC/OS on your agent nodes. You must designate your agent nodes as public or private.
+5. 运行此命令可在代理节点上安装 DC/OS。您必须将代理节点指定为公共或专用。
     
-    Private agent nodes:
+    公共代理节点:
     
     ```bash
 sudo bash /opt/dcos_install_tmp/dcos_install.sh slave
 ```
 
-Public agent nodes:
+公共代理节点:
 
 ```bash
 sudo bash /opt/dcos_install_tmp/dcos_install.sh slave_public
 ```
 
-**Tip:** You can verify the node type by running this command from the DC/OS CLI.
+** 提示: **可以通过从 DC/OS CLI 运行此命令来验证节点类型。
 
-* Run this command to count the private agents.
+* 运行此命令可对私有代理进行计数。
     
     ```bash
 dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public == null) | .id' | wc -l
 ```
 
-* Run this command to count the public agents.
+* 运行此命令可对私有代理进行计数。
     
     ```bash
 dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public != null) | .id' | wc -l
