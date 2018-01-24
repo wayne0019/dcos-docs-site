@@ -8,22 +8,22 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
 Log out of DC/OS authentication.
 
-# Usage
+# 统计
 
 ```bash
 dcos auth logout [OPTION]
 ```
 
-# Options
+# 选项
 
-None.
+无
 
 # Parent command
 
-| Command                                             | Description                       |
+| Command                                             | 描述                                |
 | --------------------------------------------------- | --------------------------------- |
 | [dcos auth](/1.10/cli/command-reference/dcos-auth/) | Manage DC/OS identity and access. |
