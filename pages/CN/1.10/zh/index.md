@@ -1,77 +1,56 @@
 ---
 layout: layout.pug
-navigationTitle: Adding Agent Nodes
-title: Adding Agent Nodes
-menuWeight: 800
+navigationTitle: Backup and Restore API
+title: Backup and Restore API
+menuWeight: 10
 excerpt: ""
-enterprise: false
+enterprise: true
 ---
-<!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
+You can use the Backup and Restore API to create and restore backups of your cluster.
 
-You can add agent nodes to an existing DC/OS cluster.
+**Important:** See the [Limitations](/1.10/administering-clusters/backup-and-restore/#limitations) of backup and restore.
 
-Agent nodes are designated as [public](/1.10/overview/concepts/#public-agent-node) or [private](/1.10/overview/concepts/#private-agent-node) during installation. By default, they are designated as private during [GUI](/1.10/installing/oss/custom/gui/) or [CLI](/1.10/installing/oss/custom/cli/) installation.
+# Routes
 
-### Prerequisites:
+Access to the Backup and Restore API is proxied through the Admin Router on each master node using the following route:
 
-* DC/OS is installed using the [custom](/1.10/installing/oss/custom/) installation method.
-* The archived DC/OS installer file (`dcos-install.tar`) from your [installation](/1.10/installing/oss/custom/gui/#backup).
-* Available agent nodes that satisfy the [system requirements](/1.10/installing/oss/custom/system-requirements/).
-* The CLI JSON processor [jq](https://github.com/stedolan/jq/wiki/Installation).
-* SSH installed and configured. This is required for accessing nodes in the DC/OS cluster.
-
-### Install DC/OS agent nodes
-
-Copy the archived DC/OS installer file (`dcos-install.tar`) to the agent node. This archive is created during the GUI or CLI [installation](/1.10/installing/oss/custom/gui/#backup) method.
-
-1. Copy the files to your agent node. For example, you can use Secure Copy (scp) to copy `dcos-install.tar` to your home directory:
+    /system/v1/backup/v1
     
-    ```bash
-scp ~/dcos-install.tar $username@$node-ip:~/dcos-install.tar
-```
 
-2. SSH to the machine:
+To determine the URL of your cluster, see [Cluster Access](/1.10/api/access/).
+
+# Format
+
+The Backup and Restore API request and response bodies are formatted in JSON.
+
+Requests must include the accept header:
+
+    Accept: application/json
     
-    ```bash
-ssh $USER@$AGENT
-```
 
-3. Create a directory for the installer files:
+Responses include the content type header:
+
+    Content-Type: application/json
     
-    ```bash
-sudo mkdir -p /opt/dcos_install_tmp
-```
 
-4. Unpackage the `dcos-install.tar` file:
-    
-    ```bash
-sudo tar xf dcos-install.tar -C /opt/dcos_install_tmp
-```
+# Authentication
 
-5. Run this command to install DC/OS on your agent nodes. You must designate your agent nodes as public or private.
-    
-    Private agent nodes:
-    
-    ```bash
-sudo bash /opt/dcos_install_tmp/dcos_install.sh slave
-```
+All Backup and Restore API routes require authentication to use.
 
-Public agent nodes:
+To authenticate API requests, see [Obtaining an authentication token](/1.10/security/ent/iam-api/#obtaining-an-authentication-token) and [Passing an authentication token](/1.10/security/ent/iam-api/#passing-an-authentication-token).
 
-```bash
-sudo bash /opt/dcos_install_tmp/dcos_install.sh slave_public
-```
+The Backup and Restore API also requires authorization via the following permissions:
 
-**Tip:** You can verify the node type by running this command from the DC/OS CLI.
+| Resource ID                          | Action |
+| ------------------------------------ | ------ |
+| `dcos:adminrouter:ops:system-backup` | `full` |
 
-* Run this command to count the private agents.
-    
-    ```bash
-dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public == null) | .id' | wc -l
-```
+All routes can also be reached by users with the `dcos:superuser` permission.
 
-* Run this command to count the public agents.
-    
-    ```bash
-dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public != null) | .id' | wc -l
-```
+To assign permissions to your account, see the [permissions reference](/1.10/security/ent/perms-reference/).
+
+# API Reference
+
+The Backup and Restore API allows you to manage backup and restore operations on your DC/OS cluster.
+
+[swagger api='/1.10/api/backup-restore.yaml']
