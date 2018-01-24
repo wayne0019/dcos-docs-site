@@ -8,17 +8,17 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
 Rename a cluster in the DC/OS CLI.
 
-# Usage
+# 统计
 
 ```bash
 dcos cluster rename <name> <new_name>
 ```
 
-# Positional arguments
+# 位置实参
 
 | Name, shorthand    | Default | Description             |
 | ------------------ | ------- | ----------------------- |
