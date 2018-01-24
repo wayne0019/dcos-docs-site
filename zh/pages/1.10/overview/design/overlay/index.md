@@ -7,7 +7,7 @@ menuWeight: 5
 ---
 # DC/OS overlay: An IP-per-Container solution for DC/OS
 
-## Introduction
+## 介绍
 
 From a networking standpoint, to provide an end-user experience similar to that provided by a virtual machine environment it’s important to provide each container with its own IP address and network namespace. Providing containers with an isolated network stack ensures logical network isolation as well as network performance isolation between containers. Further, an IP-per-container allows the user/developer to use the traditional network operational tools (traceroute, tcpdump, wireshark) and processes they are familiar with, and helps their productivity in debugging network connectivity/performance issues. From an operational standpoint it becomes much easier to identify container specific traffic, and hence simplifies enforcement of network performance and security policies for containers.
 
