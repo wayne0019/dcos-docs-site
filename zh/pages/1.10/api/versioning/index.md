@@ -1,7 +1,7 @@
 ---
 layout: layout.pug
-navigationTitle: API Versioning
-title: API Versioning
+navigationTitle: API 版本
+title: API 版本
 menuWeight: 2
 excerpt: ""
 enterprise: false
@@ -12,7 +12,7 @@ The DC/OS API is backed by many loosely coupled components; some are standalone 
 
 To learn how to formulate a specific API call, see the component API reference documentation for that route.
 
-# Component Versioning
+# 组件丢失
 
 Components with their own open source communities, like Mesos, Marathon, and Mesos DNS, have routes that are based on their well known component name. These routes delegate versioning to the backend component service.
 
