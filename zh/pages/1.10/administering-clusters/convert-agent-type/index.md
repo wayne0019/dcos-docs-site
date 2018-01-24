@@ -95,7 +95,7 @@ sudo tar xf dcos-install.tar -C /opt/dcos_install_tmp
 sudo bash /opt/dcos_install_tmp/dcos_install.sh slave
 ```
 
-Public agent nodes:
+公共代理节点:
 
 ```bash
 sudo bash /opt/dcos_install_tmp/dcos_install.sh slave_public
