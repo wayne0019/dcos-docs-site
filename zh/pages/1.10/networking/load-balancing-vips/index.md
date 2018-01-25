@@ -28,16 +28,16 @@ DC / OS提供东西向的负载均衡器 (分钟)，支持多层微服务架构�
 
 #### 持续连接
 
-保持长时间运行的持续连接, 否则, 可以快速填充 TCP 套接字表。 Linux 上的默认本地端口范围允许源连接从32768到61000。 这允许在给定的源 IP 和目标地址和端口对之间建立28232连接。 TCP连接必须经过等待状态才能被回收。 The Linux kernel's default TCP time wait period is 120 seconds. Without persistent connections, you would exhaust the connection table by only making 235 new connections per second.
+保持长时间运行的持续连接, 否则, 可以快速填充 TCP 套接字表。 Linux 上的默认本地端口范围允许源连接从32768到61000。 这允许在给定的源 IP 和目标地址和端口对之间建立28232连接。 TCP连接必须经过等待状态才能被回收。 Linux内核的默认TCP时间等待时间是120秒。 如果没有持久连接，只需每秒创建235个新连接就可以耗尽连接表。
 
 #### 持续连接
 
-使用Mesos健康检查。 Mesos health checks are surfaced to the load balancing layer. Marathon only converts **command** [health checks](/1.10/deploying-services/creating-services/health-checks/) to Mesos health checks. You can simulate HTTP health checks via a command similar to:
+使用Mesos健康检查。 Mesos运行状况检查显示在负载平衡层上。 马拉松仅将**命令** [健康检查](/1.10/deploying-services/creating-services/health-checks/)转换为Mesos健康检查。 您可以通过类似于以下的命令模拟HTTP健康检查：
 
     bash
      test "$(curl -4 -w '%{http_code}' -s http://localhost:${PORT0}/|cut -f1 -d" ")" == 200
 
-This ensures the HTTP status code returned is 200. It also assumes your application binds to localhost. The `${PORT0}` is set as a variable by Marathon. 不应使用 TCP 健康检查, 因为它们可能会提供有关服务活动的误导性信息。
+这确保返回的HTTP状态码是200。 它还假定您的应用程序绑定到本地主机。 ` ${PORT0} `被Marathon设置为一个变量。 不应使用 TCP 健康检查, 因为它们可能会提供有关服务活动的误导性信息。
 
 ** 重要: **泊坞窗容器命令健康检查在泊坞窗容器内运行。 例如, 如果使用卷毛来检查 NGINX, 则 NGINX 容器必须安装卷毛, 否则容器必须在 RW 模式下装入 `/选择/中间层 `。
 
