@@ -6,29 +6,29 @@ menuWeight: 1
 excerpt: ""
 enterprise: true
 ---
-# Description
+# 描述
 
 List configured authentication providers for your DC/OS cluster. For more information, see the service accounts [documentation](/1.10/security/ent/service-auth/).
 
-# Usage
+# 统计
 
 ```bash
 dcos auth list-providers [OPTION]
 ```
 
-# Options
+# 选项
 
-| Name, shorthand | Default | Description                                                |
-| --------------- | ------- | ---------------------------------------------------------- |
-| `--json`        |         | Specify a JSON-formatted list of authentication providers. |
+| 姓名、速记    | 默认 | 描述                                                         |
+| -------- | -- | ---------------------------------------------------------- |
+| `--json` |    | Specify a JSON-formatted list of authentication providers. |
 
 # Parent command
 
-| Command                                             | Description                       |
+| 命令                                                  | 描述                                |
 | --------------------------------------------------- | --------------------------------- |
 | [dcos auth](/1.10/cli/command-reference/dcos-auth/) | Manage DC/OS identity and access. |
 
-# Examples
+# 例子
 
 ## List available providers
 
@@ -38,7 +38,7 @@ In this example, the available DC/OS authentication providers are listed.
 dcos auth list-providers
 ```
 
-The output should resemble:
+输出会是这样：
 
 ```bash
 PROVIDER ID    AUTHENTICATION TYPE                                                               
