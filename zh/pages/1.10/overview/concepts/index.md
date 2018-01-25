@@ -55,7 +55,7 @@ DC/OS是一个运行在数据中心的[distributed operating system](https://en.
 - 与传统的[操作系统](https://en.wikipedia.org/wiki/Operating_system)不同, DC/OS在一组[集群节点](#cluster)上运行, 而不是一台单机. 每一个DC/OS节点都有[主机操作系统](#host-operating-system)用于管理底层主机.
 - DC/OS由很多组件组成，最或者是分布式系统内核([Mesos](#mesos))和容器编排引擎([Marathon](#marathon)).
 - 在1.6版本以前, DC/OS被称为数据中心操作系统(DCOS). 从1.6版本开始，平台改名为DC/OS并开源.
-- 在DC/OS开源的同时, Mesosphere企业版DC/OS(https://mesosphere.com/product/)等高级版本包含额外的闭源组件和功能（例如多租户，细粒度权限，密钥管理和端到端加密）。
+- 在DC/OS开源的同时, Mesosphere企业版DC/OS(https://mesosphere.com/product/) 等高级版本包含额外的闭源组件和功能（例如多租户，细粒度权限，密钥管理和端到端加密）。
 
 ### <a name="dcos-gui"></a>DC/OS图形用户界面
 
