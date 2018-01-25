@@ -1,14 +1,14 @@
 ---
 layout: layout.pug
-navigationTitle: DNS Quick Reference
-title: DNS Quick Reference
+navigationTitle: DNS快速参考
+title: DNS快速参考
 menuWeight: 20
 excerpt: ""
 enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-This quick reference provides a summary of the available options.
+本快速参考提供了可用选项的摘要。
 
 To help explain, we'll use this imaginary application:
 
