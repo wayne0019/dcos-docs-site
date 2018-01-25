@@ -8,15 +8,15 @@ enterprise: true
 ---
 # 基础要求
 
-- A DC/OS Enterprise cluster.
+- DC / OS企业集群。
 - The [DC/OS CLI](/1.10/cli/install/) installed.
 - The [DC/OS Enterprise CLI](/1.10/cli/enterprise-cli/) installed.
 
 **Important:** See the [Limitations](/1.10/administering-clusters/backup-and-restore/#limitations) of backup and restore.
 
-# Back up a cluster
+# 备份一个群集
 
-Backups are stored on the local file system of the master node. Backup state is maintained by a service running in the cluster and backup/restore operations are initiated by hitting this service directly.
+备份存储在主节点的本地文件系统上。 Backup state is maintained by a service running in the cluster and backup/restore operations are initiated by hitting this service directly.
 
 1. Create a backup and assign it a meaningful label. The label has the following restrictions:
     
