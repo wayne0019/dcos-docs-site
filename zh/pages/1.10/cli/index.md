@@ -8,11 +8,11 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-The DC/OS command line interface (DC/OS CLI) is a utility to manage cluster nodes, install and manage packages, inspect the cluster state, and manage services and tasks.
+Dc/os 命令行界面 (dc/os CLI) 是管理群集节点、安装和管理包、检查群集状态以及管理服务和任务的实用程序。
 
-DC/OS 1.10.0 requires DC/OS CLI 0.5.x.
+DC / OS 1.10.0需要DC / OS CLI 0.5.x.
 
-To list available commands, run `dcos` with no parameters:
+要列出可用命令，请运行不带参数的` dcos `：
 
 ```bash
 dcos
@@ -39,20 +39,20 @@ Available DC/OS commands:
 Get detailed command description with `dcos <command> --help`.
 ```
 
-# Displaying the DC/OS CLI version
+# 显示DC / OS CLI版本
 
-To display the DC/OS CLI version, run:
+要显示 DC/OS CLI 版本, 请运行:
 
     dcos --version
     
 
 <a name="configuration-files"></a>
 
-# DC/OS CLI versions and configuration files
+# DC / OS CLI版本和配置文件
 
-DC/OS CLI 0.4.x and 0.5.x use a different structure for the location of configuration files.
+DC / OS CLI 0.4.x和0.5.x使用不同的结构来配置文件的位置。
 
-DC/OS CLI 0.4.x has a single configuration file, which by default is stored in `~/.dcos/dcos.toml`. In DC/OS CLI 0.4.x you can optionally change the location of the configuration file using the [`DCOS_CONFIG`](#dcos-config) environment variable.
+DC/OS CLI 0.4.x 有一个配置文件, 默认情况下存储在 ` dcos/dcos. toml ` 中。 在DC / OS CLI 0.4.x中，您可以使用环境变量[ ` DCOS_CONFIG ` ](#dcos-config)来选择更改配置文件的位置。
 
 DC/OS CLI 0.5.x has a configuration file for each connected cluster, which by default are stored in `~/.dcos/clusters/<cluster_id>/dcos.toml`. In DC/OS CLI 0.5.x you can optionally change the base portion (`~/.dcos`) of the configuration directory using the [`DCOS_DIR`](#dcos-dir) environment variable.
 
