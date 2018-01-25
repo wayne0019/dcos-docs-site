@@ -10,7 +10,7 @@ enterprise: false
 
 # 描述
 
-Log out of DC/OS authentication.
+注销DC / OS身份验证。
 
 # 统计
 
