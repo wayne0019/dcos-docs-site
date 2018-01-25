@@ -8,11 +8,11 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Build a package locally to be added to DC/OS or to be shared with Universe.
+在本地构建一个包, 以将其添加到 DC/OS 或与宇宙共享。
 
-# Usage
+# 统计
 
 ```bash
 dcos experimental package build <build-definition> [OPTION]
