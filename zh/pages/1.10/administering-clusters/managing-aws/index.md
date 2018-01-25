@@ -1,27 +1,27 @@
 ---
 layout: layout.pug
-navigationTitle: Managing AWS
-title: Managing AWS
+navigationTitle: 管理 AWS
+title: 管理 AWS
 menuWeight: 9
 excerpt: ""
 enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-## Scaling an AWS cluster
+## 缩放 AWS 群集
 
-The DC/OS AWS CloudFormation template is optimized to run DC/OS, but you might want to change the number of agent nodes based on your needs.
+DC/OS AWS CloudFormation 模板经过优化以运行 dc/os, 但您可能希望根据需要更改代理节点的数量。
 
-**Important:** Scaling down your AWS cluster could result in data loss. It is recommended that you scale down by 1 node at a time, letting the DC/OS service recover. For example, if you are running a DC/OS service and you scale down from 10 to 5 nodes, this could result in losing all the instances of your service.
+** 重要: **缩小 AWS 群集可能导致数据丢失。 建议您一次向下扩展1节点, 让 DC/OS 服务恢复。 例如, 如果您运行的是 DC/OS 服务, 并且从10到5节点向下扩展, 这可能会导致丢失服务的所有实例。
 
-To change the number of agent nodes with AWS:
+要使用 AWS 更改agent节点的数量:
 
-1. From [AWS CloudFormation Management](https://console.aws.amazon.com/cloudformation/home) page, select your DC/OS cluster and click **Update Stack**.
-2. Click through to the **Specify Parameters** page, and you can specify new values for the **PublicSlaveInstanceCount** and **SlaveInstanceCount**.
-3. On the **Options** page, accept the defaults and click **Next**. **Tip:** You can choose whether to rollback on failure. By default this option is set to **Yes**.
-4. On the **Review** page, check the acknowledgement box and then click **Create**.
+1. 从 [AWS CloudFormation Management](https://console.aws.amazon.com/cloudformation/home) 页中, 选择您的 DC/OS 群集, 然后单击 **Update Stack**。
+2. 单击 ** 指定参数 ** 页, 您可以为 ** PublicSlaveInstanceCount ** 和 ** SlaveInstanceCount ** 指定新值。
+3. 在**Options**页面上，接受默认设置，然后点击**Next**。 **Tip:**您可以选择是否在失败时回滚。 默认情况下, 此选项设置为 **Yes**。
+4. 在 ** Review ** 页上, 选中 "确认" 框, 然后单击 ** Create**。
 
-Your new machines will take a few minutes to initialize; you can watch them in the EC2 console. The DC/OS web interface will update as soon as the new nodes register.
+您的新机器将需要几分钟时间来初始化; 您可以在EC2控制台中观看它们。 新节点注册后，DC / OS Web界面将立即更新。
 
 <!-- ## Upgrading
 
