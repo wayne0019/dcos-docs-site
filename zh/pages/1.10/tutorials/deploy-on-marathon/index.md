@@ -10,13 +10,13 @@ enterprise: false
 
 <table class="table" bgcolor="#FAFAFA"> <tr> <td style="border-left: thin solid; border-top: thin solid; border-bottom: thin solid;border-right: thin solid;"><b>重要提示：</b> Mesosphere不支持本教程，相关脚本或命令，它们不提供任何形式的担保。 本教程的目的是演示功能，可能不适合在生产环境中使用。 在您的环境中使用类似的解决方案之前，您必须进行调整，验证和测试。</td> </tr> </table>
 
-**Prerequisite:** This tutorial assumes that you have a working Jenkins installation and permission to launch applications on Marathon. Jenkins for DC/OS must be installed as described on the [Jenkins Quickstart](/services/jenkins/quickstart/) page.
+的**先决条件：** 本教程假定您有一个正在工作的Jenkins安装和在Marathon上启动应用程序的权限。 针对DC / OS的Jenkins必须按照[ Jenkins快速入门](/services/jenkins/quickstart/)页面中的说明进行安装。
 
-# The Example Project
+# 示例项目
 
-The project used in this tutorial is taken from the [cd-demo](https://github.com/mesosphere/cd-demo) repository and runs a Jekyll website inside a Docker container.
+本教程中使用的项目取自[ cd-demo ](https://github.com/mesosphere/cd-demo)存储库，并在Docker容器内运行Jekyll网站。
 
-The required files for this tutorial are `Dockerfile`, `conf/cd-demo-appn.json`, and the `site` directory. Copy those items to a new project and push to a new Git repository on the host of your choice.
+本教程所需的文件是` Dockerfile `，` conf/cd-demo-appn.json `和` site `目录。 Copy those items to a new project and push to a new Git repository on the host of your choice.
 
 This tutorial uses [Docker Hub](https://hub.docker.com/) to store the created image and requires account information to perform this task.
 
