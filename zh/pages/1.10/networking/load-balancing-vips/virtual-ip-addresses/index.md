@@ -75,13 +75,13 @@ VIP遵循这个命名约定：
 
 **先决条件：** Kafka服务和CLI必须[安装](/services/kafka/)。
 
-1. Run this command:
+1. 运行这个命令：
     
     ```bash
 dcos kafka endpoints broker
 ```
 
-The output should resemble:
+输出会是这样：
 
 ```json
 {
@@ -96,10 +96,10 @@ The output should resemble:
 }
 ```
 
-You can use this VIP to address any one of the Kafka brokers in the cluster.
+您可以使用此VIP来处理集群中的任何一个卡夫卡经纪人。
 
-## FAQs
+## 常见问题解答
 
-### Connections seem to close at random times
+### 连接似乎在随机时间关闭
 
-This behavior is often experienced with applications that have long lived connections, such as databases (e.g. PostgreSQL). To fix, try turning on keepalives. The keepalive can be an application specific mechanism like a heartbeat, or something in the protocol like a TCP keepalive. A keepalive is required because a load balancer cannot differentiate between idle or dead connections as no packets are sent in either case. The default timeout depends on the kernel configuration, but is usually 5 minutes.
+这种行为常常会遇到长时间连接的应用程序，比如数据库(例如PostgreSQL)。 要修复，请尝试启用Keepalive。 Keepalive可以是特定于应用程序的机制，比如心跳，或者TCP协议中的某些协议。 保持活动是必需的，因为负载平衡器无法区分空闲或死连接，因为在任何情况下都不发送数据包。 默认超时取决于内核配置，但通常是5分钟。
