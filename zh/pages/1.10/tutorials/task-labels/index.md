@@ -55,7 +55,7 @@ dcos marathon app add <myapp>.json
 
 在DC / OS网络界面中，点击**Jobs**标签。 您可以在部署新作业时添加标签，也可以从**Labels**标签中编辑现有标签。
 
-![Job label](/1.10/img/job-label.png)
+![工作标签](/1.10/img/job-label.png)
 
 ## 从DC / OS CLI为作业分配一个标签
 
@@ -90,15 +90,15 @@ dcos job add <myjob>.json
 
 部署和启动应用程序后，可以按照DC / OS UI的**Services**选项卡中的标签进行过滤。
 
-You can also use the Marathon HTTP API from the DC/OS CLI to query the running applications based on the label value criteria.
+您还可以使用DC / OS CLI中的Marathon HTTP API根据标签值标准查询正在运行的应用程序。
 
-The code snippet below shows an HTTP request issued to the Marathon HTTP API. The curl program is used in this example to submit the HTTP GET request, but you can use any program that is able to send HTTP GET/PUT/DELETE requests. You can see the HTTP end-point is `https://52.88.210.228/marathon/v2/apps` and the parameters sent along with the HTTP request include the label criteria `?label=COST_CENTER==0001`:
+下面的代码片段显示了发给Marathon HTTP API的HTTP请求。 本示例中使用curl程序提交HTTP GET请求，但可以使用任何能够发送HTTP GET / PUT / DELETE请求的程序。 您可以看到HTTP端点是` https://52.88.210.228/marathon/v2/apps `，并且与HTTP请求一起发送的参数包括标签条件`？label = COST_CENTER ==0001`：
 
     curl --insecure \
     > https://52.88.210.228/marathon/v2/apps?label=COST_CENTER==0001 \
     > | python -m json.tool | more
     
 
-You can also specify multiple label criteria like so: `?label=COST_CENTER==0001,COST_CENTER==0002`
+您也可以指定多个标签条件，如下所示：`？label = COST_CENTER == 0001，COST_CENTER == 0002 `
 
-In the example above, the response you receive will include only the applications that have a label `COST_CENTER` defined with a value of `0001`. The resource metrics are also included, such as the number of CPU shares and the amount of memory allocated. At the bottom of the response, you can see the date/time this application was deployed, which can be used to compute the uptime for billing or charge-back purposes.
+在上面的示例中，您收到的响应将仅包含具有`0001> `值定义的标签` COST_CENTER `的应用程序。 资源指标也包括在内，如CPU份额和分配的内存量。 在响应的底部，您可以看到此应用程序的部署日期/时间，可用于计算计费或退款的正常运行时间。
