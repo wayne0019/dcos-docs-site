@@ -114,32 +114,32 @@ To install these programs, download the Windows installer <a href="http://www.ch
                 
                 ![Windows Forwarding](/1.10/img/windowsforwarding.png)
         
-        2. Add the `.ppk` file to Pageant.
+        2. 将 `. ppk ` 文件添加到选美中。
             
-            1. Open Pageant. If the Pageant window does not appear, look for the Pageant icon in the notification area in the lower right area of the screen next to the clock and double-click it to open Pageant's main window.
+            1. 公开选美 如果没有出现 "选美" 窗口, 请在 "时钟" 旁边的屏幕右下区域的通知区域中查找选美图标, 然后双击它以打开 "选美" 的主窗口。
             
-            2. Click the **Add Key** button.
+            2. 选择“运行”****按钮。
             
-            3. Locate the `.ppk` file that you created using PuTTYgen and click **Open** to add your key to Pageant.
+            3. 找到使用 PuTTYgen 创建的 `. ppk ` 文件, 然后单击 ** 打开 ** 将您的密钥添加到选美中。
                 
-                ![Windows Pageant](/1.10/img/windowspageant.png)
+                ![橱窗庆典](/1.10/img/windowspageant.png)
             
-            4. Click the **Close** button to close the Pageant window.
+            4. 单击 ** 关闭 ** 按钮关闭 "选美" 窗口。
         
-        3. SSH into the master node.
+        3. SSH 进入主节点。
             
-            1. From the DC/OS web interface, copy the IP address of the master node. The IP address is displayed beneath your cluster name.
+            1. 在 DC/OS web 界面中, 复制主节点的 IP 地址。IP 地址显示在群集名称的下面。
             
-            2. In the **Category** pane on the left side of the PuTTY window, choose **Session** and enter the master node IP address in the **Host Name (or IP address)** field.
+            2. 在 "腻子" 窗口左侧的 ** 类别 ** 窗格中, 选择 ** 会话 **, 然后在 ** 主机名 (或 IP 地址) ** 字段中输入主节点 IP 地址。
             
-            3. Login as user "core" if you're running CoreOS. The default user on CentOS is "centos".
+            3. 登录为用户 "核心", 如果你正在运行 CoreOS。CentOS 上的默认用户是 "CentOS"。
                 
-                ![Windows Login](/1.10/img/windowscore.png)
+                ![窗口登录](/1.10/img/windowscore.png)
         
-        4. From the master node, SSH into the agent node.
+        4. 从主节点, SSH 进入代理节点。
             
-            1. From the Mesos web interface, copy the agent node hostname. You can find hostnames on the **Frameworks** (`<master-node-IPaddress>/mesos/#/frameworks`) or **Slaves** page (`<master-node-IPaddress>/mesos/#/slaves`).
+            1. 从 Mesos web 界面中复制代理节点主机名。 您可以在 ** 框架 ** (` < 主节点-地址 >/mesos/#/框架 `) 或 ** 从属 ** 页 (` < 主节点-地址 >/mesos/#/奴隶 `) 中找到主机名。
             
-            2. SSH into the agent node as the user `core` with the agent node hostname specified:
+            2. SSH 进入代理节点, 作为用户 ` 核心 `, 并指定代理节点主机名:
                 
-                    ssh core@<agent-node-hostname>
+                    ssh core@ < 代理-节点-主机名 >
