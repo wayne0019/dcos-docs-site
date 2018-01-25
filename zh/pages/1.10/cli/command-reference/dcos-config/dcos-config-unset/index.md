@@ -8,43 +8,43 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Remove a property from the configuration file.
+从配置文件中移除属性。
 
-# Usage
+# 统计
 
 ```bash
 dcos config unset <name> [OPTION]
 ```
 
-# Options
+# 选项
 
 None.
 
-# Positional arguments
+# 位置实参
 
-| Name, shorthand | Default | Description               |
-| --------------- | ------- | ------------------------- |
-| `<name>`  |         | The name of the property. |
+| 名字，简写          | 默认 | 描述     |
+| -------------- | -- | ------ |
+| `<name>` |    | 属性的名称。 |
 
-# Parent command
+# 父命令
 
-| Command                                                 | Description                 |
-| ------------------------------------------------------- | --------------------------- |
-| [dcos config](/1.10/cli/command-reference/dcos-config/) | Manage DC/OS configuration. |
+| 命令                                                      | 描述           |
+| ------------------------------------------------------- | ------------ |
+| [dcos config](/1.10/cli/command-reference/dcos-config/) | 管理 DC/OS 配置。 |
 
-# Examples
+# 例子
 
-## Remove a config value
+## 删除配置值
 
-In this example, the `core.ssl_verify` property is removed.
+在此示例中, 将删除 ` 核心. ssl_verify ` 属性。
 
 ```bash
 dcos config unset core.ssl_verify
 ```
 
-Here is the output:
+以下是输出:
 
 ```bash
 Removed [core.ssl_verify]
