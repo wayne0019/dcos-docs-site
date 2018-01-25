@@ -39,7 +39,7 @@ scp dcos-local-universe-http.service core@<master-IP>:~
 scp dcos-local-universe-registry.service core@<master-IP>:~
 ```
 
-3. 使用以下命令将[ SSH ](/1.10/administering-clusters/sshcluster/)添加到主服务器中。 用前面命令中使用的IP地址替换`< master-IP> `。
+3. 使用以下命令将[ SSH ](/1.10/administering-clusters/sshcluster/)添加到主服务器中。 用前面命令中使用的IP地址替换`<master-IP> `。
     
     ```bash
 ssh -A core@<master-IP>
@@ -240,30 +240,30 @@ sudo systemctl restart docker
 
 # <a name="build"></a>部署包含选定软件包的本地Universe
 
-**先决条件：** [ Git ](https://git-scm.com/)。 On Unix/Linux, see these <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">installation instructions</a>.
+**先决条件：** [ Git ](https://git-scm.com/)。 在 Unix/Linux 上, 请参阅以下 <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank"> 安装说明 </a>。
 
-To deploy a local Universe containing your own set of packages you must build a customized local Universe Docker image.
+要部署包含您自己的软件包集的本地宇宙, 您必须构建一个自定义的本地宇宙泊坞窗图像。
 
-1. Clone the Universe repository:
+1. 克隆Universe存储库：
     
     ```bash
 git clone https://github.com/mesosphere/universe.git --branch version-3.x
 ```
 
-2. Build the `universe-base` image:
+2. 构建` universe-base `图片：
     
     ```bash
 cd universe/docker/local-universe/
 sudo make base
 ```
 
-3. Build the `mesosphere/universe` Docker image and compress it to the `local-universe.tar.gz` file. Specify a comma-separated list of package names and versions using the `DCOS_PACKAGE_INCLUDE` variable. To minimize the container size and download time, you can select only what you need. If you do not use the `DCOS_PACKAGE_INCLUDE` variable, all Certified Universe packages are included. To view which packages are Certified, click the **Catalog** tab in the DC/OS web interface.
+3. 构建`mesosphere/universe` Docker镜像并将其压缩到`local-universe.tar.gz` 文件。 使用 ` DCOS_PACKAGE_INCLUDE ` 变量指定一个以逗号分隔的包名称和版本的列表。 要最小化容器大小和下载时间, 您只能选择所需的内容。 如果不使用 ` DCOS_PACKAGE_INCLUDE ` 变量, 则包括所有认证的宇宙软件包。 要查看已验证的软件包, 请单击 "DC/OS web 界面" 中的 ** 目录 ** 选项卡。
     
     ```bash
 sudo make DCOS_VERSION=1.10 DCOS_PACKAGE_INCLUDE="cassandra:1.0.25-3.0.10,marathon:1.4.2" local-universe
 ```
 
-4. Perform all of the steps as described in [Deploying a local Universe containing Certified Universe packages](#certified), except step 27. Replace the command in step 27 with the following.
+4. 执行除[部署包含Certified Universe程序包的本地Universe](#certified)之外的所有步骤（第27步除外）。将步骤27中的命令替换为以下内容。
     
     ```bash
 dcos package repo add local-universe http://master.mesos:8082/repo
