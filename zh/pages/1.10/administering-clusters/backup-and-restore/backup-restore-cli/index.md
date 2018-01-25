@@ -45,30 +45,30 @@ dcos backup list [label]
 
 # 删除备份
 
-1. Delete an unneeded backup.
+1. 删除不需要的备份。
     
     ```bash
 dcos backup delete <backup-id>
 ```
 
-# Restore a cluster
+# 还原一个群集
 
-1. List the available backups, choose the backup you want to restore to, and make a note of the backup ID.
+1. 列出可用的备份，选择要还原到的备份，并记下备份ID。
     
     ```bash
 dcos backup list
 ```
 
-2. Restore from the selected backup.
+2. 从选定的备份中恢复。
     
     ```bash
 dcos backup restore <backup-id>
 ```
 
-3. Monitor the status of the restore operation.
+3. 监视还原操作的状态。
     
     ```bash
 dcos backup show <backup-id>
 ```
 
-The `restores.component_status.marathon` parameter of the JSON output will show `STATUS_RESTORING`, and then `STATUS_READY`.
+JSON输出的` restores.component_status.marathon `参数将显示` STATUS_RESTORING `，然后显示` STATUS_READY `。
