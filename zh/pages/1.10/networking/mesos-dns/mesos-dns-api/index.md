@@ -6,56 +6,56 @@ menuWeight: 201
 excerpt: ""
 enterprise: true
 ---
-You can use the Mesos DNS API to discover the IP addresses and ports of other applications.
+您可以使用Mesos DNS API来发现其他应用程序的IP地址和端口。
 
-# Routes
+# 路线
 
-Access to the Mesos DNS API is proxied through the Admin Router on each node using the following route:
+访问Mesos DNS API通过每个节点上的管理路由器使用以下路由进行代理：
 
 ```bash
 curl -H "Authorization: token=<auth-token>" http://<public-master-ip>/mesos_dns/v1/
 ```
 
-Access to the Mesos DNS API of the agent nodes is also proxied through the master nodes:
+访问代理节点的Mesos DNS API也通过主节点进行代理：
 
 ```bash
 curl -H "Authorization: token=<auth-token>" http://<public-master-ip>/system/v1/agent/{agent_id}/mesos_dns/v1/
 ```
 
-# Format
+# 格式
 
-The Mesos DNS API request and response bodies are formatted in JSON.
+Mesos DNS API请求和响应正文使用JSON格式。
 
-Requests must include the accept header:
+请求必须包括接受标头:
 
     Accept: application/json
     
 
-Responses will include the content type header:
+响应将包括内容类型标头:
 
     Content-Type: application/json
     
 
-# Authorization (Enterprise Only)
+# 授权 (仅限企业)
 
-All Mesos DNS API routes require authentication to use.
+所有 Mesos 的 DNS API 路由都需要使用身份验证。
 
-To authenticate API requests, see [Obtaining an authentication token](/1.10/security/ent/iam-api/#obtaining-an-authentication-token) and [Passing an authentication token](/1.10/security/ent/iam-api/#passing-an-authentication-token).
+要验证API请求，请参阅[获取身份验证令牌](/1.10/security/ent/iam-api/#obtaining-an-authentication-token)和[传递验证令牌](/1.10/security/ent/iam-api/#passing-an-authentication-token)。
 
-The Mesos DNS API also requires authorization via the following permissions:
+Mesos DNS API 还需要通过以下权限进行授权:
 
-| Route                                       | Permission                       |
+| 路径                                          | 权限                               |
 | ------------------------------------------- | -------------------------------- |
 | `/system/mesos_dns/v1/`                     | `dcos:adminrouter:ops:mesos-dns` |
 | `/system/v1/agent/{agent_id}/mesos_dns/v1/` | `dcos:adminrouter:system:agent`  |
 
-All routes may also be reached by users with the `dcos:superuser` permission.
+使用 ` dcos:superuser` 权限的用户也可以访问所有路由。
 
-To assign permissions to your account, see the [permissions reference](/1.10/security/ent/perms-reference/).
+要为您的帐户分配权限, 请参阅 [ 权限参考 ](/1.10/security/ent/perms-reference/)。
 
-# Resources
+# 资源
 
-Mesos-DNS implements a simple REST API for service discovery over HTTP. These examples assume you have an [SSH connection to the node](/1.10/administering-clusters/sshcluster/).
+Mesos-DNS 实现了一个简单的 REST API, 用于通过 HTTP 进行服务发现。这些示例假定您具有到该节点的 [ SSH 连接 ](/1.10/administering-clusters/sshcluster/)。
 
 ## <a name="get-version"></a>GET /v1/version
 
@@ -65,7 +65,7 @@ Lists in JSON format the Mesos-DNS version and source code URL.
 curl -H "Authorization: token=<auth-token>" http://<public-master-ip>/mesos_dns/v1/version
 ```
 
-The output should resemble:
+输出会是这样：
 
 ```json
 {
@@ -77,13 +77,13 @@ The output should resemble:
 
 ## <a name="get-config"></a>GET /v1/config
 
-Lists in JSON format the Mesos-DNS configuration parameters.
+以JSON格式列出Mesos-DNS配置参数。
 
 ```bash
 curl -H "Authorization: token=<auth-token>" http://<public-master-ip>/mesos_dns/v1/config
 ```
 
-The output for DC/OS open source should resemble:
+DC / OS开源的输出应该类似于：
 
 ```json
 {
