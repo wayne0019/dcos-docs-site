@@ -95,7 +95,7 @@ The configurable fields in the post-build action will overwrite the content of m
 
 The final JSON payload is sent to the configured Marathon instance and the application is updated or created.
 
-# Save
+# 保存
 
 Save the job configuration.
 
@@ -117,7 +117,7 @@ Visit port `80` on the public DC/OS agent to display a jekyll website.
 
 ![dcos-jekyll-site1.png](/1.10/img/dcos-jekyll-site1.png)
 
-# Adding a New Post
+# 添加新帖子
 
 The content in the `_posts` directory generates a Jekyll website. For this example project, that directory is `site/_posts`. Copy an existing post and create a new one with a more recent date in the filename. I added a post entitled "An Update".
 
