@@ -8,21 +8,21 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-This tutorial illustrates how labels can be defined using the DC/OS web interface and the Marathon HTTP API, and how information pertaining to applications and jobs that are running can be queried based on label value criteria.
+本教程将演示如何使用DC / OS Web界面和Marathon HTTP API定义标签，以及如何根据标签值标准查询正在运行的应用程序和作业的相关信息。
 
-When you deploy applications, containers, or jobs in a DC/OS cluster, you can associate a tag or label with your deployed components to track and report usage of the cluster by those components. For example, you may want to assign a cost center identifier or a customer number to a Mesos application and produce a summary report at the end of the month with usage metrics such as the amount of CPU and memory allocated to the applications by cost center or customer.
+在DC / OS群集中部署应用程序，容器或作业时，可以将标记或标签与部署的组件关联，以跟踪和报告这些组件的使用情况。 在DC / OS群集中部署应用程序，容器或作业时，可以将标记或标签与部署的组件关联，以跟踪和报告这些组件的使用情况。...
 
-# Assigning Labels to Applications and Tasks
+# 为应用程序和任务分配标签
 
-You can attach labels to tasks either via the **Services** tab of the DC/OS web interface or from the DC/OS CLI. You can specify more than one label, but each label can have only one value.
+您可以通过DC / OS Web界面的**Services**选项卡或从DC / OS CLI将标签附加到任务。 您可以指定多个标签，但每个标签只能有一个值。
 
-## Assign a Label to an Application or Task from the DC/OS Web Interface
+## 从DC / OS Web界面为应用程序或任务分配标签
 
-From the DC/OS web interface, click the **Services** tab. You can add labels when you deploy a new service or edit an existing one from the **Labels** tab.
+在DC / OS Web界面中，点击**Services**标签。 您可以在部署新服务时添加标签，也可以从**Labels**标签中编辑现有标签。
 
-## Assign a Label to an Application or Task from the DC/OS CLI
+## 从DC / OS CLI为应用程序或任务分配一个标签
 
-You can also specify label values in the `labels` parameter of your application definition.
+您也可以在应用程序定义的` labels `参数中指定标签值。
 
     vi myapp.json
     
@@ -41,25 +41,25 @@ You can also specify label values in the `labels` parameter of your application 
     }
     
 
-Then, deploy from the DC/OS CLI:
+然后，从DC / OS CLI进行部署：
 
 ```bash
 dcos marathon app add <myapp>.json
 ```
 
-# Assigning Labels to Jobs
+# 为作业分配标签
 
-You can attach labels to jobs either via the **Jobs** tab of the DC/OS web interface or from the DC/OS CLI. You can specify more than one label, but each label can have only one value.
+您可以通过DC / OS Web界面的**Jobs**选项卡或从DC / OS CLI将作业标签附加到作业中。 您可以指定多个标签，但每个标签只能有一个值。
 
-## Assign a Label to a Job from the DC/OS Web Interface
+## 从DC / OS Web界面为作业分配一个标签
 
-From the DC/OS web interface, click the **Jobs** tab. You can add labels when you deploy a new job or edit an existing one from the **Labels** tab.
+在DC / OS网络界面中，点击**Jobs**标签。 您可以在部署新作业时添加标签，也可以从**Labels**标签中编辑现有标签。
 
 ![Job label](/1.10/img/job-label.png)
 
-## Assign a Label to a Job from the DC/OS CLI
+## 从DC / OS CLI为作业分配一个标签
 
-You can also specify label values in the `labels` parameter of your job definition.
+您还可以在作业定义的` labels `参数中指定标签值。
 
     vi myjob.json
     
@@ -80,15 +80,15 @@ You can also specify label values in the `labels` parameter of your job definiti
      ```
     
 
-Then, deploy from the DC/OS CLI:
+然后，从DC / OS CLI进行部署：
 
 ```bash
 dcos job add <myjob>.json
 ```
 
-# Displaying Label Information
+# 显示标签信息
 
-Once your application is deployed and started, you can filter by label from the **Services** tab of the DC/OS UI.
+部署和启动应用程序后，可以按照DC / OS UI的**Services**选项卡中的标签进行过滤。
 
 You can also use the Marathon HTTP API from the DC/OS CLI to query the running applications based on the label value criteria.
 
