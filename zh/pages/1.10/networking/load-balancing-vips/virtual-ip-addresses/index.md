@@ -8,7 +8,7 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-DC/OS can map traffic from a single Virtual IP (VIP) to multiple IP addresses and ports. DC/OS vip 是 ** 基于名称的 **, 这意味着客户端使用服务地址而不是 IP 地址进行连接。
+DC / OS可以将流量从单个虚拟IP(VIP) 映射到多个IP地址和端口。 DC/OS vip 是 ** 基于名称的 **, 这意味着客户端使用服务地址而不是 IP 地址进行连接。
 
 DC/OS 自动生成不与 IP vip 冲突的基于名称的 vip, 因此您不必担心冲突。 此功能允许在安装服务时自动创建基于名称的 vip。
 
@@ -36,44 +36,44 @@ VIP遵循这个命名约定：
 
 1. 在DC / OS [ GUI ](/1.10/gui/)上，点击**Services**，然后点击**RUN A SERVICE**。
     
-    1. From the **Networking** tab, select **NETWORK TYPE** > **Virtual Network: dcos**.
-    2. Expand **ADD SERVICE ENDPOINT** and provide responses for:
+    1. 从**Networking**标签中，选择**NETWORK TYPE**> **虚拟网络：dcos **。
+    2. 展开 **ADD SERVICE ENDPOINT** 并提供以下响应:
         
         * **CONTAINER PORT**
         * **SERVICE ENDPOINT NAME**
         * **PORT MAPPING**
         * **LOAD BALANCED SERVICE ADDRESS**
         
-        As you fill in these fields, the service addresses that Marathon sets up will appear at the bottom of the screen. You can assign multiple VIPs to your app by clicking **ADD SERVICE ENDPOINT**.
+        当您填写这些字段时, 马拉松设置的服务地址将出现在屏幕的底部。 您可以通过单击 ** ADD SERVICE ENDPOINT** 来为您的应用程序分配多个 vip。
         
         ![VIP service definition](/1.10/img/vip-service-definition.png)
         
-        In the example above, clients can access the service at `my-service.marathon.l4lb.thisdcos.directory:5555`.
+        在上面的示例中, 客户端可以访问 ` service.marathon.l4lb.thisdcos:5555 `。
     
-    3. Click **REVIEW & RUN** and **RUN SERVICE**.
+    3. 单击 ** REVIEW & RUN** 和 **RUN SERVICE **。
 
-You can click on the **Networking** tab to view networking details for your service.
+您可以单击 ** 网络 ** 选项卡以查看服务的网络详细信息。
 
 ![VIP output](/1.10/img/vip-service-definition-output.png)
 
-For more information on port configuration, see the [Marathon ports documentation](/1.10/deploying-services/service-ports/).
+有关端口配置的详细信息, 请参阅 [ 马拉松端口文档 ](/1.10/deploying-services/service-ports/)。
 
-## Using VIPs with DC/OS Services
+## 使用VIP与DC / OS服务
 
-Some DC/OS services, for example [Kafka](/services/kafka/), automatically create VIPs when you install them. The naming convention is: `broker.<service.name>.l4lb.thisdcos.directory:9092`.
+某些DC / OS服务（例如[ Kafka ](/services/kafka/)）在安装时会自动创建VIP。 命名约定是：`broker.<service.name>.l4lb.thisdcos.directory:9092`。
 
-Follow these steps to view the VIP for Kafka.
+按照这些步骤查看卡夫卡的VIP。
 
-### Via the GUI
+### 通过GUI
 
-1. Click **Networking** > **Networks** and select **dcos**.
-2. Select your task to view details.
+1. 点击**Networking**> **Networks**，然后选择** dcos **。
+2. 选择您的任务来查看详细信息。
     
     ![](/1.10/img/vip-service-details.png)
 
-### Via the CLI
+### 通过CLI
 
-**Prerequisite:** The Kafka service and CLI must be [installed](/services/kafka/).
+**先决条件：** Kafka服务和CLI必须[安装](/services/kafka/)。
 
 1. Run this command:
     
