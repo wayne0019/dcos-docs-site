@@ -36,4 +36,4 @@ None.
 
 # 例子
 
-For job examples, see the [documentation](/1.10/deploying-jobs/examples/#create-job).
+有关作业示例，请参阅[文档](/1.10/deploying-jobs/examples/#create-job)。
