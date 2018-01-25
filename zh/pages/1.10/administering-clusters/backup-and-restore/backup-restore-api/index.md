@@ -1,14 +1,14 @@
 ---
 layout: layout.pug
-navigationTitle: Backup and Restore API
-title: Backup and Restore API
+navigationTitle: 备份和恢复API
+title: 备份和恢复API
 menuWeight: 10
 excerpt: ""
 enterprise: true
 ---
 您可以使用备份和还原 API 来创建和还原群集的备份。
 
-**Important:** See the [Limitations](/1.10/administering-clusters/backup-and-restore/#limitations) of backup and restore.
+**重要：**请参阅备份和还原的[限制](/1.10/administering-clusters/backup-and-restore/#limitations)。
 
 # 途径
 
@@ -37,9 +37,9 @@ enterprise: true
 
 所有备份和还原 API 路由都需要使用身份验证。
 
-To authenticate API requests, see [Obtaining an authentication token](/1.10/security/ent/iam-api/#obtaining-an-authentication-token) and [Passing an authentication token](/1.10/security/ent/iam-api/#passing-an-authentication-token).
+要验证API请求，请参阅[获取身份验证令牌](/1.10/security/ent/iam-api/#obtaining-an-authentication-token)和[传递验证令牌](/1.10/security/ent/iam-api/#passing-an-authentication-token)。
 
-The Backup and Restore API also requires authorization via the following permissions:
+备份和还原API还需要通过以下权限进行授权：
 
 | 资源 ID                                | 操作     |
 | ------------------------------------ | ------ |
@@ -51,6 +51,6 @@ The Backup and Restore API also requires authorization via the following permiss
 
 # API 引用
 
-The Backup and Restore API allows you to manage backup and restore operations on your DC/OS cluster.
+备份和还原API使您可以管理DC / OS群集上的备份和还原操作。
 
 [swagger api='/1.10/api/backup-restore.yaml']
