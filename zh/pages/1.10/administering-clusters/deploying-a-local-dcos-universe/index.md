@@ -1,7 +1,7 @@
 ---
 layout: layout.pug
-navigationTitle: Deploying a Local Universe
-title: Deploying a Local Universe
+navigationTitle: 部署本地Universe
+title: 部署本地Universe
 menuWeight: 1000
 excerpt: ""
 enterprise: false
@@ -9,19 +9,19 @@ preview: true
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-You can install and run DC/OS services on a datacenter without internet access with a local [Universe](https://github.com/mesosphere/universe). You can deploy a local Universe that includes all Certified packages (easiest), or a local Universe that includes selected packages (advanced).
+您可以在数据中心上安装和运行 DC/OS 服务, 而无需使用本地 [ 宇宙 ](https://github.com/mesosphere/universe) 进行 internet 访问。 您可以部署包括所有认证的软件包 (最简单), 或包括选定的包 (高级) 的本地宇宙。
 
-**Prerequisites:**
+**基础要求**
 
-* [DC/OS CLI installed](/1.10/cli/install/).
+* 已安装[DC/OS CLI](/1.10/cli/install/)。
 
-* Logged into the DC/OS CLI. On DC/OS Enterprise, you must be logged in as a user with the `dcos:superuser` permission.
+* 已登录到 DC/OS CLI。在 DC/OS 企业中, 您必须以 ` dcos: 超级用户 ` 权限登录。
 
-**Note:** As the Universe tarball is over two gigabytes in size it may take some time to download it to your local drive and upload it to each master.
+** 注意: **由于宇宙压缩是超过 2 gb 的大小, 它可能需要一些时间下载到您的本地驱动器, 并上传到每个主机。
 
-# <a name="certified"></a>Deploying a local Universe containing Certified Universe packages
+# <a name="certified"></a>部署包含认证的宇宙包的本地宇宙
 
-1. From a terminal prompt, use the following commands to download the local Universe and its service definitions onto your local drive.
+1. 在终端提示符下, 使用以下命令将本地宇宙及其服务定义下载到您的本地驱动器上。
     
     ```bash
 curl -v https://downloads.mesosphere.com/universe/public/local-universe.tar.gz -o local-universe.tar.gz
@@ -29,9 +29,9 @@ curl -v https://raw.githubusercontent.com/mesosphere/universe/version-3.x/docker
 curl -v https://raw.githubusercontent.com/mesosphere/universe/version-3.x/docker/local-universe/dcos-local-universe-registry.service -o dcos-local-universe-registry.service
 ```
 
-2. Use [secure copy](https://linux.die.net/man/1/scp) to transfer the Universe and registry files to a master node, replacing `<master-IP>` with the public IP address of a master before issuing the following commands.
+2. 使用 [ 安全副本 ](https://linux.die.net/man/1/scp) 将宇宙和注册表文件传输到主节点, 在发出以下命令之前, 将 ` < 主-ip > ` 替换为主机的公共 ip 地址。
     
-    **Tip:** You can find the public IP address of a master in the top left corner of the DC/OS web interface.
+    **提示：**您可以在DC / OS Web界面的左上角找到主设备的公共IP地址。
     
     ```bash
 scp local-universe.tar.gz core@<master-IP>:~
@@ -39,49 +39,49 @@ scp dcos-local-universe-http.service core@<master-IP>:~
 scp dcos-local-universe-registry.service core@<master-IP>:~
 ```
 
-3. [SSH](/1.10/administering-clusters/sshcluster/) into the master using the following command. Replace `<master-IP>` with the IP address used in the previous commands.
+3. 使用以下命令将[ SSH ](/1.10/administering-clusters/sshcluster/)添加到主服务器中。 用前面命令中使用的IP地址替换`< master-IP> `。
     
     ```bash
 ssh -A core@<master-IP>
 ```
 
-4. Confirm that the files were successfully copied.
+4. 确认文件已成功复制。
     
         ls
         
 
-5. You should see the following files listed.
+5. 您应该看到列出下列文件。
     
         dcos-local-universe-http.service  dcos-local-universe-registry.service  local-universe.tar.gz
         
 
-6. Move the registry files into the `/etc/systemd/system/` directory.
+6. 将注册表文件移动到` /etc/systemd/system/ `目录中。
     
         sudo mv dcos-local-universe-registry.service /etc/systemd/system/
         sudo mv dcos-local-universe-http.service /etc/systemd/system/
         
 
-7. Confirm that the files were successfully copied into `/etc/systemd/system/`.
+7. 确认文件已成功复制到`/etc/systemd/system/`中。
     
     ```bash
 ls -la /etc/systemd/system/dcos-local-universe-*
 ```
 
-8. Load the Universe into the local Docker instance.
+8. 将Universe加载到本地Docker实例中。
     
     ```bash
 docker load < local-universe.tar.gz
 ```
 
-**Tip:** This may take some time to complete.
+**提示**：这可能需要一些时间才能完成。
 
-9. Restart the systemd daemon.
+9. 重新启动systemd守护进程。
     
     ```bash
 sudo systemctl daemon-reload
 ```
 
-10. Enable and start the `dcos-local-universe-http` and `dcos-local-universe-registry` services.
+10. 启用并启动` dcos-local-universe-http `和` dcos-local-universe-registry `服务。
     
     ```bash
 sudo systemctl enable dcos-local-universe-http
@@ -90,23 +90,23 @@ sudo systemctl start dcos-local-universe-http
 sudo systemctl start dcos-local-universe-registry
 ```
 
-11. Use the following commands to confirm that the services are now up and running.
+11. 使用以下命令确认服务已经启动并正在运行。
     
     ```bash
 sudo systemctl status dcos-local-universe-http
 sudo systemctl status dcos-local-universe-registry
 ```
 
-12. If you only have one master, skip to step 25. If you have multiple masters, continue to the next step.
+12. 如果您只有一个主人，请跳到第25步。如果您有多个主人，请继续下一步。
 
-13. Use the following command to discover the private IP addresses of all of your masters. Identify the private IP address of the master you are SSHed into right now from the list.
+13. 使用以下命令发现所有主设备的私有IP地址。 从列表中确定您现在被SSH连接的主机的私有IP地址。
     
-    **Tip:** It will match the path shown after `core@ip-` in your prompt, where the hyphens become periods.
+    **提示：**在提示符中，它将匹配` core @ ip - `后面显示的路径，连字符将变成句点。
     
         host master.mesos
         
 
-14. Use [secure copy](https://linux.die.net/man/1/scp) to transfer the Universe and registry files to one of the other masters. Replace `<master-IP>` with the IP address of the other master.
+14. 使用[安全副本](https://linux.die.net/man/1/scp)将Universe和注册表文件转移到其他主人之一。 将`< master-IP>`替换为另一个主设备的IP地址。
     
     ```bash
 scp local-universe.tar.gz core@<master-IP>:~
@@ -114,55 +114,55 @@ scp /etc/systemd/system/dcos-local-universe-registry.service core@<master-IP>:~
 scp /etc/systemd/system/dcos-local-universe-http.service core@<master-IP>:~
 ```
 
-15. [SSH](/1.10/administering-clusters/sshcluster/) into the master that you just copied these files to.
+15. 将[ SSH ](/1.10/administering-clusters/sshcluster/)添加到您刚刚将这些文件复制到的主文件夹中。
     
     ```bash
 ssh -A core@<master_IP>
 ```
 
-16. Confirm that the files were successfully copied.
+16. 确认文件已成功复制。
     
         ls
         
 
-17. You should see the following files listed.
+17. 您应该看到列出下列文件。
     
         dcos-local-universe-http.service  dcos-local-universe-registry.service  local-universe.tar.gz
         
 
-18. Move the registry files into the `/etc/systemd/system/` directory.
+18. 将注册表文件移动到` /etc/systemd/system/ `目录中。
     
         sudo mv dcos-local-universe-registry.service /etc/systemd/system/
         sudo mv dcos-local-universe-http.service /etc/systemd/system/
         
 
-19. Confirm that the files were successfully copied into `/etc/systemd/system/`.
+19. 确认文件已成功复制到`/etc/systemd/system/`中。
     
     ```bash
 ls -la /etc/systemd/system/dcos-local-universe-*
 ```
 
-20. Load the Universe into the local Docker instance.
+20. 将Universe加载到本地Docker实例中。
     
         docker load < local-universe.tar.gz
         
     
-    **Tip:** This may take some time to complete.
+    **提示**：这可能需要一些时间才能完成。
 
-21. Restart the Docker daemon.
+21. 重新启动Docker守护进程。
     
     ```bash
 sudo systemctl daemon-reload
 ```
 
-22. Start the `dcos-local-universe-http` and `dcos-local-universe-registry` services.
+22. 启动` dcos-local-universe-http `和` dcos-local-universe-registry `服务。
     
     ```bash
 sudo systemctl start dcos-local-universe-http
 sudo systemctl start dcos-local-universe-registry
 ```
 
-23. Use the following commands to confirm that the services are now up and running.
+23. 使用以下命令确认服务已经启动并正在运行。
     
     ```bash
 sudo systemctl status dcos-local-universe-http
