@@ -1,27 +1,27 @@
 ---
 layout: layout.pug
-navigationTitle: Converting Agent Node Types
-title: Converting Agent Node Types
+navigationTitle: 转换代理节点类型
+title: 转换代理节点类型
 menuWeight: 700
 excerpt: ""
 enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-You can convert agent nodes to public or private for an existing DC/OS cluster.
+对于现有的 DC/OS 群集, 可以将代理节点转换为公共或专用。
 
-Agent nodes are designated as [public](/1.10/overview/concepts/#public-agent-node) or [private](/1.10/overview/concepts/#private-agent-node) during installation. 默认情况下, 它们在 [ gui ](/1.10/installing/oss/custom/gui/) 或 [ cli ](/1.10/installing/oss/custom/cli/) 安装期间被指定为专用。
+Agent节点被指定为[ public ](/1.10/overview/concepts/#public-agent-node)或<a href =“/1.10/overview/concepts/#private-agent-node” >私人</a>在安装过程中。 默认情况下, 它们在 [ gui ](/1.10/installing/oss/custom/gui/) 或 [ cli ](/1.10/installing/oss/custom/cli/) 安装期间被指定为专用。
 
 ### 基础要求
 
-These steps must be performed on a machine that is configured as a DC/OS node. Any tasks that are running on the node will be terminated during this conversion process.
+这些步骤必须在配置为 DC/OS 节点的计算机上执行。在该节点上运行的任何任务都将在转换过程中终止。
 
-- DC/OS is installed using the [custom](/1.10/installing/oss/custom/) installation method and you have deployed at least one [master](/1.10/overview/concepts/#master) and one [private](/1.10/overview/concepts/#private-agent-node) agent node.
-- The archived DC/OS installer file (`dcos-install.tar`) from your [installation](/1.10/installing/oss/custom/gui/#backup). 
+- DC / OS使用[自定义](/1.10/installing/oss/custom/)安装方法进行安装，并且至少部署了一个[”主“](/1.10/overview/concepts/#master)和一个[私人](/1.10/overview/concepts/#private-agent-node)代理节点。
+- 归档的DC/OS安装程序文件(`dcos-install.tar`)来自您的[安装](/1.10/installing/oss/custom/gui/#backup)。 
 - CLI JSON 处理器 [ jq ](https://github.com/stedolan/jq/wiki/Installation)。
 - 已安装和配置 SSH。这是访问 DC/OS 群集中的节点所必需的。
 
-### Determine the node type
+### 确定节点类型
 
 You can determine the node type by running this command from the DC/OS CLI.
 
