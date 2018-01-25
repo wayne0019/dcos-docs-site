@@ -1,28 +1,28 @@
 ---
 layout: layout.pug
-navigationTitle: Upgrading
-title: Upgrading
+navigationTitle: 升级
+title: 升级
 menuWeight: 4
 excerpt: ""
 enterprise: true
 ---
 This document provides instructions for upgrading a DC/OS cluster.
 
-If this upgrade is performed on a supported OS with all prerequisites fulfilled, this upgrade *should* preserve the state of running tasks on the cluster. This document reuses portions of the [Advanced DC/OS Installation Guide](/1.10/installing/ent/custom/advanced/).
+如果此升级是在满足所有先决条件的支持的操作系统上执行的，则此升级*应*保留群集上正在运行的任务的状态。 本文档重用了部分[高级DC / OS安装指南](/1.10/installing/ent/custom/advanced/)。
 
-**Important:**
+**重要：**
 
 - Review the [release notes](/1.10/release-notes/) before upgrading DC/OS.
-- The DC/OS GUI and other higher-level system APIs may be inconsistent or unavailable until all master nodes have been upgraded. For example, an upgraded DC/OS Marathon leader cannot connect to the leading Mesos master until it has also been upgraded. When this occurs:
+- 在升级所有主节点之前, DC/OS GUI 和其他更高级别的系统 api 可能不一致或不可用。 例如, 升级后的 DC/OS 马拉松领先者无法连接到领先的 Mesos 主机, 直到它也被升级。 发生此情况时:
     
-    - The DC/OS GUI may not provide an accurate list of services.
+    - DC/OS GUI 可能无法提供准确的服务列表。
     - For multi-master configurations, after one master has finished upgrading, you can monitor the health of the remaining masters from the Exhibitor UI on port 8181.
 - An upgraded DC/OS Marathon leader cannot connect to an non-secure (i.e. not upgraded) leading Mesos master. The DC/OS UI cannot be trusted until all masters are upgraded. There are multiple Marathon scheduler instances and multiple Mesos masters, each being upgraded, and the Marathon leader may not be the Mesos leader.
 - Task history in the Mesos UI will not persist through the upgrade.
 - Before you upgrade from 1.9 to 1.10, you must upgrade Marathon-LB. Do this by uninstalling Marathon-LB and reinstalling the latest package.
 - DC/OS Enterprise downloads can be found [here](https://support.mesosphere.com/hc/en-us/articles/213198586-Mesosphere-Enterprise-DC-OS-Downloads).
 
-## Supported upgrade paths
+## 支持的升级路径
 
 - From the latest GA version of previous to the latest GA version of current. For example, if 1.8.8 is the latest and 1.9.0 is the latest, this upgrade would be supported. 
     - [1.7 to 1.8](/1.8/administration/upgrading/)
