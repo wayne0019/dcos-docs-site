@@ -1,12 +1,12 @@
 ---
 layout: layout.pug
-navigationTitle: Component Management
-title: Component Management
+navigationTitle: 组件管理
+title: 组件管理
 menuWeight: 5
 excerpt: ""
 enterprise: false
 ---
-The component management API controls installation and management of DC/OS component services. 它由 DC/OS 安装程序在安装、升级和卸载过程中使用。 它不是为 DC/OS 用户的交互设计的。
+组件管理 API 控制着 DC/OS 组件服务的安装和管理。 它由 DC/OS 安装程序在安装、升级和卸载过程中使用。 它不是为 DC/OS 用户的交互设计的。
 
 ## 组件包管理器
 
