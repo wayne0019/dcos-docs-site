@@ -8,7 +8,7 @@ enterprise: true
 ---
 # 描述
 
-List configured authentication providers for your DC/OS cluster. For more information, see the service accounts [documentation](/1.10/security/ent/service-auth/).
+列出您的DC / OS群集的已配置身份验证提供程序。 有关更多信息，请参阅服务帐户[文档](/1.10/security/ent/service-auth/)。
 
 # 统计
 
@@ -18,19 +18,19 @@ dcos auth list-providers [OPTION]
 
 # 选项
 
-| 姓名、速记    | 默认 | 描述                                                         |
-| -------- | -- | ---------------------------------------------------------- |
-| `--json` |    | Specify a JSON-formatted list of authentication providers. |
+| 姓名、速记    | 默认 | 描述                    |
+| -------- | -- | --------------------- |
+| `--json` |    | 指定身份验证提供程序的JSON格式的列表。 |
 
-# Parent command
+# 父命令
 
-| 命令                                                  | 描述                                |
-| --------------------------------------------------- | --------------------------------- |
-| [dcos auth](/1.10/cli/command-reference/dcos-auth/) | Manage DC/OS identity and access. |
+| 命令                                                  | 描述            |
+| --------------------------------------------------- | ------------- |
+| [dcos auth](/1.10/cli/command-reference/dcos-auth/) | 管理DC/OS身份和访问。 |
 
 # 例子
 
-## List available providers
+## 列出可用的提供者
 
 In this example, the available DC/OS authentication providers are listed.
 
