@@ -25,11 +25,11 @@ DC / OS通过使用虚拟网络实现虚拟联网。 DC / OS虚拟网络使您�
 
 虚拟网络是在安装时配置的。 您或数据中心操作员将为 ` config. yaml ` 中的每个网络指定一个规范名称。 当您的服务需要启动容器时, 请通过该规范名称来引用它。
 
-To use a virtual network in a Marathon app definition, specify the `"network": "USER"` property along with an `ipAddress` field in the form: `{"ipAddress": {"network": "$MYNETWORK"}}`. The value of `$MYNETWORK` is the canonical name of the network.
+若要在马拉松应用程序定义中使用虚拟网络, 请在表单中指定 ` "network": "USER" ` 属性以及 ` ipAddress ` 字段: ` {"ipAddress": {"network": "$MYNETWORK"}} `。 `$MYNETWORK ` 的值是网络的规范名称。
 
-# Example
+# 例子
 
-The following Marathon application definition specifies a network named `dcos-1`, which refers to the target DC/OS virtual network of the same name.
+下面的马拉松应用程序定义指定一个名为 ` dcos-1 ` 的网络, 它引用同名的目标 DC/OS 虚拟网络。
 
 ```json
 {
@@ -60,4 +60,4 @@ The following Marathon application definition specifies a network named `dcos-1`
 }
 ```
 
-Learn more about ports and networking in [Marathon](/1.10/deploying-services/service-ports/).
+通过[马拉松](/1.10/deploying-services/service-ports/)了解更多有关端口和网络的信息。
