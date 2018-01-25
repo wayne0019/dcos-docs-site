@@ -8,13 +8,13 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-The DC/OS API is backed by many loosely coupled components; some are standalone projects and others are designed exclusively for DC/OS. Because of this, a variety of versioning mechanisms are supported: component, route, and resource versioning.
+The DC/OS API is backed by many loosely coupled components; some are standalone projects and others are designed exclusively for DC/OS. 因此, 支持多种版本控制机制: 组件、路由和资源版本控制。
 
-To learn how to formulate a specific API call, see the component API reference documentation for that route.
+若要了解如何制定特定的 api 调用, 请参阅该路由的组件 api 参考文档。
 
 # 组件丢失
 
-Components with their own open source communities, like Mesos, Marathon, and Mesos DNS, have routes that are based on their well known component name. These routes delegate versioning to the backend component service.
+具有自己的开源社区的组件 (如 Mesos、马拉松和 Mesos DNS) 具有基于其众所周知的组件名称的路由。 这些路由将版本控制委托给后端组件服务。
 
 For example, the [Marathon component](/1.10/overview/architecture/components/#marathon) serves the [Marathon API](/1.10/deploying-services/marathon-api/) under the route `/service/marathon` and one of its resource paths is `/v2/apps`, so the full path to that resource is `/service/marathon/v2/apps`.
 
