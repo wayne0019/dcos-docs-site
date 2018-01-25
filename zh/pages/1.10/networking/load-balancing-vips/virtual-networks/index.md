@@ -1,29 +1,29 @@
 ---
 layout: layout.pug
-navigationTitle: Virtual Networks
-title: Virtual Networks
+navigationTitle: 虚拟网络
+title: 虚拟网络
 menuWeight: 20
 excerpt: ""
 enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-DC/OS enables virtual networking through the use of virtual networks. DC/OS virtual networks enable you to provide each container in the system with a unique IP address (“IP-per-container”) with isolation guarantees amongst subnets. DC/OS virtual networks offer the following advantages:
+DC / OS通过使用虚拟网络实现虚拟联网。 DC / OS虚拟网络使您能够为系统中的每个容器提供一个唯一的IP地址(“每容器IP”)，并在子网间提供隔离保证。 DC / OS虚拟网络具有以下优点：
 
-* Both Mesos and Docker containers can communicate from within a single node and between nodes on a cluster.
-* Services can be created such that their traffic is isolated from other traffic coming from any other virtual network or host in the cluster.
-* They remove the need to worry about potentially overlapping ports in applications, or the need to use nonstandard ports for services to avoid overlapping.
-* You can generate any number of instances of a class of tasks and have them all listen on the same port so that clients don’t have to do port discovery.
-* You can run applications that require intra-cluster connectivity, like Cassandra, HDFS, and Riak.
-* You can create multiple virtual networks to isolate different portions of your organization, for instance, development, marketing, and production.
+* Mesos和Docker容器都可以在单个节点内和集群上的节点之间进行通信。
+* 可以创建服务，使其流量与来自群集中任何其他虚拟网络或主机的其他流量隔离。
+* 他们不需要担心应用程序中潜在的重叠端口，或者需要使用非标准端口进行服务以避免重叠。
+* 您可以生成一个类任务的任意数量的实例, 并让它们都侦听同一端口, 以便客户端不必执行端口发现。
+* 您可以运行需要群集内连接的应用程序，如Cassandra，HDFS和Riak。
+* 您可以创建多个虚拟网络来隔离组织的不同部分，例如开发，市场营销和生产。
 
-**Note:** Isolation guarantees among subnets depend on your CNI implementation and/or your firewall policies.
+**注意：**子网间的隔离保证取决于您的CNI实施和/或您的防火墙策略。
 
-# Using Virtual Networks
+# 使用虚拟网络
 
-First, you or the data center operator needs to [configure the virtual networks](/1.10/networking/virtual-networks/).
+首先, 您或数据中心操作员需要 [ 配置虚拟网络 ](/1.10/networking/virtual-networks/)。
 
-Virtual networks are configured at install time. You or the data center operator will specify a canonical name for each network in the `config.yaml`. When your service needs to launch a container, refer to it by that canonical name.
+虚拟网络是在安装时配置的。 您或数据中心操作员将为 ` config. yaml ` 中的每个网络指定一个规范名称。 当您的服务需要启动容器时, 请通过该规范名称来引用它。
 
 To use a virtual network in a Marathon app definition, specify the `"network": "USER"` property along with an `ipAddress` field in the form: `{"ipAddress": {"network": "$MYNETWORK"}}`. The value of `$MYNETWORK` is the canonical name of the network.
 
