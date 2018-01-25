@@ -10,10 +10,10 @@ enterprise: false
 
 在使用声明的公共代理节点安装了 DC/OS 后, 您可以导航到公共代理节点的公用 IP 地址。
 
-**Prerequisites**
+**基础要求**
 
-- DC/OS is installed with at least 1 master and [public agent](/1.10/overview/concepts/#public-agent-node) node
-- DC/OS [CLI](/1.10/cli/) 0.4.6 or later
+- DC / OS至少安装一个主节点和[公共agent](/1.10/overview/concepts/#public-agent-node)节点
+- DC / OS [ CLI ](/1.10/cli/) 0.4.6或更高版本
 - [jq](https://github.com/stedolan/jq/wiki/Installation)
 - [ SSH ](/1.10/administering-clusters/sshcluster/) 配置
 
