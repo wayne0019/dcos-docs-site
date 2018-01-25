@@ -1,23 +1,23 @@
 ---
 layout: layout.pug
-navigationTitle: Examples
-title: Examples
+navigationTitle: 例子
+title: 例子
 menuWeight: 20
 excerpt: ""
 preview: true
 enterprise: false
 ---
-These examples provide common usage scenarios for jobs.
+这些示例为作业提供了常见的使用方案。
 
-**Prerequisite:**
+**先决条件：**
 
-- [DC/OS](/1.10/installing/oss/) and the [DC/OS CLI installed](/1.10/cli/install/).
+- [ dc/os ](/1.10/installing/oss/) 和 [ dc/os cli 安装 ](/1.10/cli/install/)。
 
-# <a name="create-job"></a>Creating a Simple Job
+# <a name="create-job"></a>创建简单作业
 
-This JSON creates a simple job with no schedule.
+此 JSON 创建了一个没有时间表的简单作业。
 
-1. Create a JSON file with the following contents.
+1. 创建具有以下内容的 JSON 文件。
     
     ```json
 {
@@ -32,23 +32,23 @@ This JSON creates a simple job with no schedule.
 }
 ```
 
-2. Add the job from the DC/OS CLI.
+2. 从 DC/OS CLI 添加作业。
     
     ```bash
 dcos job add <my-job>.json
 ```
 
-Alternatively, add the job using the API.
+或者, 使用 API 添加作业。
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -H "Authorization: token=$(dcos config show core.dcos_acs_token)" $(dcos config show core.dcos_url)/service/metronome/v1/jobs -d@/Users/<your-username>/<myjob>.json
 ```
 
-# <a name="create-job-schedule"></a>Creating a Job with a Schedule
+# <a name="create-job-schedule"></a>使用计划创建作业
 
-**Note:** This example JSON only works when you add the job from the DC/OS CLI or the GUI. Use the [example below](#schedule-with-api) to create a scheduled job via the API.
+**注意：**仅当您从DC / OS CLI或GUI添加作业时，此示例JSON才有效。 使用下面的[示例](#schedule-with-api)通过API创建预定作业。
 
-1. Create a JSON file with the following contents.
+1. 创建具有以下内容的 JSON 文件。
     
         {
             "id": "my-scheduled-job",
@@ -70,17 +70,17 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: token=$(dcos
         }
         
 
-2. Add the job.
+2. 添加作业。
     
     ```bash
 dcos job add <my-scheduled-job>.json
 ```
 
-# <a name="schedule-with-api"></a>Creating a Job and Associating a Schedule using the API
+# <a name="schedule-with-api"></a>创建作业并使用 API 关联计划
 
-1. Add a job without a schedule using the [instructions above](#create-job).
+1. 使用上面的[说明](#create-job)添加没有计划的作业。
 
-2. Create JSON file with the following contents. This is the schedule for your job.
+2. 使用以下内容创建JSON文件。 这是你工作的时间表。
     
         {
             "concurrencyPolicy": "ALLOW",
@@ -93,23 +93,23 @@ dcos job add <my-scheduled-job>.json
         }
         
 
-3. Add the schedule and associate it with the job. Via the DC/OS CLI:
+3. 添加时间表并将其与作业相关联。 通过DC / OS CLI：
     
     ```bash
 dcos job schedule add <job-id> <schedule-file>.json
 ```
 
-Via the API
+通过API
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -H "Authorization: token=$(dcos config show core.dcos_acs_token)" $(dcos config show core.dcos_url)/service/metronome/v1/jobs/<job-id>/schedules -d@/Users/<your-username>/<schedule-file>.json
 ```
 
-**Note:** You can associate a schedule with more than one job.
+**注意：**您可以将计划与多个工作关联。
 
-# Creating a Partitioned Jobs Environment (Enterprise Only)
+# 创建分区作业环境 (仅限企业)
 
-In this example, a partitioned jobs environment is created with the DC/OS GUI. This allows you to restrict user access per job, or per job group. The jobs are created in a jobs group named `batch`, which is a child of a jobs group named `dev`.
+在此示例中，使用DC / OS GUI创建分区作业环境。 这使您可以限制每个作业或每个作业组的用户访问权限。 作业是在名为` batch `的作业组中创建的，该作业是名为` dev `的作业组的子项。
 
     ├── dev
         ├── batch
@@ -117,18 +117,18 @@ In this example, a partitioned jobs environment is created with the DC/OS GUI. T
             ├── job2
     
 
-The jobs groups are then assigned permissions to users `Cory` and `Alice` to restrict access.
+然后将作业组分配给用户` Cory `和` Alice `来限制访问权限。
 
-**Prerequisites:**
+**基础要求**
 
-- DC/OS is installed with [security mode](/1.10/security/ent/#security-modes) `permissive` or `strict`.
-- You must be logged in as a `superuser`.
+- DC / OS使用[安全模式](/1.10/security/ent/#security-modes) `许可`或` strict `进行安装。
+- 您必须以` superuser `身份登录。
 
-1. Log into the DC/OS GUI as a user with the `superuser` permission.
+1. 以具有` superuser `权限的用户身份登录到DC / OS GUI。
     
     ![Login](/1.10/img/gui-installer-login-ee.gif)
 
-2. Create the partitioned jobs.
+2. 创建分区作业。
     
     1. Select **Jobs** and click **CREATE A JOB**.
     2. In the **ID** field, type `dev.batch.job1`. 
@@ -136,9 +136,9 @@ The jobs groups are then assigned permissions to users `Cory` and `Alice` to res
         
         ![Create job](/1.10/img/job-ex1.png)
         
-        This creates a job in this directory structure in DC/OS: **Jobs > dev > batch > job1**.
+        这将在DC / OS中的此目录结构中创建一个作业：**作业> dev>批处理>作业1 **。
     
-    4. Click the **+** icon in the top right corner to create another job.
+    4. 点击右上角的** + **图标创建另一个作业。
         
         ![Create another job](/1.10/img/job-ex2.png)
     
@@ -156,7 +156,7 @@ The jobs groups are then assigned permissions to users `Cory` and `Alice` to res
     
     2. Click **Jobs > dev > batch > job2** and click **Run Now**.
 
-4. Assign permissions to the jobs.
+4. 为作业分配权限。
     
     1. Select **Organization > Users** and create new users named `Cory` and `Alice`.
         
@@ -168,9 +168,9 @@ The jobs groups are then assigned permissions to users `Cory` and `Alice` to res
         
         ![Add permissions cory](/1.10/img/job-ex5.png)
     
-    4. Copy and paste the permissions in the **Permissions Strings** field. Specify your job group (`dev/batch`), job name (`job1`), and action (`read`). Actions can be either `create`, `read`, `update`, `delete`, or `full`. To permit more than one operation, use a comma to separate them, for example: `dcos:service:metronome:metronome:jobs:/dev/batch/job1 read,update`.
+    4. 将权限复制并粘贴到**Permissions Strings**字段中。 Specify your job group (`dev/batch`), job name (`job1`), and action (`read`). Actions can be either `create`, `read`, `update`, `delete`, or `full`. To permit more than one operation, use a comma to separate them, for example: `dcos:service:metronome:metronome:jobs:/dev/batch/job1 read,update`.
         
-        **Important:** Your [security mode](/1.10/security/ent/#security-modes) must be either `permissive` or `strict`.
+        **重要：**您的[安全模式](/1.10/security/ent/#security-modes)必须是`许可`或`严格`。
         
         ```bash
 dcos:adminrouter:service:metronome full
@@ -189,6 +189,6 @@ dcos:mesos:agent:sandbox:app_id:/dev/batch/job1 read
 5. Click **ADD PERMISSIONS** and then **Close**.
 6. Repeat these steps for user **Alice**, replacing `job1` with `job2` in the permissions.
 
-5. Log out and log back in as your new user to verify the permissions. The user should now have the designated level of access to `dev/batch/job1` and `dev/batch/job2` inside the **Jobs** tab. For example, if you log in as **Alice**, you should only see **jobs2**:
+5. 注销并以新用户身份重新登录以验证权限。 用户现在应该在**作业**选项卡内具有对`dev/batch/job1`和`dev/batch/job2`的指定级别的访问权限。 例如，如果您以**爱丽丝**登录，则只能看到** jobs2 **：
     
     ![Alice job view](/1.10/img/job-ex6.png)
