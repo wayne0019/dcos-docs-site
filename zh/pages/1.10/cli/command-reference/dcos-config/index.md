@@ -20,29 +20,29 @@ enterprise: false
 
 ## 环境变量
 
-配置属性具有相应的环境变量。 如果属性位于 `core` 部分 (ex。 `core.foo`), it corresponds to the environment variable `DCOS_FOO`. All other properties (ex. `foo.bar`) correspond to the environment variable `DCOS_FOO_BAR`.
+配置属性具有相应的环境变量。 如果属性位于 `core` 部分 (ex。 ` core.foo `), 它对应于环境变量 ` DCOS_FOO `。 所有其他属性 (ex。 ` foo. bar `) 对应于环境变量 ` DCOS_FOO_BAR `。
 
-Environment variables take precedence over corresponding configuration property.
+环境变量优先于相应的配置属性。
 
-# Usage
+# 统计
 
 ```bash
 dcos config
 ```
 
-# Options
+# 选项
 
-| Name, shorthand | Default | Description                                   |
-| --------------- | ------- | --------------------------------------------- |
-| `--help, h`     |         | Print usage.                                  |
-| `--info`        |         | Print a short description of this subcommand. |
-| `--version, v`  |         | Print version information.                    |
+| 姓名、速记          | 默认 | 描述           |
+| -------------- | -- | ------------ |
+| `--help, h`    |    | 打印使用。        |
+| `--info`       |    | 打印此子命令的简短说明。 |
+| `--version, v` |    | 显示版本信息       |
 
-# Child commands
+# 子命令
 
-| Command                                                                               | Description                                    |
-| ------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| [dcos config set](/1.10/cli/command-reference/dcos-config/dcos-config-set/)           | Add or set a DC/OS configuration property.     |
-| [dcos config show](/1.10/cli/command-reference/dcos-config/dcos-config-show/)         | Print the DC/OS configuration file contents.   |
-| [dcos config unset](/1.10/cli/command-reference/dcos-config/dcos-config-unset/)       | Remove a property from the configuration file. |
-| [dcos config validate](/1.10/cli/command-reference/dcos-config/dcos-config-validate/) | Validate changes to the configuration file.    |
+| 命令                                                                                    | 描述                |
+| ------------------------------------------------------------------------------------- | ----------------- |
+| [dcos config set](/1.10/cli/command-reference/dcos-config/dcos-config-set/)           | 添加或设置 DC/OS 配置属性。 |
+| [dcos config show](/1.10/cli/command-reference/dcos-config/dcos-config-show/)         | 打印 DC/OS 配置文件内容。  |
+| [dcos config unset](/1.10/cli/command-reference/dcos-config/dcos-config-unset/)       | 从配置文件中移除属性。       |
+| [dcos config validate](/1.10/cli/command-reference/dcos-config/dcos-config-validate/) | 验证对配置文件的更改。       |
