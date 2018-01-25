@@ -8,34 +8,34 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-You can get the cluster URL by using the following methods:
+可以使用以下方法获取群集 URL:
 
-- Log into the DC/OS GUI and copy the scheme and domain name from the browser address bar.
-- Log into the DC/OS CLI and type `dcos config show core.dcos_url` to get the cluster URL.
+- 登录到 DC/OS GUI, 并从浏览器地址栏复制方案和域名。
+- 登录到 DC/OS CLI, 并键入 ` dcos 配置显示核心. dcos_url ` 以获取群集 url。
 
-# API ports
+# API 端口
 
-On the master nodes, Admin Router is accessible through standard ports: `80` (HTTP) and `443` (HTTPS, if enabled).
+在主节点上, 可以通过标准端口访问管理路由器: ` 80 ` (HTTP) 和 ` 443 ` (如果启用了 HTTPS)。
 
-On the agent nodes, Admin Router Agent is accessible through port `61001` (HTTP).
+在代理节点上, 可通过端口 ` 61001 ` (HTTP) 访问管理路由器代理。
 
-# Agent node access
+# 代理节点访问
 
-You can find the hostname of a specific agent node by using the following methods:
+通过使用以下方法, 可以找到特定代理节点的主机名:
 
-- Log into the DC/OS GUI, navigate to the Nodes page, and copy the hostname of the desired node.
-- Log into the DC/OS CLI, list the nodes with `dcos node`, and copy the hostname of the desired node.
+- 登录到 DC/OS GUI, 导航到节点页, 并复制所需节点的主机名。
+- 登录到DC / OS CLI，使用` dcos node `列出节点，并复制所需节点的主机名。
 
-To determine which agents are public agents, see [Finding a Public Agent IP](/1.10/administering-clusters/locate-public-agent/).
+要确定哪些代理是公共代理, 请参阅 [ 查找公共代理 IP ](/1.10/administering-clusters/locate-public-agent/)。
 
-# Ingress
+# 入口
 
-In most production deployments, administrative access to the cluster should be routed through an external proxy to the DC/OS master nodes, distributing traffic load between the master nodes. For example, the default AWS templates configure an AWS Elastic Load Balancer.
+在大多数生产部署中，对群集的管理访问应通过外部代理路由到DC / OS主节点，以在主节点之间分配流量负载。 例如，默认的AWS模板配置AWS Elastic Load Balancer。
 
-Master nodes and private agent nodes are usually not publicly accessible. For security reasons, ingress to these nodes should be controlled by a router or firewall. To manage the cluster, administrators and operators should use a VPN server inside the firewall, on the same networks as the DC/OS nodes. Using VPN ensures that you can securely access the nodes directly from your workstation.
+主节点和私有代理节点通常不能公开访问。 出于安全原因, 对这些节点的侵入应由路由器或防火墙控制。 为了管理集群，管理员和操作员应该在防火墙内部使用与DC / OS节点相同的网络中的VPN服务器。 使用VPN可确保您可以直接从工作站安全地访问节点。
 
-Public agent nodes are usually publicly accessible. [Marathon-LB](/service-docs/marathon-lb/) running on the public agent nodes can serve as reverse proxy and load balancer to applications running on the private agent nodes. For additional security, use external load balancing, either to intermediate load balancers, applications on the public nodes, or directly to applications on the private nodes. If you want to allow public access to the public nodes, you should configure firewalls to block access to all ports except those required for your applications.
+公共代理节点通常是可公开访问的。 在公共代理节点上运行的[ Marathon-LB ](/service-docs/marathon-lb/)可以作为私有代理节点上运行的应用程序的反向代理和负载平衡器。 为了获得更高的安全性，可以使用外部负载平衡（中间负载平衡器，公共节点上的应用程序或直接应用到私有节点上的应用程序）。 为了获得更高的安全性，可以使用外部负载平衡（中间负载平衡器，公共节点上的应用程序或直接应用到私有节点上的应用程序）。...
 
-In development or local deployments, you usually have direct access to the nodes by IP.
+如果要允许公共访问公共节点，则应配置防火墙以阻止除应用程序所需的所有端口的访问。...
 
-For more information, see [Securing Your Cluster](/1.10/administering-clusters/).
+有关更多信息，请参阅[保护群集](/1.10/administering-clusters/)。
