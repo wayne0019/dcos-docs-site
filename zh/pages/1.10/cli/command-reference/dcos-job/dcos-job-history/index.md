@@ -8,40 +8,40 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Show job run history.
+显示作业运行历史记录。
 
-# Usage
+# 统计
 
 ```bash
 dcos job history <job-id> [OPTION]
 ```
 
-# Options
+# 选项
 
-| Name, shorthand   | Default | Description                                        |
-| ----------------- | ------- | -------------------------------------------------- |
-| `--json`          |         | Print JSON-formatted list.                         |
-| `--show-failures` |         | Show the failure table and statistics for history. |
+| 姓名、速记             | 默认 | 描述               |
+| ----------------- | -- | ---------------- |
+| `--json`          |    | 打印JSON格式的列表。     |
+| `--show-failures` |    | 显示历史记录的失败表和统计信息。 |
 
-# Positional arguments
+# 位置实参
 
-| Name, shorthand  | Default | Description         |
-| ---------------- | ------- | ------------------- |
-| `<job-id>` |         | Specify the job ID. |
+| 名字，简写            | 默认 | 描述       |
+| ---------------- | -- | -------- |
+| `<job-id>` |    | 指定作业 ID。 |
 
-# Parent command
+# 父命令
 
-| Command                                           | Description                      |
-| ------------------------------------------------- | -------------------------------- |
-| [dcos job](/1.10/cli/command-reference/dcos-job/) | Deploy and manage jobs in DC/OS. |
+| 命令                                                | 描述                |
+| ------------------------------------------------- | ----------------- |
+| [dcos job](/1.10/cli/command-reference/dcos-job/) | 在 DC/OS 中部署和管理作业。 |
 
-# Examples
+# 例子
 
-## View the history of job
+## 查看作业的历史记录
 
-In this example, a job history is shown.
+在此示例中, 将显示作业历史记录。
 
 1. List the jobs and find the ID:
     
