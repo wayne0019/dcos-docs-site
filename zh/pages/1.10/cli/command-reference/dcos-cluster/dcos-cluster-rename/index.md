@@ -10,7 +10,7 @@ enterprise: false
 
 # 描述
 
-Rename a cluster in the DC/OS CLI.
+在DC / OS CLI中重命名群集。
 
 # 统计
 
@@ -20,17 +20,17 @@ dcos cluster rename <name> <new_name>
 
 # 位置实参
 
-| Name, shorthand    | Default | Description             |
-| ------------------ | ------- | ----------------------- |
-| `<name>`     |         | DC/OS cluster name.     |
-| `<new_name>` |         | New DC/OS cluster name. |
+| 名字，简写         | 默认 | 描述             |
+| ------------- | -- | -------------- |
+| `<名称>`  |    | DC / OS群集名称。   |
+| `<新名称>` |    | 新的DC / OS群集名称。 |
 
-# Parent command
+# 父命令
 
-| Command                                                   | Description                 |
-| --------------------------------------------------------- | --------------------------- |
-| [dcos cluster](/1.10/cli/command-reference/dcos-cluster/) | Manage your DC/OS clusters. |
+| 命令                                                        | 描述           |
+| --------------------------------------------------------- | ------------ |
+| [dcos cluster](/1.10/cli/command-reference/dcos-cluster/) | 管理DC / OS群集。 |
 
-# Examples
+# 例子
 
-For examples, see the [Connecting to Multiple Clusters](/1.10/cli/multi-cluster-cli/) documentation.
+有关示例，请参阅[连接到多个群集](/1.10/cli/multi-cluster-cli/)文档。
