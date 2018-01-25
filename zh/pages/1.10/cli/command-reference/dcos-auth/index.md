@@ -6,28 +6,28 @@ menuWeight: 1
 excerpt: ""
 enterprise: false
 ---
-# Description
+# 描述
 
-This command manages DC/OS identity and access.
+该命令管理DC / OS身份和访问。
 
-# Usage
+# 统计
 
 ```bash
 dcos auth 
 ```
 
-# Options
+# 选项
 
-| Name, shorthand | Default | Description                                   |
-| --------------- | ------- | --------------------------------------------- |
-| `--help, h`     |         | Print usage.                                  |
-| `--info`        |         | Print a short description of this subcommand. |
-| `--version, v`  |         | Print version information.                    |
+| 名字，简写          | 默认 | 描述           |
+| -------------- | -- | ------------ |
+| `--help, h`    |    | 打印使用。        |
+| `--info`       |    | 打印此子命令的简短说明。 |
+| `--version, v` |    | 显示版本信息       |
 
-# Child commands
+# 子命令
 
-| Command                                                                                     | Description                                                                        |
-| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| [dcos auth list-providers](/1.10/cli/command-reference/dcos-auth/dcos-auth-list-providers/) | List configured authentication providers for your DC/OS cluster (Enterprise only). |
-| [dcos auth login](/1.10/cli/command-reference/dcos-auth/dcos-auth-login/)                   | Log in to DC/OS authentication.                                                    |
-| [dcos auth logout](/1.10/cli/command-reference/dcos-auth/dcos-auth-logout/)                 | Log out of DC/OS authentication.                                                   |
+| 命令                                                                                          | 描述                                    |
+| ------------------------------------------------------------------------------------------- | ------------------------------------- |
+| [dcos auth list-providers](/1.10/cli/command-reference/dcos-auth/dcos-auth-list-providers/) | 列出DC / OS集群的配置身份验证提供程序（仅限Enterprise）。 |
+| [dcos auth login](/1.10/cli/command-reference/dcos-auth/dcos-auth-login/)                   | 登录到DC / OS身份验证。                       |
+| [dcos auth logout](/1.10/cli/command-reference/dcos-auth/dcos-auth-logout/)                 | Log out of DC/OS authentication.      |
