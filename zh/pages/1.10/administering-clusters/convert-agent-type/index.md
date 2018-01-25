@@ -23,23 +23,23 @@ Agent节点被指定为[ public ](/1.10/overview/concepts/#public-agent-node)或
 
 ### 确定节点类型
 
-You can determine the node type by running this command from the DC/OS CLI.
+您可以通过从DC / OS CLI运行此命令来确定节点类型。
 
-- Run this command to determine how many private agents are there in the cluster. A result of `` indicates that there are no private agents.
+- 运行此命令以确定群集中有多少私有代理。` 0 ` 的结果表明没有私有代理。
     
     ```bash
 dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public == null) | .id' | wc -l
 ```
 
-- Run this command to determine how many public agents are there in the cluster. A result of `` indicates that there are no public agents.
+- 运行此命令以确定集群中有多少个公共代理。 ` 0 `的结果表示没有公共代理。
     
     ```bash
 dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public != null) | .id' | wc -l
 ```
 
-### Uninstall the DC/OS private agent software
+### 卸载DC / OS private agent 软件
 
-1. Uninstall DC/OS on the agent node.
+1. 卸载agent节点上的DC / OS。
     
     ```bash
 sudo /opt/mesosphere/bin/dcos-shell
@@ -48,7 +48,7 @@ sudo systemctl stop dcos-mesos-slave
 sudo systemctl disable dcos-mesos-slave
 ```
 
-2. Remove the old directory structures on the agent node.
+2. 删除agent节点上的旧目录结构。
     
     ```bash
 sudo rm -rf /etc/mesosphere /opt/mesosphere /var/lib/mesos /var/lib/dcos
@@ -60,9 +60,9 @@ sudo rm -rf /etc/mesosphere /opt/mesosphere /var/lib/mesos /var/lib/dcos
 sudo reboot
 ```
 
-### Install DC/OS and convert agent node
+### 安装DC / OS并转换agent节点
 
-将已存档的 DC/OS 安装程序文件 (` dcos-install.tar `) 复制到代理节点。 This archive is created during the GUI or CLI [installation](/1.10/installing/oss/custom/gui/#backup) method.
+将已存档的 DC/OS 安装程序文件 (` dcos-install.tar `) 复制到代理节点。 此存档是在GUI或CLI [安装](/1.10/installing/oss/custom/gui/#backup)方法中创建的。
 
 1. 将文件复制到代理节点。例如, 可以使用安全副本 (scp) 将 `dcos-install.tar` 复制到您的主目录中:
     
@@ -95,7 +95,7 @@ sudo tar xf dcos-install.tar -C /opt/dcos_install_tmp
 sudo bash /opt/dcos_install_tmp/dcos_install.sh slave
 ```
 
-公共代理节点:
+public agent节点:
 
 ```bash
 sudo bash /opt/dcos_install_tmp/dcos_install.sh slave_public
