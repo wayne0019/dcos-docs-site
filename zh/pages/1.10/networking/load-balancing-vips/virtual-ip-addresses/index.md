@@ -1,40 +1,40 @@
 ---
 layout: layout.pug
-navigationTitle: Using Virtual IP Addresses
-title: Using Virtual IP Addresses
+navigationTitle: 使用虚拟IP地址
+title: 使用虚拟IP地址
 menuWeight: 10
 excerpt: ""
 enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-DC/OS can map traffic from a single Virtual IP (VIP) to multiple IP addresses and ports. DC/OS VIPs are **name-based**, which means clients connect with a service address instead of an IP address.
+DC/OS can map traffic from a single Virtual IP (VIP) to multiple IP addresses and ports. DC/OS vip 是 ** 基于名称的 **, 这意味着客户端使用服务地址而不是 IP 地址进行连接。
 
-DC/OS automatically generates name-based VIPs that do not collide with IP VIPs, so you don’t have to worry about collisions. This feature allows name-based VIPs to be created automatically when the service is installed.
+DC/OS 自动生成不与 IP vip 冲突的基于名称的 vip, 因此您不必担心冲突。 此功能允许在安装服务时自动创建基于名称的 vip。
 
-A named VIP contains these components:
+指定的 VIP 包含以下组件:
 
-* Private virtual IP address
-* Port (a port which the service is available on)
-* Service name
+* 私有虚拟IP地址
+* 端口(服务可用的端口)
+* 服务名
 
-You can assign a VIP to your application from the DC/OS GUI. The values you enter when you deploy a new service are translated into these Marathon application definition entries:
+您可以从DC / OS GUI为应用程序分配一个VIP。 您在部署新服务时输入的值将被转换为这些Marathon应用程序定义条目：
 
-* `portDefinitions` if not using Docker containers
-* `portMappings` if using Docker containers
+* ` portDefinitions `如果不使用Docker容器
+* ` portMappings `如果使用Docker容器
 
-VIPs follow this naming convention:
+VIP遵循这个命名约定：
 
     <service-name>.marathon.l4lb.thisdcos.directory:<port>
     
 
-### Prerequisite
+### 先决条件
 
-* A pool of VIP addresses that are unique to your application.
+* VIP地址池是您的应用程序唯一的。
 
-## Creating a VIP
+## 创建一个VIP
 
-1. From the DC/OS [GUI](/1.10/gui/), click on the **Services** then **RUN A SERVICE**.
+1. 在DC / OS [ GUI ](/1.10/gui/)上，点击**Services**，然后点击**RUN A SERVICE**。
     
     1. From the **Networking** tab, select **NETWORK TYPE** > **Virtual Network: dcos**.
     2. Expand **ADD SERVICE ENDPOINT** and provide responses for:
