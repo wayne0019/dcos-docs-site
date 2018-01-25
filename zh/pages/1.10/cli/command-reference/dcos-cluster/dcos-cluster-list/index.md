@@ -8,29 +8,29 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-List the clusters that are connected to the DC/OS CLI.
+列出连接到DC / OS CLI的群集。
 
-# Usage
+# 统计
 
 ```bash
 dcos cluster list [--attached --json]
 ```
 
-# Options
+# 选项
 
-| Name, shorthand | Default | Description                |
-| --------------- | ------- | -------------------------- |
-| `--attached`    |         | Attached clusters only.    |
-| `--json`        |         | Print JSON-formatted list. |
+| 名字，简写        | 默认 | 描述           |
+| ------------ | -- | ------------ |
+| `--attached` |    | 仅附加群集。       |
+| `--json`     |    | 打印JSON格式的列表。 |
 
-# Parent command
+# 父命令
 
-| Command                                                   | Description            |
-| --------------------------------------------------------- | ---------------------- |
-| [dcos cluster](/1.10/cli/command-reference/dcos-cluster/) | Manage DC/OS clusters. |
+| 命令                                                        | 描述           |
+| --------------------------------------------------------- | ------------ |
+| [dcos cluster](/1.10/cli/command-reference/dcos-cluster/) | 管理DC / OS群集。 |
 
-# Examples
+# 例子
 
-For examples, see the [Connecting to Multiple Clusters](/1.10/cli/multi-cluster-cli/) documentation.
+有关示例，请参阅[连接到多个群集](/1.10/cli/multi-cluster-cli/)文档。
