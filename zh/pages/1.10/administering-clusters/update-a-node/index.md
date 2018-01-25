@@ -84,7 +84,7 @@ sudo sh -c 'systemctl kill -s SIGUSR1 dcos-mesos-slave && systemctl stop dcos-me
 
 4. Add the nodes back to your cluster.
     
-    1. Reload the systemd configuration.
+    1. 重新加载了systemd配置。
         
         ```bash
 ﻿⁠⁠sudo systemctl daemon-reload
