@@ -33,42 +33,42 @@ None.
 
 # 位置实参
 
-| Name, shorthand | Default | Description                |
-| --------------- | ------- | -------------------------- |
-| `<name>`  |         | The name of the property.  |
-| `<value>` |         | The value of the property. |
+| 名字，简写           | 默认 | 描述     |
+| --------------- | -- | ------ |
+| `<name>`  |    | 属性的名称。 |
+| `<value>` |    | 财产的价值。 |
 
-# Parent command
+# 父命令
 
-| Command                                                 | Description                 |
-| ------------------------------------------------------- | --------------------------- |
-| [dcos config](/1.10/cli/command-reference/dcos-config/) | Manage DC/OS configuration. |
+| 命令                                                      | 描述           |
+| ------------------------------------------------------- | ------------ |
+| [dcos config](/1.10/cli/command-reference/dcos-config/) | 管理 DC/OS 配置。 |
 
-# Examples
+# 例子
 
-## Set request timeout
+## 设置请求超时
 
-In this example, the request timeout is set to 5 minutes.
+在此示例中, 请求超时设置为5分钟。
 
 ```bash
 dcos config set core.timeout 300
 ```
 
-Here is the output:
+以下是输出:
 
 ```bash
 [core.timeout]: set to '300'
 ```
 
-## Set SSL setting
+## 设置 SSL 设置
 
-In this example, the verify SSL certificates for HTTPS is set to `true`.
+在此示例中, 验证 HTTPS 的 SSL 证书设置为 ` true `。
 
 ```bash
 dcos config set core.ssl_verify true
 ```
 
-Here is the output:
+以下是输出:
 
 ```bash
 [core.ssl_verify]: set to 'true'
