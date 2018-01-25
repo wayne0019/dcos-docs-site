@@ -16,30 +16,30 @@ This document provides instructions for upgrading a DC/OS cluster.
 - 在升级所有主节点之前, DC/OS GUI 和其他更高级别的系统 api 可能不一致或不可用。 例如, 升级后的 DC/OS 马拉松领先者无法连接到领先的 Mesos 主机, 直到它也被升级。 发生此情况时:
     
     - DC/OS GUI 可能无法提供准确的服务列表。
-    - For multi-master configurations, after one master has finished upgrading, you can monitor the health of the remaining masters from the Exhibitor UI on port 8181.
-- An upgraded DC/OS Marathon leader cannot connect to an non-secure (i.e. not upgraded) leading Mesos master. The DC/OS UI cannot be trusted until all masters are upgraded. There are multiple Marathon scheduler instances and multiple Mesos masters, each being upgraded, and the Marathon leader may not be the Mesos leader.
-- Task history in the Mesos UI will not persist through the upgrade.
-- Before you upgrade from 1.9 to 1.10, you must upgrade Marathon-LB. Do this by uninstalling Marathon-LB and reinstalling the latest package.
-- DC/OS Enterprise downloads can be found [here](https://support.mesosphere.com/hc/en-us/articles/213198586-Mesosphere-Enterprise-DC-OS-Downloads).
+    - 对于多主配置, 在一个主服务器完成升级后, 您可以从8181端口上的展商用户界面监视其余主机的运行状况。
+- 升级后的 DC/OS 马拉松领先者无法连接到非安全 (即不升级) 领先的 Mesos 主机。 在升级所有主控形状之前, 不能信任 DC/OS UI。 有多个马拉松计划程序实例和多个 Mesos 的主控形状, 每个都在升级, 而马拉松的领导者可能不是 Mesos 的领导者。
+- Mesos UI 中的任务历史记录不会通过升级而持续。
+- 在您从1.9 升级到1.10 之前, 您必须升级马拉松-LB。通过卸载马拉松-LB 并重新安装最新的软件包来做到这一点。
+- 可以在 [ 此处 ](https://support.mesosphere.com/hc/en-us/articles/213198586-Mesosphere-Enterprise-DC-OS-Downloads) 找到 DC/OS 企业下载。
 
 ## 支持的升级路径
 
-- From the latest GA version of previous to the latest GA version of current. For example, if 1.8.8 is the latest and 1.9.0 is the latest, this upgrade would be supported. 
+- 从最新的 ga 版本到最新的 ga 版本的电流。例如, 如果1.8.8 是最新的, 并且1.9.0 是最新的, 则支持此升级。 
     - [1.7 to 1.8](/1.8/administration/upgrading/)
     - [1.8 to 1.9](/1.9/installing/ent/upgrading/)
     - [1.9 to 1.10](/1.10/installing/ent/upgrading/)
-- From any current release to the next. For example, an upgrade from 1.9.1 to 1.9.2 would be supported.
-- From any current release to an identical release. For example, an upgrade from 1.9.0 to 1.9.0 would be supported. This is useful for making configuration changes.
+- 从任何当前版本到下一个。例如, 将支持从1.9.1 到1.9.2 的升级。
+- 从任何当前版本到相同的版本。例如, 将支持从1.9.0 到1.9.0 的升级。这对于进行配置更改很有用。
 
-## Modifying DC/OS configuration
+## 修改DC / OS配置
 
-You *cannot* change your cluster configuration at the same time as upgrading to a new version. Cluster configuration changes must be done with an update to an already installed version. For example, you cannot simultaneously upgrade a cluster from 1.10.x to 1.10.y and add more public agents. You can add more public agents with an update to 1.10.x, and then upgrade to 1.10.y. Or you can upgrade to 1.10.y and then add more public agents by updating 1.10.y after the upgrade.
+You *cannot* change your cluster configuration at the same time as upgrading to a new version. 对群集配置的更改必须通过对已安装版本的更新来完成。 例如，不能同时将群集从1.10.x升级到1.10.y，并添加更多的公共代理。 您可以添加更多的公共代理程序，更新到1.10.x，然后升级到1.10.y. 或者您可以升级到1.10.y，然后在升级后通过更新1.10.y添加更多的公共代理。 上下文| 编辑上下文
 
-To modify your DC/OS configuration, you must run the installer with the modified `config.yaml` and update your cluster using the new installation files. Changes to the DC/OS configuration have the same risk as upgrading a host. Incorrect configurations could potentially crash your hosts, or an entire cluster.
+要修改DC / OS配置，必须使用修改的` config.yaml `运行安装程序，并使用新的安装文件更新群集。 对DC / OS配置的更改与升级主机的风险相同。 不正确的配置可能会导致主机或整个群集崩溃。
 
-Only a subset of DC/OS configuration parameters can be modified. The adverse effects on any software that is running on top of DC/OS is outside of the scope of this document. Contact Mesosphere Support for more information.
+只能修改DC / OS配置参数的一个子集。 对DC / OS上运行的任何软件的不利影响超出了本文的范围。 联系Mesosphere支持了解更多信息。
 
-Here is a list of the parameters that you can modify:
+以下是您可以修改的参数列表：
 
 - [`dns_search`](/1.10/installing/ent/custom/configuration/configuration-parameters/#dns-search)
 - [`docker_remove_delay`](/1.10/installing/ent/custom/configuration/configuration-parameters/#docker-remove-delay)
@@ -51,14 +51,14 @@ Here is a list of the parameters that you can modify:
     - [`https_proxy`](/1.10/installing/ent/custom/configuration/configuration-parameters/#use-proxy)
     - [`no_proxy`](/1.10/installing/ent/custom/configuration/configuration-parameters/#use-proxy)
 
-The security mode (`security`) can be changed but has special caveats.
+安全模式(`security`) 可以更改，但有特殊的注意事项。
 
-- You can only update to a stricter security mode. Security downgrades are not supported. For example, if your cluster is in `permissive` mode and you want to downgrade to `disabled` mode, you must reinstall the cluster and terminate all running workloads.
+- 您只能更新到更严格的安全模式。 Security downgrades are not supported. For example, if your cluster is in `permissive` mode and you want to downgrade to `disabled` mode, you must reinstall the cluster and terminate all running workloads.
 - During each update, you can only increase your security by a single level. For example, you cannot update directly from `disabled` to `strict` mode. To increase from `disabled` to `strict` mode you must first update to `permissive` mode, and then update from `permissive` to `strict` mode.
 
 See the security [mode](/1.10/installing/ent/custom/configuration/configuration-parameters/#security-enterprise) for a description of the different security modes and what each means.
 
-# Instructions
+# 指导
 
 These steps must be performed for version upgrades and cluster configuration changes.
 
