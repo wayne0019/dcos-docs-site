@@ -1,6 +1,6 @@
 ---
 layout: layout.pug
-navigationTitle: API Reference
+navigationTitle: API 引用
 title: API Reference
 menuWeight: 150
 excerpt: ""
@@ -12,13 +12,13 @@ The DC/OS API is a collection of routes backed by [DC/OS components](/1.10/overv
 
 <img src="/1.10/img/dcos-api-routing.png" alt="DC/OS API Routing" style="display:block;margin:0 auto" />
 
-# API Gateway
+# API网关
 
 Admin Router is an API gateway built on top of NGINX with the following goals:
 
 - Present a unified control plane for the DC/OS API
 - Proxy API requests to component services on master and agent nodes
-- Enforce user authentication
+- 获取用户身份验证
 - Serve up the DC/OS GUI
 
 Admin Router runs on each DC/OS node in one of two configurations:
@@ -33,7 +33,7 @@ Admin Router runs on each DC/OS node in one of two configurations:
     
     Some agent routes, like logs and metrics, are proxied through the master Admin Router to allow external access. Other routes, like component management, are for internal use only.
 
-# Route Types
+# 代理类型：
 
 Admin Router exposes several types of routes:
 
@@ -43,11 +43,11 @@ Admin Router exposes several types of routes:
 - **Redirect Routes** redirect to another URL.
 - **Rewrite Routes** translate routes into other routes.
 
-# Cluster Access
+# 族类排料
 
-To determine the URL of your cluster, see [Cluster Access](/1.10/api/access/).
+要确定群集的 URL, 请参阅 [ 群集访问 ](/1.10/api/access/)。
 
-# Versioning
+# 版本
 
 Sections of the DC/OS API are versioned by component, route, or resource.
 
