@@ -8,27 +8,27 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Add a DC/OS package to DC/OS.
+将 dc/os 包添加到 dc/os。
 
-# Usage
+# 统计
 
 ```bash
 dcos experimental package add [OPTION]
 ```
 
-# Options
+# 选项
 
-| Name, shorthand                             | Default | Description                |
-| ------------------------------------------- | ------- | -------------------------- |
-| `--dcos-package=<dcos-package>`       |         | Path to a DC/OS package.   |
-| `--json`                                    |         | JSON-formatted data.       |
-| `--package-name=<package-name>`       |         | Name of the DC/OS package. |
-| `--package-version=<package-version>` |         | The package version.       |
+| 姓名、速记                                       | 默认 | 描述            |
+| ------------------------------------------- | -- | ------------- |
+| `--dcos-package=<dcos-package>`       |    | 到 DC/OS 包的路径。 |
+| `--json`                                    |    | JSON 格式的数据。   |
+| `--package-name=<package-name>`       |    | DC/OS 包的名称。   |
+| `--package-version=<package-version>` |    | 包版本。          |
 
-# Parent command
+# 父命令
 
-| Command                                                             | Description                                                   |
-| ------------------------------------------------------------------- | ------------------------------------------------------------- |
-| [dcos experimental](/1.10/cli/command-reference/dcos-experimental/) | Manage commands that under development and subject to change. |
+| 命令                                                                  | 描述            |
+| ------------------------------------------------------------------- | ------------- |
+| [dcos experimental](/1.10/cli/command-reference/dcos-experimental/) | 管理正在开发和更改的命令。 |
