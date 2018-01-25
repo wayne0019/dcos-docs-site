@@ -33,6 +33,6 @@ dcos [options] [<command>] [<args>...]
 
 * 调试打印所有邮件。
 * 信息打印信息、警告、错误和重要消息。
-* warning Prints warning, error, and critical messages.
-* error Prints error and critical messages.
-* critical Prints only critical messages to stderr.
+* 警告打印警告、错误和重要消息。
+* 错误打印错误和重要消息。
+* 关键信息仅打印关键消息到 stderr。
