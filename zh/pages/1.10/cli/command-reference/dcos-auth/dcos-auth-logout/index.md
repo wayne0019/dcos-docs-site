@@ -24,6 +24,6 @@ dcos auth logout [OPTION]
 
 # Parent command
 
-| Command                                             | 描述                                |
-| --------------------------------------------------- | --------------------------------- |
-| [dcos auth](/1.10/cli/command-reference/dcos-auth/) | Manage DC/OS identity and access. |
+| 命令                                                  | 描述            |
+| --------------------------------------------------- | ------------- |
+| [dcos auth](/1.10/cli/command-reference/dcos-auth/) | 管理DC/OS身份和访问。 |
