@@ -169,33 +169,33 @@ sudo systemctl status dcos-local-universe-http
 sudo systemctl status dcos-local-universe-registry
 ```
 
-24. Repeat steps 14 through 23 until you have completed this procedure for all of your masters. Then continue to the next step.
+24. 重复第14步到第23步，直到完成了所有主人的这一步骤。 然后继续下一步。
 
-25. Close the SSH session by typing `exit` or open a new terminal prompt.
+25. 输入` exit `关闭SSH会话或打开新的终端提示符。
     
-    **Tip:** You may have to exit more than one SSH session if you have multiple masters.
+    **提示**：如果您有多个主设备，则可能必须退出多个SSH会话。
 
-26. (Optional) Use the following command to remove the references to the default Universe from your cluster. If you want to leave the default Universe in place and just add the local Universe as an additional repository, skip to the next step.
+26. (可选) 使用以下命令从集群中删除对默认Universe的引用。 如果您想要保留默认的Universe，只需将本地Universe添加为其他存储库，请跳至下一步。
     
     ```bash
 dcos package repo remove Universe
 ```
 
-**Tip:** You can also remove the references to the default Universe repository from **Settings** > **Package Repositories** in the DC/OS web interface.
+**提示**：您也可以在DC / OS Web界面中从**设置**> **程序包存储库**中删除对默认Universe存储库的引用。
 
-27. Use the following command to add a reference to the local Universes that you added to each master.
+27. 使用以下命令添加对添加到每个主控的本地Universe的引用。
     
     ```bash
 dcos package repo add local-universe http://master.mesos:8082/repo
 ```
 
-28. [SSH into one of your agent nodes.](/1.10/administering-clusters/sshcluster/)
+28. [SSH到您的代理节点之一。](/1.10/administering-clusters/sshcluster/)
     
     ```bash
 dcos node ssh --master-proxy --mesos-id=<mesos-id>
 ```
 
-29. Use the following commands to download a copy of the DC/OS certificate locally and set it as trusted.
+29. 使用以下命令在本地下载DC / OS证书的副本并将其设置为可信。
     
     ```bash
 sudo mkdir -p /etc/docker/certs.d/master.mesos:5000
@@ -203,44 +203,44 @@ sudo curl -o /etc/docker/certs.d/master.mesos:5000/ca.crt http://master.mesos:80
 sudo systemctl restart docker
 ```
 
-30. Configure the Apache Mesos fetcher to trust the downloaded Docker certificate.
+30. 配置Apache Mesos fetcher以信任下载的Docker证书。
     
-    1. Copy the certificate:
+    1. 复制证书：
         sudo cp /etc/docker/certs.d/master.mesos:5000/ca.crt /var/lib/dcos/pki/tls/certs/docker-registry-ca.crt
         
     
-    1. Generate a hash:
+    1. 生成一个哈希：
         cd /var/lib/dcos/pki/tls/certs/
         openssl x509 -hash -noout -in docker-registry-ca.crt
         
     
-    1. Create a soft link:
+    1. 创建一个软链接：
         sudo ln -s /var/lib/dcos/pki/tls/certs/docker-registry-ca.crt /var/lib/dcos/pki/tls/certs/<hash_number>.0
         
     
-    **Note:** You will need to create the `/pki/tls/certs` directory on the public agent.
+    **注意：**您需要在公共代理上创建` /pki/tls/certs`目录。
 
-31. Close the SSH session by typing `exit` or open a new terminal prompt. Repeat steps 28-30 on each agent node.
+31. 输入` exit `关闭SSH会话或打开新的终端提示符。 在每个代理节点上重复步骤28-30。
 
-32. To verify your success, log into the DC/OS web interface and click the **Catalog** tab. You should see a list of Certified packages. Install one of the packages.
+32. 要验证您的成功，请登录到DC / OS Web界面，然后单击**目录**选项卡。 你应该看到一个认证软件包列表。 安装其中一个软件包。
 
-### FAQ
+### 常问问题
 
-* **I can't install CLI subcommands**
+* **我无法安装CLI子命令**
     
-    Packages are hosted at `master.mesos:8082`. If you cannot resolve or connect to `master.mesos:8082` from your DC/OS CLI install, you cannot install CLI subcommands. If you can connect to port 8082 on your masters, add the IP for one of the masters to `/etc/hosts`.
+    软件包托管在` master.mesos:8082 `中。 如果您无法通过DC / OS CLI安装解决或连接到` master.mesos:8082 `，则无法安装CLI子命令。 如果您可以连接到主站上的端口8082，请将其中一个主站的IP添加到`/etc/hosts`中。
 
-* **The images are broken**
+* **images被打破**
     
-    All Universe components are hosted inside of your cluster, including the images. The components are served up by `master.mesos:8082`. If you have connectivity to that IP, you can add it to `/etc/hosts` and get the images working.
+    所有Universe组件都托管在群集中，包括图像。 组件由` master.mesos:8082 `提供。 如果连接到该IP，则可以将其添加到` /etc/hosts `中，并使图像正常工作。
 
-* **I don't see the package I was looking for**
+* **我没有看到我正在寻找的包**
     
-    By default, only Certified packages are bundled. If you'd like to get something else, use the instructions in the next section.
+    默认情况下，只有认证包被捆绑在一起。 如果您想获得其他内容，请使用下一节中的说明。
 
-# <a name="build"></a>Deploying a local Universe containing selected packages
+# <a name="build"></a>部署包含选定软件包的本地Universe
 
-**Prerequisite:** [Git](https://git-scm.com/). On Unix/Linux, see these <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">installation instructions</a>.
+**先决条件：** [ Git ](https://git-scm.com/)。 On Unix/Linux, see these <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">installation instructions</a>.
 
 To deploy a local Universe containing your own set of packages you must build a customized local Universe Docker image.
 
