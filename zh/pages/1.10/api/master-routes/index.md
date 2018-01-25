@@ -1,16 +1,16 @@
 ---
 layout: layout.pug
-navigationTitle: Master Routes
-title: Master Routes
+navigationTitle: 主路由
+title: 主路由
 menuWeight: 10
 excerpt: ""
 enterprise: false
 ---
-Admin Router runs on DC/OS master nodes and exposes the following API routes.
+Admin Router在 DC/OS 主节点上运行, 并公开以下 API 路由。
 
-Admin Router listens on port `80` (HTTP) and `443` (HTTPS).
+Admin Router 器侦听端口 ` 80 ` (HTTP) 和 ` 443 ` (HTTPS)。
 
-For more detail about how API routing works, see [DC/OS API Reference](/1.10/api/).
+有关 api 路由的工作方式的详细信息, 请参阅 [ DC/OS api 参考 ](/1.10/api/)。
 
   
 
