@@ -30,4 +30,4 @@ dcos auth
 | ------------------------------------------------------------------------------------------- | ------------------------------------- |
 | [dcos auth list-providers](/1.10/cli/command-reference/dcos-auth/dcos-auth-list-providers/) | 列出DC / OS集群的配置身份验证提供程序（仅限Enterprise）。 |
 | [dcos auth login](/1.10/cli/command-reference/dcos-auth/dcos-auth-login/)                   | 登录到DC / OS身份验证。                       |
-| [dcos auth logout](/1.10/cli/command-reference/dcos-auth/dcos-auth-logout/)                 | Log out of DC/OS authentication.      |
+| [dcos auth logout](/1.10/cli/command-reference/dcos-auth/dcos-auth-logout/)                 | 注销DC / OS身份验证。                        |
