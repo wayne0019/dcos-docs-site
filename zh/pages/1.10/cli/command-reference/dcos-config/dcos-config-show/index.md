@@ -8,57 +8,57 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Print the DC/OS configuration file contents of the currently [attached](/1.10/cli/command-reference/dcos-cluster/dcos-cluster-attach/) cluster.
+打印当前 [ 附加 ](/1.10/cli/command-reference/dcos-cluster/dcos-cluster-attach/) 群集的 DC/OS 配置文件内容。
 
-# Usage
+# 统计
 
 ```bash
 dcos config show <name> [OPTION]
 ```
 
-# Options
+# 选项
 
 None.
 
-# Positional arguments
+# 位置实参
 
-| Name, shorthand | Default | Description               |
-| --------------- | ------- | ------------------------- |
-| `<name>`  |         | The name of the property. |
+| 姓名、速记          | 默认 | 描述     |
+| -------------- | -- | ------ |
+| `<name>` |    | 属性的名称。 |
 
-# Parent command
+# 父命令
 
-| Command                                                 | Description                 |
-| ------------------------------------------------------- | --------------------------- |
-| [dcos config](/1.10/cli/command-reference/dcos-config/) | Manage DC/OS configuration. |
+| 命令                                                      | 描述           |
+| ------------------------------------------------------- | ------------ |
+| [dcos config](/1.10/cli/command-reference/dcos-config/) | 管理 DC/OS 配置。 |
 
-# Examples
+# 例子
 
-## View a specific config value
+## 查看特定的配置值
 
-In this example, the DC/OS URL is shown.
+在此示例中, 显示了 DC/OS URL。
 
 ```bash
 dcos config show core.dcos_url
 ```
 
-Here is the output:
+以下是输出:
 
 ```bash
 https://your-cluster-9vqnkrq5pt2n-2781474.cloue-1.elb.amazonaws.com
 ```
 
-## View all config values
+## 查看所有配置值
 
-In this example, all config values are shown.
+在此示例中, 将显示所有配置值。
 
 ```bash
 dcos config show
 ```
 
-Here is the output:
+以下是输出:
 
 ```bash
 core.dcos_url https://your-cluster-9vqnkrq5pt2n-2781474.cloue-1.elb.amazonaws.com
