@@ -23,6 +23,6 @@ excerpt: ""
 
 * “任务”面板提供正在执行和正在运行的当前任务数量。
 
-* “组件运行状况”面板提供组件运行状况的概述。 每个组件都提供一个健康检查，每隔一段时间运行 This indicator shows the current status according to that health check. A maximum of 5 components are displayed, sorted by priority of the most unhealthy. You can click the **View All `<number>` Components** button for detailed information and a complete list of your components.
+* “组件运行状况”面板提供组件运行状况的概述。 每个组件都提供一个健康检查，每隔一段时间运行。 该指标根据该健康检查显示当前状态。 最多显示5个组件，按照最不健康的优先级排序。 您可以点击**View All`<number> `组件**按钮以获取详细信息和组件的完整列表。
 
-* The Nodes panel provides a view of the nodes in your cluster.
+* “节点”面板提供了群集中节点的视图。
