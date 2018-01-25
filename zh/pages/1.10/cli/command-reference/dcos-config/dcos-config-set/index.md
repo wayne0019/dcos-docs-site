@@ -8,30 +8,30 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Add or set DC/OS configuration properties. Here are the available properties.
+添加或设置 DC/OS 配置属性。下面是可用的属性。
 
-| **Property**            | **Description**                                                                                                                                                                                                        |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `core.dcos_acs_token`   | The DC/OS authentication token. When you log into the DC/OS CLI using `dcos auth login`, it stores the authentication token value locally. For more information, see the [documentation](/1.10/security/ent/iam-api/). |
-| `core.dcos_url`         | The public master URL of your DC/OS cluster.                                                                                                                                                                           |
-| `core.mesos_master_url` | The Mesos master URL. Defaults to `core.dcos_url`.                                                                                                                                                                     |
-| `core.pagination`       | Indicates whether to paginate output. Defaults to true.                                                                                                                                                                |
-| `core.ssl_verify`       | Indicates whether to verify SSL certificates or set the path to the SSL certificates.                                                                                                                                  |
-| `core.timeout`          | The request timeout in seconds, with a minimum value of 1 second. Defaults to 3 minutes.                                                                                                                               |
+| **属性**                  | **描述**                                                                                                          |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `core.dcos_acs_token`   | DC/OS 身份验证令牌。 使用 ` dcos 授权登录 ` 登录到 DC/OS CLI 时, 它在本地存储身份验证标记值。 有关更多信息, 请参见 [ 文档 ](/1.10/security/ent/iam-api/)。 |
+| `core.dcos_url`         | DC/OS 群集的公共主 URL。                                                                                               |
+| `core.mesos_master_url` | The Mesos master URL. Defaults to `core.dcos_url`.                                                              |
+| `core.pagination`       | 指示是否页输出。默认为 true。                                                                                               |
+| `core.ssl_verify`       | 指示是验证 ssl 证书还是设置 ssl 证书的路径。                                                                                     |
+| `core.timeout`          | 以秒为单位的请求超时, 最小值为1秒。默认为3分钟。                                                                                      |
 
-# Usage
+# 统计
 
 ```bash
 dcos config set <name> <value> [OPTION]
 ```
 
-# Options
+# 选项
 
 None.
 
-# Positional arguments
+# 位置实参
 
 | Name, shorthand | Default | Description                |
 | --------------- | ------- | -------------------------- |
