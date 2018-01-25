@@ -8,28 +8,28 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Attach the CLI to a connected DC/OS cluster. When you run the [dcos cluster setup](/1.10/cli/command-reference/dcos-cluster/dcos-cluster-setup) command, the cluster is automatically attached.
+将CLI连接到连接的DC / OS群集。 当您运行[ dcos集群设置](/1.10/cli/command-reference/dcos-cluster/dcos-cluster-setup)命令时，集群将自动连接。
 
-# Usage
+# 统计
 
 ```bash
 dcos cluster attach <name>
 ```
 
-# Positional arguments
+# 位置实参
 
-| Name, shorthand | Default | Description         |
-| --------------- | ------- | ------------------- |
-| `<name>`  |         | DC/OS cluster name. |
+| 名字，简写        | 默认 | 描述           |
+| ------------ | -- | ------------ |
+| `<名称>` |    | DC / OS群集名称。 |
 
-# Parent command
+# 父命令
 
-| Command                                                   | Description                           |
-| --------------------------------------------------------- | ------------------------------------- |
-| [dcos cluster](/1.10/cli/command-reference/dcos-cluster/) | Manage connections to DC/OS clusters. |
+| 命令                                                        | 描述               |
+| --------------------------------------------------------- | ---------------- |
+| [dcos cluster](/1.10/cli/command-reference/dcos-cluster/) | 管理到DC / OS群集的连接。 |
 
-# Examples
+# 例子
 
-For examples, see [Connecting to Multiple Clusters](/1.10/cli/multi-cluster-cli/).
+有关示例，请参阅[连接到多个群集](/1.10/cli/multi-cluster-cli/)文档。
