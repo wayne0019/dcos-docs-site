@@ -8,22 +8,22 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Validate changes to the configuration file.
+验证对配置文件的更改。
 
-# Usage
+# 统计
 
 ```bash
 dcos config validate [OPTION]
 ```
 
-# Options
+# 选项
 
 None.
 
-# Parent command
+# 父命令
 
-| Command                                                 | Description                 |
-| ------------------------------------------------------- | --------------------------- |
-| [dcos config](/1.10/cli/command-reference/dcos-config/) | Manage DC/OS configuration. |
+| 命令                                                      | 描述           |
+| ------------------------------------------------------- | ------------ |
+| [dcos config](/1.10/cli/command-reference/dcos-config/) | 管理 DC/OS 配置。 |
