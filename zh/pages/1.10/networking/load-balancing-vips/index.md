@@ -1,57 +1,57 @@
 ---
 layout: layout.pug
-navigationTitle: Load Balancing and Virtual IPs (VIPs)
-title: Load Balancing and Virtual IPs (VIPs)
+navigationTitle: 负载平衡和虚拟IP (VIP)
+title: 负载平衡和虚拟IP (VIP)
 menuWeight: 0
 excerpt: ""
 enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-DC/OS provides an east-west load balancer (minuteman) that enables multi-tier microservices architectures. It acts as a TCP layer 4 load balancer and leverages load-balancing features within the Linux kernel to achieve near line-rate throughputs and latency. The features include:
+DC / OS提供东西向的负载均衡器 (分钟)，支持多层微服务架构。 它充当TCP层4负载平衡器，并利用Linux内核中的负载平衡功能来实现接近线速吞吐量和延迟。 其功能包括：
 
-- Distributed load balancing of applications.
-- Facilitates east-west communication within the cluster.
-- User specifies an FQDN address to the DC/OS service.
-- Respects health checks.
-- Automatically allocates virtual IPs to service FQDN.
+- 分布式应用程序负载平衡。
+- 促进集群内的东西方交流。
+- 用户指定DC / OS服务的FQDN地址。
+- 尊重健康检查。
+- 自动分配虚拟IP来服务FQDN。
 
-You can use the layer 4 load balancer by assigning a [VIP](/1.10/networking/load-balancing-vips/virtual-ip-addresses/) in your app definition. After you create a task, or a set of tasks, with a VIP, they will automatically become available to all nodes in the cluster, including the masters.
+您可以通过在您的应用定义中分配[ VIP ](/1.10/networking/load-balancing-vips/virtual-ip-addresses/)来使用第4层负载平衡器。 在使用VIP创建一个任务或一组任务后，它们将自动变为可用于群集中的所有节点（包括主设备）。
 
-When you launch a set of tasks, DC/OS distributes them to a set of nodes in the cluster. The Minuteman instance running on each of the cluster agents coordinates the load balancing decisions. Minuteman on each agent programs the IPVS module within the Linux kernel with entries for all the tasks associated with a given service. This allows the Linux kernel to make load-balancing decisions at near line-rate speeds. Minuteman tracks the availability and reachability of these tasks and keeps the IPVS database up-to-date with all of the healthy backends, which means the Linux kernel can select a live backend for each request that it load balances.
+当您启动一组任务时，DC / OS将其分发到群集中的一组节点。 运行在每个集群代理上的Minuteman实例协调负载平衡决策。 每个agent上的Minuteman对Linux内核中的IPVS模块进行编程，其中包含与给定服务相关的所有任务的条目。 这允许Linux内核以接近线速的速度作出负载平衡的决定。 Minuteman跟踪这些任务的可用性和可达性，并使IPVS数据库保持与所有健康后端的最新状态，这意味着Linux内核可以为每个负载均衡的请求选择一个实时后端。
 
-### Requirements
+### 要求
 
-- Do not firewall traffic between the nodes (allow all TCP/UDP).
-- Do not change `ip_local_port_range`.
-- You must use a supported [operating system](/1.10/installing/oss/custom/system-requirements/).
+- 不要防止节点之间的流量 (允许所有的TCP / UDP)。
+- 不要更改` ip_local_port_range `。
+- 您必须使用受支持的[操作系统](/1.10/installing/oss/custom/system-requirements/)。
 
-#### Persistent Connections
+#### 持续连接
 
-Keep long-running persistent connections, otherwise, you can quickly fill up the TCP socket table. The default local port range on Linux allows source connections from 32768 to 61000. This allows 28232 connections to be established between a given source IP and a destination address and port pair. TCP connections must go through the time wait state prior to being reclaimed. The Linux kernel's default TCP time wait period is 120 seconds. Without persistent connections, you would exhaust the connection table by only making 235 new connections per second.
+保持长时间运行的持续连接, 否则, 可以快速填充 TCP 套接字表。 Linux 上的默认本地端口范围允许源连接从32768到61000。 这允许在给定的源 IP 和目标地址和端口对之间建立28232连接。 TCP连接必须经过等待状态才能被回收。 The Linux kernel's default TCP time wait period is 120 seconds. Without persistent connections, you would exhaust the connection table by only making 235 new connections per second.
 
-#### Health checks
+#### 持续连接
 
-Use Mesos health checks. Mesos health checks are surfaced to the load balancing layer. Marathon only converts **command** [health checks](/1.10/deploying-services/creating-services/health-checks/) to Mesos health checks. You can simulate HTTP health checks via a command similar to:
+使用Mesos健康检查。 Mesos health checks are surfaced to the load balancing layer. Marathon only converts **command** [health checks](/1.10/deploying-services/creating-services/health-checks/) to Mesos health checks. You can simulate HTTP health checks via a command similar to:
 
     bash
      test "$(curl -4 -w '%{http_code}' -s http://localhost:${PORT0}/|cut -f1 -d" ")" == 200
 
-This ensures the HTTP status code returned is 200. It also assumes your application binds to localhost. The `${PORT0}` is set as a variable by Marathon. You should not use TCP health checks because they may provide misleading information about the liveness of a service.
+This ensures the HTTP status code returned is 200. It also assumes your application binds to localhost. The `${PORT0}` is set as a variable by Marathon. 不应使用 TCP 健康检查, 因为它们可能会提供有关服务活动的误导性信息。
 
-**Important:** Docker container command health checks are run inside the Docker container. For example, if cURL is used to check NGINX, the NGINX container must have cURL installed, or the container must mount `/opt/mesosphere` in RW mode.
+** 重要: **泊坞窗容器命令健康检查在泊坞窗容器内运行。 例如, 如果使用卷毛来检查 NGINX, 则 NGINX 容器必须安装卷毛, 否则容器必须在 RW 模式下装入 `/选择/中间层 `。
 
-## Troubleshooting
+## 排除故障
 
-### DC/OS Overlay Virtual Network
+### DC / OS覆盖虚拟网络
 
-Problems can arise if the VIP address that you specified is used elsewhere in the network. Although the VIP is a 3-tuple, it is best to ensure that the IP dedicated to the VIP is only in use by the load balancing software and isn't in use at all in your network. Therefore, you should choose IPs from the RFC1918 range.
+如果您指定的 VIP 地址在网络的其他地方使用, 可能会出现问题。 尽管VIP是三元组，但最好确保专用于VIP的IP仅由负载平衡软件使用，并且在您的网络中根本没有使用。 因此, 您应该从 RFC1918 范围中选择 IPs。
 
-### Ports
+### 端口
 
-Port 61420 must be open for the load balancer to work correctly. Because the load balancer maintains a partial mesh, it needs to ensure that connectivity between nodes is unhindered.
+必须打开端口61420才能使负载平衡器正常工作。由于负载平衡器维护部分网格, 因此需要确保节点之间的连接不受阻碍。
 
-## Next steps
+## 下一步
 
-- [Assign a VIP to your application](/1.10/networking/load-balancing-vips/virtual-ip-addresses/)
-- [Learn about the implementation details](https://github.com/dcos/minuteman)
+- [为您的应用程序分配 VIP](/1.10/networking/load-balancing-vips/virtual-ip-addresses/)
+- [了解有关实现的详细信息](https://github.com/dcos/minuteman)
