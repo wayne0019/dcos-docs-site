@@ -8,28 +8,28 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Remove a configured cluster from the DC/OS CLI.
+从DC/OS CLI中移除已配置的集群。
 
-# Usage
+# 统计
 
 ```bash
 dcos cluster remove <name>
 ```
 
-# Positional arguments
+# 位置实参
 
-| Name, shorthand | Default | Description         |
-| --------------- | ------- | ------------------- |
-| `<name>`  |         | DC/OS cluster name. |
+| 名字，简写          | 默认 | 描述           |
+| -------------- | -- | ------------ |
+| `<name>` |    | DC / OS群集名称。 |
 
-# Parent command
+# 父命令
 
-| Command                                                   | Description                 |
-| --------------------------------------------------------- | --------------------------- |
-| [dcos cluster](/1.10/cli/command-reference/dcos-cluster/) | Manage your DC/OS clusters. |
+| 命令                                                        | 描述           |
+| --------------------------------------------------------- | ------------ |
+| [dcos cluster](/1.10/cli/command-reference/dcos-cluster/) | 管理DC / OS群集。 |
 
-# Examples
+# 例子
 
 For examples, see the [Connecting to Multiple Clusters](/1.10/cli/multi-cluster-cli/) documentation.
