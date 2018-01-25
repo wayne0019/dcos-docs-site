@@ -6,13 +6,13 @@ menuWeight: 7
 excerpt: ""
 enterprise: true
 ---
-As of DC/OS 1.10, you can back up the state of the native Marathon instance of your cluster, and later restore from that backup.
+从DC / OS 1.10开始，您可以备份群集的本地Marathon实例的状态，然后从该备份中恢复。
 
-You may wish to back up your cluster before performing an upgrade or downgrade. You may need to restore your cluster to a known good state if something goes wrong during an upgrade or if you install a Universe package that does not perform as expected.
+执行升级或降级之前，您可能希望备份群集。 如果升级过程中出现问题，或者安装的Universe程序包不能按预期的方式运行，则可能需要将群集恢复到已知的正常状态。
 
 # 筛选
 
-- As of DC/OS 1.10, backups include only the state of Marathon running on master nodes.
-- You can perform backup and restore operations only from the DC/OS Enterprise [backup and restore CLI](/1.10/administering-clusters/backup-and-restore/backup-restore-cli) and the [backup and restore API](/1.10/administering-clusters/backup-and-restore/backup-restore-api).
+- 从DC / OS 1.10开始，备份只包括在主节点上运行的Marathon状态。
+- 您只能从DC / OS Enterprise的[备份和恢复CLI ](/1.10/administering-clusters/backup-and-restore/backup-restore-cli)和[备份和恢复API](/1.10/administering-clusters/backup-and-restore/backup-restore-api)。
 
-**Important:** When you perform a backup or restore, Marathon is rebooted in order to be able to perform the operation in a consistent state. This will not affect running tasks, but if a task is launching something at that time, you can experience brief unavailability.
+**重要**执行备份或还原时，Marathon将重新启动，以便能够以一致的状态执行操作。 这不会影响正在运行的任务，但是如果某个任务正在启动某个任务，则可能会遇到短暂的不可用性。
