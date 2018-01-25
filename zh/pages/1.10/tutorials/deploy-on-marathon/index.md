@@ -1,14 +1,14 @@
 ---
 layout: layout.pug
-navigationTitle: Deploying Marathon Apps with Jenkins
-title: Deploying Marathon Apps with Jenkins
+navigationTitle: 与Jenkins部署Marathon应用程序
+title: 与Jenkins部署Marathon应用程序
 menuWeight: 5
 excerpt: ""
 enterprise: false
 ---
-This tutorial shows how to deploy applications on [Marathon](https://mesosphere.github.io/marathon/) using Jenkins for DC/OS. We'll walk you through creating a new Jenkins job, publishing a Docker container on source code changes, and deploying those changes to Marathon based on the [application definition](https://mesosphere.github.io/marathon/docs/application-basics.html) contained in the project’s `marathon.json` file.
+本教程演示如何使用Jenkins for DC / OS在[ Marathon ](https://mesosphere.github.io/marathon/)上部署应用程序。 We'll walk you through creating a new Jenkins job, publishing a Docker container on source code changes, and deploying those changes to Marathon based on the [application definition](https://mesosphere.github.io/marathon/docs/application-basics.html) contained in the project’s `marathon.json` file.
 
-<table class="table" bgcolor="#FAFAFA"> <tr> <td style="border-left: thin solid; border-top: thin solid; border-bottom: thin solid;border-right: thin solid;"><b>Important:</b> Mesosphere does not support this tutorial, associated scripts, or commands, which are provided without warranty of any kind. The purpose of this tutorial is to demonstrate capabilities, and may not be suited for use in a production environment. Before using a similar solution in your environment, you must adapt, validate, and test.</td> </tr> </table>
+<table class="table" bgcolor="#FAFAFA"> <tr> <td style="border-left: thin solid; border-top: thin solid; border-bottom: thin solid;border-right: thin solid;"><b>重要提示：</b> Mesosphere不支持本教程，相关脚本或命令，它们不提供任何形式的担保。 本教程的目的是演示功能，可能不适合在生产环境中使用。 在您的环境中使用类似的解决方案之前，您必须进行调整，验证和测试。</td> </tr> </table>
 
 **Prerequisite:** This tutorial assumes that you have a working Jenkins installation and permission to launch applications on Marathon. Jenkins for DC/OS must be installed as described on the [Jenkins Quickstart](/services/jenkins/quickstart/) page.
 
