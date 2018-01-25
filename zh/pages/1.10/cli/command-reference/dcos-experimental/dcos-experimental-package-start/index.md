@@ -8,32 +8,32 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Start a service from a non-native DC/OS package. See `dcos experimental package add` for information on how to add a package to DC/OS.
+从非本地 DC/OS 包启动服务。有关如何将软件包添加到 DC/OS 的信息, 请参见 ` dcos experimental package add`。
 
-# Usage
+# 统计
 
 ```bash
 dcos experimental service start <package-name> [OPTION]
 ```
 
-# Options
+# 选项
 
-| Name, shorthand                             | Default | Description                                                             |
-| ------------------------------------------- | ------- | ----------------------------------------------------------------------- |
-| `--json`                                    |         | JSON-formatted data.                                                    |
-| `--options=<options-file>`            |         | Path to a JSON file that contains customized package execution options. |
-| `--package-version=<package-version>` |         | The package version.                                                    |
+| 名字，简写                                       | 默认 | 描述                      |
+| ------------------------------------------- | -- | ----------------------- |
+| `--json`                                    |    | JSON-formatted data.    |
+| `--options=<options-file>`            |    | 包含自定义包执行选项的 JSON 文件的路径。 |
+| `--package-version=<package-version>` |    | 包版本。                    |
 
-# Positional arguments
+# 位置实参
 
-| Name, shorthand        | Default | Description                |
-| ---------------------- | ------- | -------------------------- |
-| `<package-name>` |         | Name of the DC/OS package. |
+| 名字，简写                  | 默认 | 描述          |
+| ---------------------- | -- | ----------- |
+| `<package-name>` |    | DC/OS 包的名称。 |
 
-# Parent command
+# 父命令
 
-| Command                                                             | Description                                                   |
-| ------------------------------------------------------------------- | ------------------------------------------------------------- |
-| [dcos experimental](/1.10/cli/command-reference/dcos-experimental/) | Manage commands that under development and subject to change. |
+| 命令                                                                  | 描述            |
+| ------------------------------------------------------------------- | ------------- |
+| [dcos experimental](/1.10/cli/command-reference/dcos-experimental/) | 管理正在开发和更改的命令。 |
