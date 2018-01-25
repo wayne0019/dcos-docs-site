@@ -32,7 +32,7 @@ dcos auth list-providers [OPTION]
 
 ## 列出可用的提供者
 
-In this example, the available DC/OS authentication providers are listed.
+在此示例中, 列出了可用的 DC/OS 身份验证提供程序。
 
 ```bash
 dcos auth list-providers
