@@ -9,39 +9,39 @@ enterprise: true
 # 基础要求
 
 - DC / OS企业集群。
-- The [DC/OS CLI](/1.10/cli/install/) installed.
-- The [DC/OS Enterprise CLI](/1.10/cli/enterprise-cli/) installed.
+- 已安装[DC/OS CLI](/1.10/cli/install/)。
+- 安装了[ DC / OS企业版CLI ](/1.10/cli/enterprise-cli/)。
 
-**Important:** See the [Limitations](/1.10/administering-clusters/backup-and-restore/#limitations) of backup and restore.
+**重要：**请参阅备份和还原的[限制](/1.10/administering-clusters/backup-and-restore/#limitations)。
 
 # 备份一个群集
 
-备份存储在主节点的本地文件系统上。 Backup state is maintained by a service running in the cluster and backup/restore operations are initiated by hitting this service directly.
+备份存储在主节点的本地文件系统上。 备份状态由群集中运行的服务维护，备份/恢复操作通过直接点击此服务来启动。
 
-1. Create a backup and assign it a meaningful label. The label has the following restrictions:
+1. 创建一个备份并为其分配一个有意义的标签。 标签有以下限制：
     
-    - It must be between 3 and 25 characters in length.
-    - It cannot start with `..`.
-    - It must be composed of the following characters: [A-Za-z0-9_.-].
+    - 长度必须在3到25个字符之间。
+    - 它不能以`.. `开头。
+    - 它必须由以下字符组成：[A-Za-z0-9 _.-]。
     ```bash
 dcos backup create --label=<backup-label>
 ```
 
-2. Verify your backup has been created.
+2. 验证您的备份是否已经创建。
     
     ```bash
 dcos backup list
 ```
 
-Or use the following command to refine your search results to the label you used when you created the backup.
+或者使用以下命令将您的搜索结果精简到创建备份时使用的标签。
 
 ```bash
 dcos backup list [label]
 ```
 
-The backup will initially transition into the `STATUS_BACKING_UP` state, and should eventually arrive at `STATUS_READY`. If something goes wrong, it will show a state of `STATUS_ERROR`. Use `dcos backup show <backup-id>` to inspect why Marathon errored out during the course of the backup.
+备份最初将转换到` STATUS_BACKING_UP `状态，并最终到达` STATUS_READY `。 如果出现问题，它将显示` STATUS_ERROR `的状态。 使用` dcos backup show< backup-id> `来检查Marathon在备份过程中出错的原因。
 
-3. Use the ID produced by `dcos backup list` to refer to your backup in subsequent commands. A backup ID will resemble `<backup-label>-ea6b49f5-79a8-4767-ae78-3f874c90e3da`.
+3. 使用由` dcos backup list `生成的ID在后续命令中引用您的备份。 备份ID将类似于`< backup-label> -ea6b49f5-79a8-4767-ae78-3f874c90e3da `。
 
 # 删除备份
 
