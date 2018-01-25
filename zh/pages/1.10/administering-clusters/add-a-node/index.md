@@ -15,14 +15,14 @@ Agent nodes are designated as [public](/1.10/overview/concepts/#public-agent-nod
 ### 基础要求
 
 * 使用 [ 自定义 ](/1.10/installing/oss/custom/) 安装方法安装 DC/OS。
-* The archived DC/OS installer file (`dcos-install.tar`) from your [installation](/1.10/installing/oss/custom/gui/#backup).
+* 归档的DC/OS安装程序文件(`dcos-install.tar`)来自您的[安装](/1.10/installing/oss/custom/gui/#backup)。
 * 满足 [ 系统要求 ](/1.10/installing/oss/custom/system-requirements/) 的可用代理节点。
 * CLI JSON 处理器 [ jq ](https://github.com/stedolan/jq/wiki/Installation)。
 * 已安装和配置 SSH。这是访问 DC/OS 群集中的节点所必需的。
 
 ### 安装 DC/OS 代理节点
 
-将已存档的 DC/OS 安装程序文件 (` dcos-install.tar `) 复制到代理节点。 This archive is created during the GUI or CLI [installation](/1.10/installing/oss/custom/gui/#backup) method.
+将已存档的 DC/OS 安装程序文件 (` dcos-install.tar `) 复制到代理节点。 此存档是在GUI或CLI [安装](/1.10/installing/oss/custom/gui/#backup)方法中创建的。
 
 1. 将文件复制到代理节点。例如, 可以使用安全副本 (scp) 将 `dcos-install.tar` 复制到您的主目录中:
     
