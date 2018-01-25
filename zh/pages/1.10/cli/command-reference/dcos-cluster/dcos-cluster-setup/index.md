@@ -8,46 +8,46 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Configure the connection to a DC/OS cluster, attach to the cluster, and authenticate to DC/OS.
+配置到DC / OS群集的连接，连接到群集，并向DC / OS进行身份验证。
 
-# Usage
+# 统计
 
 ```bash
 dcos cluster setup <dcos_url> [OPTIONS]
 ```
 
-# Options
+# 选项
 
-| Name, shorthand                         | Default | Description                                                                                                              |
-| --------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `--ca-certs=<ca-certs>`           |         | [enterprise type="inline" size="small" /] The path to a list of trusted CAs to verify requests against.                  |
-| `--insecure`                            |         | Allow requests to bypass SSL certificate verification. Analogous to `dcos config set core.ssl_verify=False`              |
-| `--no-check`                            |         | [enterprise type="inline" size="small" /] Do not check the CA certificate downloaded from the cluster. This is insecure. |
-| `--password-env=<password_env>`   |         | The name of an environment variable that contains the password for login.                                                |
-| `--password-file=<password_file>` |         | The path to a file that contains the password for login.                                                                 |
-| `--password=<password>`           |         | The password for login. This is insecure.                                                                                |
-| `--private-key=<key_path>`        |         | The path to a file that contains the private key.                                                                        |
-| `--provider=<provider_id>`        |         | [enterprise type="inline" size="small" /] The authentication provider to use for login.                                  |
-| `--username=<username>`           |         | The username for login.                                                                                                  |
+| 名字，简写                                   | 默认 | 描述                                                                                                                       |
+| --------------------------------------- | -- | ------------------------------------------------------------------------------------------------------------------------ |
+| `--ca-certs=<ca-certs>`           |    | [enterprise type="inline" size="small" /] The path to a list of trusted CAs to verify requests against.                  |
+| `--insecure`                            |    | 允许请求绕过SSL证书验证。 类似于` dcos config set core.ssl_verify = False`                                                             |
+| `--no-check`                            |    | [enterprise type="inline" size="small" /] Do not check the CA certificate downloaded from the cluster. This is insecure. |
+| `--password-env=<password_env>`   |    | 包含登录密码的环境变量的名称。                                                                                                          |
+| `--password-file=<password_file>` |    | 包含登录密码的文件的路径。                                                                                                            |
+| `--password=<password>`           |    | 登录密码。 这是不安全的。                                                                                                            |
+| `--private-key=<key_path>`        |    | 包含私钥的文件的路径。                                                                                                              |
+| `--provider=<provider_id>`        |    | [enterprise type =“inline”size =“small”/] 用于登录的身份验证提供程序。                                                                 |
+| `--username=<username>`           |    | 用于登录的用户名。                                                                                                                |
 
-## SSL options
+## SSL选项
 
-If you do not specify one of the SSL options `--insecure`, `--no-check`, or `--ca-certs`, the CA certificate is downloaded from the cluster and a sha256 fingerprint of the certificate is presented to you for verification.
+如果您未指定SSL选项`--insecure`，`--no-check `或`--ca-certs `中的一个，则CA 从集群下载证书，并向您显示证书的sha256指纹以供验证。
 
-# Positional arguments
+# 位置实参
 
-| Name, shorthand    | Default | Description                                              |
-| ------------------ | ------- | -------------------------------------------------------- |
-| `<dcos_url>` |         | A publicly accessible proxy IP address to a master node. |
+| 名字，简写              | 默认 | 描述                |
+| ------------------ | -- | ----------------- |
+| `<dcos_url>` |    | 主节点的可公开访问的代理IP地址。 |
 
-# Parent command
+# 父命令
 
-| Command                                                   | Description            |
-| --------------------------------------------------------- | ---------------------- |
-| [dcos cluster](/1.10/cli/command-reference/dcos-cluster/) | Manage DC/OS clusters. |
+| 命令                                                        | 描述           |
+| --------------------------------------------------------- | ------------ |
+| [dcos cluster](/1.10/cli/command-reference/dcos-cluster/) | 管理DC / OS群集。 |
 
-# Examples
+# 例子
 
-For examples, see the [Connecting to Multiple Clusters](/1.10/cli/multi-cluster-cli/) documentation.
+有关示例，请参阅[连接到多个群集](/1.10/cli/multi-cluster-cli/)文档。
