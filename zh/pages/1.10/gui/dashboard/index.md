@@ -1,28 +1,28 @@
 ---
 layout: layout.pug
-navigationTitle: Dashboard
-title: Dashboard
+navigationTitle: 仪表盘
+title: 仪表盘
 menuWeight: 1
 excerpt: ""
 ---
-The dashboard is the home page of the DC/OS web interface and provides an overview of your DC/OS cluster.
+仪表板是 dc/os web 界面的主页, 它提供了 dc/os 群集的概述。
 
-[message type="Info"]The Secrets tab is available only in DC/OS Enterprise.[/message]
+[消息类型 = "信息"]"机密" 选项卡仅在 DC/OS 企业中可用.[/message]
 
 ![Dashboard](/1.10/img/dashboard-ee.png)
 
-From the dashboard you can easily monitor the health of your cluster.
+通过仪表板, 您可以轻松地监视群集的运行状况。
 
-* The CPU Allocation panel provides a graph of the current percentage of available general compute units that are being used by your cluster.
+* "CPU 分配" 面板提供了当前群集所使用的可用常规计算单位的百分比的图表。
 
-* The Memory Allocation panel provides a graph of the current percentage of available memory that is being used by your cluster.
+* "内存分配" 面板提供了当前群集使用的可用内存百分比的图表。
 
-* The Disk Allocation panel provides a graph of the current percentage of available disk space that is being used by your cluster.
+* “磁盘分配”面板提供了群集正在使用的可用磁盘空间的当前百分比图。
 
-* The Services Health panel provides an overview of the health of your services. Each service provides a health check, run at intervals. This indicator shows the current status according to that health check. A maximum of 5 services are displayed, sorted by priority of the most unhealthy. You can click the **View All `<number>` Services** button for detailed information and a complete list of your services.
+* "服务健康" 面板提供了服务的运行状况概述。 每个服务都提供健康检查, 每隔一段时间运行一次。 此指示器根据该健康检查显示当前状态。 最多显示5服务, 按最不健康的优先级排序。 您可以单击 ** View All` <number> ` 服务 ** 按钮, 以获取详细信息和服务的完整列表。
 
-* The Tasks panel provides the current number of tasks that are staged and running.
+* “任务”面板提供正在执行和正在运行的当前任务数量。
 
-* The Component Health panel provides an overview of the health of your component. Each component provides a health check, run at intervals. This indicator shows the current status according to that health check. A maximum of 5 components are displayed, sorted by priority of the most unhealthy. You can click the **View All `<number>` Components** button for detailed information and a complete list of your components.
+* “组件运行状况”面板提供组件运行状况的概述。 每个组件都提供一个健康检查，每隔一段时间运行 This indicator shows the current status according to that health check. A maximum of 5 components are displayed, sorted by priority of the most unhealthy. You can click the **View All `<number>` Components** button for detailed information and a complete list of your components.
 
 * The Nodes panel provides a view of the nodes in your cluster.
