@@ -1,17 +1,17 @@
 ---
 layout: layout.pug
-navigationTitle: Recovering Agent Disk Space
-title: Recovering Agent Disk Space
+navigationTitle: 恢复代理磁盘空间
+title: 恢复代理磁盘空间
 menuWeight: 900
 excerpt: ""
 enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-If tasks fill up the reserved volume of an agent node, there are a few options to recover space:
+如果任务填满代理节点的保留卷，则有几个恢复空间的选项：
 
-- Check each component's healthiness and restart each component.
+- 检查每个组件的健康状况并重新启动每个组件。
 
-- If the work directory is on a separate volume (as recommended in [Agent nodes](/1.10/installing/oss/custom/system-requirements/#agent-nodes)), then you can empty this volume and restart the agent.
+- 如果工作目录位于单独的卷上(如[Agent节点](/1.10/installing/oss/custom/system-requirements/#agent-nodes)中的建议)，则可以清空 卷并重新启动代理程序。
 
-If neither of these approaches work, you may need to re-image the node.
+如果这两种方法都不起作用，则可能需要重新映像节点。
