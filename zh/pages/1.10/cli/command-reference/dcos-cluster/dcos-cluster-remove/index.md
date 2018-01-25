@@ -32,4 +32,4 @@ dcos cluster remove <name>
 
 # 例子
 
-For examples, see the [Connecting to Multiple Clusters](/1.10/cli/multi-cluster-cli/) documentation.
+有关示例，请参阅[连接到多个群集](/1.10/cli/multi-cluster-cli/)文档。
