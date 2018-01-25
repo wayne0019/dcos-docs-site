@@ -8,7 +8,7 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-You can update agent nodes in an active DC/OS cluster by using maintenance windows or by manually killing agents. 维护窗口是首选的方法, 因为它通常更稳定, 容易出错。
+通过使用维护窗口或手动杀死代理, 可以更新活动的 DC/OS 群集中的代理节点。 维护窗口是首选的方法, 因为它通常更稳定, 容易出错。
 
 如果您正在缩小群集、重新配置代理节点或将节点移动到新的 IP, 则这些步骤非常有用。 当您更改 Mesos 属性 (`/var/lib/dcos/mesos-slave-common `) 或资源 (`/var/lib/dcos/Mesos-resources `) 时, 必须删除代理节点, 然后在新 UUID 下使用主节点重新注册它。 然后, master 将识别新的属性和资源规范。
 
@@ -19,13 +19,13 @@ You can update agent nodes in an active DC/OS cluster by using maintenance windo
 * [ SSH 已安装并已配置 ](/1.10/administering-clusters/sshcluster/)。当通过手动杀死代理删除节点时, 这是必需的。
 * Access to the [Admin Router permissions](/1.10/overview/architecture/components/#admin-router).
 
-# Updating nodes by using maintenance windows
+# 使用维护窗口更新节点
 
-With maintenance windows you can drain multiple nodes at the same time from outside the cluster. SSH access is not required.
+使用维护窗口, 您可以同时从群集外部排出多个节点。不需要 SSH 访问。
 
 您可以定义一个维护计划, 以便在更改代理属性或资源之前疏散您的任务。
 
-1. Define a maintenance schedule. For example, here is a basic maintenance schedule JSON file with the example machines (`machine_ids`) and maintenance window (`unavailability`) specified:
+1. 定义维护计划。 例如, 下面是一个基本的维护计划 JSON 文件, 其中指定了示例计算机 (` machine_ids `) 和维护窗口 (` 不可用 `):
     
     ```json
 {
