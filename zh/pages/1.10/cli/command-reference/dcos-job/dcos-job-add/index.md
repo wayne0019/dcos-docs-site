@@ -8,32 +8,32 @@ enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-# Description
+# 描述
 
-Add a job.
+添加作业。
 
-# Usage
+# 统计
 
 ```bash
 dcos job add <job-file> [OPTION]
 ```
 
-# Options
+# 选项
 
 None.
 
-# Positional arguments
+# 位置实参
 
-| Name, shorthand    | Default | Description                      |
-| ------------------ | ------- | -------------------------------- |
-| `<job-file>` |         | A JSON-formatted job definition. |
+| 姓名、速记              | 默认 | 描述            |
+| ------------------ | -- | ------------- |
+| `<job-file>` |    | JSON 格式的作业定义。 |
 
-# Parent command
+# 父命令
 
-| Command                                           | Description                      |
-| ------------------------------------------------- | -------------------------------- |
-| [dcos job](/1.10/cli/command-reference/dcos-job/) | Deploy and manage jobs in DC/OS. |
+| 命令                                                | 描述                |
+| ------------------------------------------------- | ----------------- |
+| [dcos job](/1.10/cli/command-reference/dcos-job/) | 在 DC/OS 中部署和管理作业。 |
 
-# Examples
+# 例子
 
 For job examples, see the [documentation](/1.10/deploying-jobs/examples/#create-job).
