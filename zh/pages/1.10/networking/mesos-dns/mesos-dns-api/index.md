@@ -135,7 +135,7 @@ DC / OS开源的输出应该类似于：
  }
 ```
 
-The output for Entperise DC/OS should resemble:
+企业DC / OS的输出应该类似于：
 
 ```json
 {
@@ -189,15 +189,15 @@ The output for Entperise DC/OS should resemble:
 
 ## <a name="get-hosts"></a>GET /v1/hosts/{host}
 
-Lists in JSON format the IP addresses that correspond to a hostname. It is the equivalent of a DNS A record lookup.
+以JSON格式列出与主机名对应的IP地址。 它相当于DNS A记录查找。
 
-**Note:** The HTTP interface only resolves hostnames in the Mesos domain.
+**注意：** HTTP接口仅解析Mesos域中的主机名。
 
 ```bash
 curl -H "Authorization: token=<auth-token>" http://<public-master-ip>/mesos_dns/v1/hosts/nginx.marathon.mesos
 ```
 
-The output should resemble:
+输出会是这样：
 
 ```json
 [
@@ -209,15 +209,15 @@ The output should resemble:
 
 ## <a name="get-service"></a>GET /v1/services/{service}
 
-Lists in JSON format the hostname, IP address, and ports that correspond to a hostname. It is the equivalent of a DNS SRV record lookup.
+以JSON格式列出与主机名对应的主机名，IP地址和端口。 这相当于DNS SRV记录查找。
 
-**Note:** The HTTP interface only resolves service names in the Mesos domain.
+**注意：** HTTP接口仅解析Mesos域中的服务名称。
 
 ```bash
 curl -H "Authorization: token=<auth-token>" http://<public-master-ip>/mesos_dns/v1/services/_nginx._tcp.marathon.mesos
 ```
 
-The output should resemble:
+输出会是这样：
 
 ```json
 [

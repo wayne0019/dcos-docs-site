@@ -1,52 +1,52 @@
 ---
 layout: layout.pug
-navigationTitle: Updating the CLI
-title: Updating the CLI
+navigationTitle: 更新 CLI
+title: 更新 CLI
 menuWeight: 3
 excerpt: ""
 enterprise: false
 ---
 <!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
-You can update the DC/OS CLI to the latest version or downgrade to an older version.
+您可以将 DC/OS CLI 更新为最新版本或降级为旧版本。
 
-# <a name="upgrade"></a>Upgrade the CLI
+# <a name="upgrade"></a>升级 CLI
 
-**Important:** If you downloaded the CLI from PyPI or from the DC/OS UI version 1.7 or earlier, you must completely [uninstall](/1.10/cli/uninstall/) the CLI. You cannot upgrade.
+** 重要: **如果从 PyPI 或从 DC/OS UI 1.7 或更早版本下载了 cli, 则必须完全 [ 卸载 ](/1.10/cli/uninstall/) cli。 您无法升级。
 
-You can upgrade an existing DC/OS CLI installation to the latest build.
+您可以将现有的 DC/OS CLI 安装升级到最新版本。
 
-1. Remove the current CLI binary. For example, if you installed to `/usr/local/bin/`:
+1. 删除当前的 CLI 二进制文件。例如, 如果您安装到 `//本地/bin/`:
     
     ```bash
 rm -rf /usr/local/bin/dcos
 ```
 
-2. Download the DC/OS CLI binary (`dcos`) to your local directory (for example, `/usr/local/bin/`). Update the command with the desired upgrade version (`<version>`):
+2. 将 DC/OS CLI 二进制文件 (` dcos `) 下载到您的本地目录中 (例如, `/usr/local/bin/`)。 使用所需的升级版本 (` <version> `) 更新命令:
     
     ```bash
 curl https://downloads.dcos.io/binaries/cli/darwin/x86-64/dcos-<dcos-version>/dcos
 ```
 
-**Important:** The CLI must be installed on a system that is external to your DC/OS cluster.
+** 重要: **CLI 必须安装在您的 DC/OS 群集外部的系统上。
 
-3. Make the CLI binary executable.
+3. 使 CLI 二进制可执行文件。
     
     ```bash
 chmod +x dcos
 ```
 
-**Tip:** If your system is unable to find the executable, you may need to re-open the command prompt or add the installation directory to your PATH environment variable manually.
+** 提示: **如果系统无法找到可执行文件, 则可能需要重新打开命令提示符, 或者手动将安装目录添加到 PATH 环境变量中。
 
-4. Point the CLI to your DC/OS master node. In this example, `http://example.com` is the master node IP address.
+4. 将 CLI 指向您的 DC/OS 主节点。在此示例中, ` http://example.com ` 是主节点 IP 地址。
     
     ```bash
 dcos cluster setup http://example.com
 ```
 
-Follow the instructions in the DC/OS CLI. For more information about security, see the [documentation](/1.10/security/ent/).
+按照 DC/OS CLI 中的说明进行操作。有关安全性的详细信息, 请参阅 [ 文档 ](/1.10/security/ent/)。
 
-Your CLI should now be authenticated with your cluster! Enter `dcos` to get started.
+您的CLI现在应该通过群集进行身份验证！ 输入` dcos `开始。
 
 ```bash
 dcos
@@ -69,11 +69,11 @@ Available DC/OS commands:
 Get detailed command description with 'dcos <command> --help'.
 ```
 
-# <a name="downgrade"></a>Downgrade the CLI
+# <a name="downgrade"></a>降级CLI
 
-You can downgrade an existing DC/OS CLI installation to an older version.
+您可以将现有的DC / OS CLI安装降级到较旧的版本。
 
-1. Remove the current CLI binary:
+1. 删除当前的 CLI 二进制文件:
     
     ```bash
 rm path/to/binary/dcos
