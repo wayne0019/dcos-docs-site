@@ -28,18 +28,18 @@ dcos auth login [OPTION]
 | `--password-env=<password_env>`   |    | 包含登录密码的环境变量的名称。                                                                                                          |
 | `--password-file=<password_file>` |    | The path to a file that contains the password for login.                                                                 |
 | `--password=<password>`           |    | The password for login. This is insecure.                                                                                |
-| `--private-key=<key_path>`        |    | The path to a file that contains the private key.                                                                        |
+| `--private-key=<key_path>`        |    | 包含私钥的文件的路径。                                                                                                              |
 | `--provider=<provider_id>`        |    | [enterprise type="inline" size="small" /] The authentication provider to use for login.                                  |
-| `--username=<username>`           |    | The username for login.                                                                                                  |
+| `--username=<username>`           |    | 用于登录的用户名。                                                                                                                |
 
 ## SSL options
 
-If you do not specify one of the SSL options `--insecure`, `--no-check`, or `--ca-certs`, the CA certificate is downloaded from the cluster and a sha256 fingerprint of the certificate is presented to you for verification.
+如果您未指定SSL选项`--insecure`，`--no-check `或`--ca-certs `中的一个，则CA 从集群下载证书，并向您显示证书的sha256指纹以供验证。
 
-# Parent command
+# 父命令
 
-| Command                                             | Description                       |
-| --------------------------------------------------- | --------------------------------- |
-| [dcos auth](/1.10/cli/command-reference/dcos-auth/) | Manage DC/OS identity and access. |
+| 命令                                                  | 描述            |
+| --------------------------------------------------- | ------------- |
+| [dcos auth](/1.10/cli/command-reference/dcos-auth/) | 管理DC/OS身份和访问。 |
 
-# Examples
+# 例子
