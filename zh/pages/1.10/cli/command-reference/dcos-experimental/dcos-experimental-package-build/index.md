@@ -18,21 +18,21 @@ enterprise: false
 dcos experimental package build <build-definition> [OPTION]
 ```
 
-# Options
+# 选项
 
-| Name, shorthand                               | Default                   | Description                                            |
-| --------------------------------------------- | ------------------------- | ------------------------------------------------------ |
-| `--json`                                      |                           | JSON-formatted data.                                   |
-| `--output-directory=<output-directory>` | current working directory | Path to the directory where the data should be stored. |
+| 姓名、速记                                         | 默认     | 描述           |
+| --------------------------------------------- | ------ | ------------ |
+| `--json`                                      |        | JSON 格式的数据。  |
+| `--output-directory=<output-directory>` | 当前工作目录 | 要存储数据的目录的路径。 |
 
-# Positional arguments
+# 位置实参
 
-| Name, shorthand            | Default | Description                               |
-| -------------------------- | ------- | ----------------------------------------- |
-| `<build-definition>` |         | Path to a DC/OS package build definition. |
+| 名字，简写                      | 默认 | 描述              |
+| -------------------------- | -- | --------------- |
+| `<build-definition>` |    | DC/OS 包生成定义的路径。 |
 
-# Parent command
+# 父命令
 
-| Command                                                             | Description                                                   |
-| ------------------------------------------------------------------- | ------------------------------------------------------------- |
-| [dcos experimental](/1.10/cli/command-reference/dcos-experimental/) | Manage commands that under development and subject to change. |
+| 命令                                                                  | 描述            |
+| ------------------------------------------------------------------- | ------------- |
+| [dcos experimental](/1.10/cli/command-reference/dcos-experimental/) | 管理正在开发和更改的命令。 |
