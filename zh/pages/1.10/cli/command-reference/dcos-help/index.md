@@ -20,18 +20,18 @@ dcos help <subcommand>
 
 # 选项
 
-| 姓名、速记                | 默认 | 描述                                            |
-| -------------------- | -- | --------------------------------------------- |
-| `--help, h`          |    | 打印使用。                                         |
-| `--info`             |    | Print a short description of this subcommand. |
-| `--version, v`       |    | 显示版本信息                                        |
-| `<subcommand>` |    | The subcommand name.                          |
+| 姓名、速记                | 默认 | 描述           |
+| -------------------- | -- | ------------ |
+| `--help, h`          |    | 打印使用。        |
+| `--info`             |    | 打印此子命令的简短说明。 |
+| `--version, v`       |    | 显示版本信息       |
+| `<subcommand>` |    | 子命令名称。       |
 
 # 例子
 
-## Display help for dcos config command
+## 显示 dcos 配置命令的帮助
 
-The `dcos help config` command is the same as `dcos config --help`.
+` dcos help config` 命令与 ` dcos config --help` 相同。
 
 ```bash
 dcos help config
